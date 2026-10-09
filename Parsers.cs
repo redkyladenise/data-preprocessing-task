@@ -23,6 +23,21 @@ public static class Parsers
         return false;
     }
 
+    public static bool IsNoSamplingText(string? s)
+    {
+        if (string.IsNullOrWhiteSpace(s)) return false;
+
+        var t = s.Trim().ToUpperInvariant();
+
+        t = System.Text.RegularExpressions.Regex.Replace(t, @"\s+", " ");
+
+        return t == "NO SAMPLING CONDUCTED"
+            || t == "NO SAMPLING"
+            || t == "NO SAMPLING DONE"
+            || t == "NO SAMPLE"
+            || t == "NO SAMPLE COLLECTED";
+    }
+
     // numbers
     public static (bool ok, double value, bool hadLimit) TryParseNumber(string? raw)
     {
