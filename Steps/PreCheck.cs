@@ -1,8 +1,10 @@
 using System.Globalization;
 using System.Text.RegularExpressions;
 using ClosedXML.Excel;
+using DataPreprocessingTask.Domain;
+using DataPreprocessingTask.Helpers;
 
-namespace DataPreprocessingTask;
+namespace DataPreprocessingTask.Steps;
 
 public static class PreCheck
 {

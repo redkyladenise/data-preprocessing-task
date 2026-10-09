@@ -2,7 +2,7 @@ using System.Globalization;
 using System.Text;
 using CsvHelper;
 
-namespace DataPreprocessingTask;
+namespace DataPreprocessingTask.Helpers;
 
 public static class TableWriter
 {

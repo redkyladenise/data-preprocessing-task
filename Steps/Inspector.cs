@@ -1,7 +1,9 @@
 using System.Globalization;
 using ClosedXML.Excel;
+using DataPreprocessingTask.Domain;
+using DataPreprocessingTask.Helpers;
 
-namespace DataPreprocessingTask;
+namespace DataPreprocessingTask.Steps;
 public static class Inspector
 {
     public const string RawWorkbookPath =

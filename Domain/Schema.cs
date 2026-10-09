@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace DataPreprocessingTask;
+namespace DataPreprocessingTask.Domain;
 public static class Schema
 {
     // --- Sheets ---

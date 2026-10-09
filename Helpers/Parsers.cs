@@ -1,7 +1,7 @@
 using System.Globalization;
 using System.Text.RegularExpressions;
 
-namespace DataPreprocessingTask;
+namespace DataPreprocessingTask.Helpers;
 
 public static class Parsers
 {

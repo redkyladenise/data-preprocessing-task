@@ -1,7 +1,7 @@
 using System.Globalization;
 using ClosedXML.Excel;
 
-namespace DataPreprocessingTask;
+namespace DataPreprocessingTask.Helpers;
 
 public static class ExcelText
 {
