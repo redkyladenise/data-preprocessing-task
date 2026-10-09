@@ -1,0 +1,10 @@
+﻿Sheet,Row,A,B,C,D,E,F,G,H,I,J
+Marilao,8,Name of Water Body:     Marilao River,,Coordinates,,Date,Time,Parameters,,,
+Marilao,9,,,"Latitude, North (degree)","Longitude, East (degree)",,,"Dissolved Oxygen, mg/L",PH,Temperature °C*,"Biochemical Oxygen Demand, mg/L"
+Marilao,10,"Water Quality Guideline (Class SB, DAO 2016-08):",,,,,,6,6.0-8.5,26-30,n/a
+Meycauayan,8,Name of Water Body:     Meycauayan River,,Coordinates,,Date,Time,Parameters,,,
+Meycauayan,9,,,"Latitude, North (degree)","Longitude, East (degree)",,,"Dissolved Oxygen, mg/L",PH,Temperature °C,"Biochemical Oxygen Demand, mg/L"
+Meycauayan,10,"Water Quality Guideline (Class SB, DAO 2016-08):",,,,,,6,6.0-8.5,26-30,n/a
+Obando,8,Name of Water Body:     Obando River,,Coordinates,,Date,Time,Parameters,,,
+Obando,9,,,"Latitude, North (degree)","Longitude, East (degree)",,,"Dissolved Oxygen, mg/L",PH,Temperature °C,"Biochemical Oxygen Demand, mg/L"
+Obando,10,"Water Quality Guideline (Class SB, DAO 2016-08):",,,,,,6,6.0-8.5,26-30,n/a
