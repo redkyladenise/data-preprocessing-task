@@ -118,6 +118,7 @@ public class RawRecord
     public string SourceSheet     { get; set; } = "";
     public int    SourceRow       { get; set; }
     public string YearMonthLabel  { get; set; } = "";
+    public int    YearMonthLabelRow  { get; set; }
     public string StationRaw      { get; set; } = "";
     public string Latitude        { get; set; } = "";
     public string Longitude       { get; set; } = "";

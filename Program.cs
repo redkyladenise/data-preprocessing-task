@@ -4,3 +4,4 @@ Console.WriteLine("MMORS Data Preprocessing Pipeline");
 Console.WriteLine();
 
 Inspector.Run();
+Extractor.Run();
