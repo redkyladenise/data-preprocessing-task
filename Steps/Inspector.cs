@@ -13,7 +13,8 @@ public static class Inspector
 
     public static void Run()
     {
-        Console.WriteLine("====== STEP 1: Inspector (Load and Inspect) ======");
+        Console.WriteLine("*******************************************************");
+        Console.WriteLine("========== 01: Inspector (Load and Inspect) ===========");
 
         if (!File.Exists(RawWorkbookPath))
         {
@@ -31,7 +32,7 @@ public static class Inspector
         InspectStations(wb);
 
         Console.WriteLine();
-        Console.WriteLine("==== Inspection complete. See Output/tables/01_inspector/. ====");
+        Console.WriteLine("==== 01 Inspection complete. See Output/tables/inspection/. ====");
     }
 
     private static void InspectSheets(XLWorkbook wb)
@@ -73,7 +74,7 @@ public static class Inspector
             });
         }
 
-        TableWriter.WriteRows("Output/tables/01_inspector/01_sheet_structure.csv", rows);
+        TableWriter.WriteRows("Output/tables/inspection/01_sheet_structure.csv", rows);
     }
 
     private static void InspectIgnoredSheet(XLWorkbook wb)
@@ -110,7 +111,7 @@ public static class Inspector
             }
         }
 
-        TableWriter.WriteRows("Output/tables/01_inspector/02_sheet table1_3_contents.csv", rows);
+        TableWriter.WriteRows("Output/tables/inspection/02_sheet table1_3_contents.csv", rows);
     }
 
     private static void DumpHeaderRows(XLWorkbook wb)
@@ -146,7 +147,7 @@ public static class Inspector
             }
         }
 
-        TableWriter.WriteRows("Output/tables/01_inspector/03_header_rows.csv", rows);
+        TableWriter.WriteRows("Output/tables/inspection/03_header_rows.csv", rows);
     }
 
     private static void InspectDateAndTimeTypes(XLWorkbook wb)
@@ -223,7 +224,7 @@ public static class Inspector
             });
         }
 
-        TableWriter.WriteRows("Output/tables/01_inspector/04_date_time_format.csv", summaryRows);
+        TableWriter.WriteRows("Output/tables/inspection/04_date_time_format.csv", summaryRows);
     }
 
     private static int FindHeaderColumn(IXLWorksheet ws, int startRow, int endRow, string target)
@@ -358,7 +359,7 @@ public static class Inspector
         }
 
         TableWriter.WriteRows(
-            "Output/tables/01_inspector/05_marilao_side_table.csv",
+            "Output/tables/inspection/05_marilao_side_table.csv",
             rows
         );
     }
@@ -432,7 +433,7 @@ public static class Inspector
             }
         }
 
-        TableWriter.WriteRows("Output/tables/01_inspector/06_distinct_stations.csv", allStationRows);
+        TableWriter.WriteRows("Output/tables/inspection/06_distinct_stations.csv", allStationRows);
     }
 
 }

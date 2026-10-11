@@ -1,0 +1,20 @@
+﻿Parameter,Value,Type,Count
+"Nitrates as Nitrogen, mg/L",<0.048*,LIMIT_SYMBOL,150
+"Nitrates as Nitrogen, mg/L",< 0.048*,LIMIT_SYMBOL,21
+"Nitrates as Nitrogen, mg/L",<0.05,LIMIT_SYMBOL,12
+"Nitrates as Nitrogen, mg/L",<0.048,LIMIT_SYMBOL,12
+"Total Coliform, MPN/100mL",>16000000,LIMIT_SYMBOL,7
+"Total Coliform, MPN/100mL",>16000,LIMIT_SYMBOL,4
+"Total Coliform, MPN/100mL",>1600,LIMIT_SYMBOL,2
+"Total Coliform, MPN/100mL",>160000,LIMIT_SYMBOL,2
+"Ammonia, mg/L",_,PLACEHOLDER,2
+"Nitrates as Nitrogen, mg/L",_,PLACEHOLDER,2
+"Phosphates as Phosphorous, mg/L",_,PLACEHOLDER,2
+"Biochemical Oxygen Demand, mg/L",-,PLACEHOLDER,2
+"Total Suspended Solids, mg/L",-,PLACEHOLDER,2
+"Total Coliform, MPN/100mL",-,PLACEHOLDER,2
+"Fecal Coliform, MPN/100mL",>160000000,LIMIT_SYMBOL,1
+"Total Suspended Solids, mg/L",<2*,LIMIT_SYMBOL,1
+"Total Coliform, MPN/100mL",<1.8,LIMIT_SYMBOL,1
+"Total Coliform, MPN/100mL",>1600000,LIMIT_SYMBOL,1
+"Ammonia, mg/L",26. 344,SPACE_IN_DECIMAL,1

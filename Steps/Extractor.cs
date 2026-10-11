@@ -13,7 +13,8 @@ public static class Extractor
 
     public static void Run()
     {
-        Console.WriteLine("====== STEP 2: Extractor (Read and Extract Rows) ======");
+        Console.WriteLine("*******************************************************");
+        Console.WriteLine("======== 02: Extractor (Read and Extract Rows) ========");
 
         if (!File.Exists(Inspector.RawWorkbookPath))
         {
