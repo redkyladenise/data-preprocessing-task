@@ -1,0 +1,10 @@
+﻿Sheet,SourceRow,Field,OldValue,NewValue,Reason
+Marilao,417,YearMonthLabel,CY 2016 AUGUST,CY 2017 AUGUST,Mislabeled year - station dates are Aug 2017
+Marilao,423,YearMonthLabel,CY 2016 SEPTEMBER,CY 2017 SEPTEMBER,Mislabeled year - station dates are Sep 2017
+Marilao,466,YearMonthLabel,CY 2017 MAY,CY 2018 MAY,Mislabeled year - station dates are May 2018
+Marilao,459,DateText,,2018-03-16,Decision 2 - correct sample date
+Meycauayan,212,DateText,,2014-10-17,Decision 1 - correct sample date
+Meycauayan,213,DateText,,2014-10-17,Decision 1 - correct sample date
+Meycauayan,214,DateText,,2014-10-17,Decision 1 - correct sample date
+Meycauayan,215,DateText,,2014-10-17,Decision 1 - correct sample date
+Meycauayan,216,DateText,,2014-10-17,Decision 1 - correct sample date

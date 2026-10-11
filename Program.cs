@@ -6,3 +6,4 @@ Console.WriteLine();
 Inspector.Run();
 Extractor.Run();
 Assessor.Run();
+Cleaner.Run();
