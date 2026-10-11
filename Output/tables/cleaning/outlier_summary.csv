@@ -1,0 +1,37 @@
+﻿Sheet,Parameter,NonEmptyCount,FenceComputed,LowerFence,UpperFence,OutlierCount,Scale
+Marilao,"Dissolved Oxygen, mg/L",369,YES,-2.6499999999999995,6.55,1,raw
+Marilao,pH,310,YES,6.219999999999999,8.920000000000002,11,raw
+Marilao,Temperature °C,75,YES,23.124999999999996,36.525000000000006,0,raw
+Marilao,"Biochemical Oxygen Demand, mg/L",365,YES,-27.5,80.5,26,raw
+Marilao,"Total Suspended Solids, mg/L",309,YES,-13,51,17,raw
+Marilao,Color TCU,70,YES,10,90,8,raw
+Marilao,"Fecal Coliform, MPN/100mL",95,YES,4.825184080826382,7.8767195672209205,4,log10
+Marilao,"Total Coliform, MPN/100mL",215,YES,-7800000,19400000,23,raw
+Marilao,"Ammonia, mg/L",220,YES,-18.405625,55.393375000000006,5,raw
+Marilao,"Nitrates as Nitrogen, mg/L",310,YES,-0.6060000000000001,1.36,15,raw
+Marilao,"Phosphates as Phosphorous, mg/L",310,YES,-1.6211249999999997,6.859875,4,raw
+Marilao,"Chlorides Cl, mg/L",90,YES,-202.75,419.25,16,raw
+Meycauayan,"Dissolved Oxygen, mg/L",370,YES,-1.25,2.83,21,raw
+Meycauayan,pH,308,YES,5.895000000000002,9.235,0,raw
+Meycauayan,Temperature °C,75,YES,24.1875,36.1275,0,raw
+Meycauayan,"Biochemical Oxygen Demand, mg/L",368,YES,-45.5,168.5,7,raw
+Meycauayan,"Total Suspended Solids, mg/L",307,YES,-3.75,58.25,28,raw
+Meycauayan,Color TCU,75,YES,-37.5,182.5,7,raw
+Meycauayan,"Fecal Coliform, MPN/100mL",95,YES,4.769942329461798,8.664626574572402,3,log10
+Meycauayan,"Total Coliform, MPN/100mL",213,YES,-19125000,38275000,17,raw
+Meycauayan,"Ammonia, mg/L",221,YES,-9.0945,31.325499999999998,4,raw
+Meycauayan,"Nitrates as Nitrogen, mg/L",306,YES,-0.19524999999999998,0.69475,12,raw
+Meycauayan,"Phosphates as Phosphorous, mg/L",306,YES,-1.285625,4.993375,23,raw
+Meycauayan,"Chlorides Cl, mg/L",95,YES,-1564,2828,9,raw
+Obando,"Dissolved Oxygen, mg/L",201,YES,-2.375,7.1850000000000005,0,raw
+Obando,pH,165,YES,6.4350000000000005,8.955,2,raw
+Obando,Temperature °C,48,YES,24.806249999999988,37.05625000000002,0,raw
+Obando,"Biochemical Oxygen Demand, mg/L",201,YES,-16.5,51.5,15,raw
+Obando,"Total Suspended Solids, mg/L",165,YES,-34.125,90.875,7,raw
+Obando,Color TCU,48,YES,8.75,58.75,5,raw
+Obando,"Fecal Coliform, MPN/100mL",60,YES,2.477462695101963,7.685352398655571,0,log10
+Obando,"Total Coliform, MPN/100mL",105,YES,-438750,823250,18,raw
+Obando,"Ammonia, mg/L",111,YES,-2.9162500000000007,9.145750000000001,6,raw
+Obando,"Nitrates as Nitrogen, mg/L",165,YES,-0.1365,0.4275,8,raw
+Obando,"Phosphates as Phosphorous, mg/L",165,YES,-0.22500000000000003,1.5910000000000002,7,raw
+Obando,"Chlorides Cl, mg/L",60,YES,-21118.875,35974.125,3,raw

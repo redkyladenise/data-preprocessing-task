@@ -8,22 +8,29 @@ namespace DataPreprocessingTask.Steps;
 
 public static class Cleaner
 {
+    // -- A
     public const string InputPath             = Extractor.OutputPath;
     public const string ManualCorrectionsPath = "Data/interim/manual_corrections.csv";
     public const string StageAPath            = "Data/interim/clean_stage_a.csv";
 
+    // -- B
     public const string StageBPath            = "Data/interim/clean_stage_b.csv";
     public const string ExcludedPath          = "Data/interim/excluded_records.csv";
     public const string DuplicateReportPath   = "Output/tables/cleaning/duplicates_after_exclusion.csv";
 
+    // -- C
     public const string StageCPath               = "Data/interim/clean_stage_c.csv";
     public const string ImpossibilityReportPath  = "Output/tables/cleaning/impossible_values.csv";
 
+    // -- D
+    public const string StageDPath             = "Data/interim/clean_stage_d.csv";
+    public const string OutlierSummaryPath     = "Output/tables/cleaning/outlier_summary.csv";
     public static void Run()
     {
         RunPhaseA();
         RunPhaseB();
         RunPhaseC();
+        RunPhaseD();
     }
 
     // 4A - Corrections and standardization
@@ -220,7 +227,6 @@ public static class Cleaner
 
     private static void WriteStageB(List<Dictionary<string, string>> kept)
     {
-        // Column order: preserve what stage A has, in the same order.
         var headers = new List<string>
         {
             "SourceSheet", "SourceRow",
@@ -269,15 +275,12 @@ public static class Cleaner
         Console.WriteLine($"  Duplicate groups after exclusion: {byKey.Count}");
     }
 
-    // =================================================================
-    // PHASE 4C — Impossibility checks
-    // =================================================================
+    // 4C - Impossible Values checks
     public static void RunPhaseC()
     {
         Console.WriteLine();
-        Console.WriteLine("==================================================");
-        Console.WriteLine(" STEP 4C: Cleaner (Impossibility Checks)");
-        Console.WriteLine("==================================================");
+        Console.WriteLine("*******************************************************");
+        Console.WriteLine("======== 4C: Cleaner (Impossible Values Check) ========");
 
         if (!File.Exists(StageBPath))
         {
@@ -285,7 +288,7 @@ public static class Cleaner
             return;
         }
 
-        var stageB = LoadStageA(StageBPath);   // same loader as 4B
+        var stageB = LoadStageA(StageBPath); 
         Console.WriteLine($"  Loaded {stageB.Count} stage-B records.");
 
         var violations = new List<Dictionary<string, string>>();
@@ -295,7 +298,7 @@ public static class Cleaner
         {
             bool rowHadViolation = false;
 
-            // Check pH (special range, not "non-negative").
+            // pH
             if (row.TryGetValue("pH", out var phRaw) &&
                 !string.IsNullOrWhiteSpace(phRaw) &&
                 double.TryParse(phRaw, NumberStyles.Float, CultureInfo.InvariantCulture, out var ph))
@@ -308,7 +311,7 @@ public static class Cleaner
                 }
             }
 
-            // Check DO (0-20 mg/L).
+            // Dissolved Oxygen (0-20 mg/L)
             if (row.TryGetValue("Dissolved Oxygen, mg/L", out var doRaw) &&
                 !string.IsNullOrWhiteSpace(doRaw) &&
                 double.TryParse(doRaw, NumberStyles.Float, CultureInfo.InvariantCulture, out var doVal))
@@ -322,7 +325,7 @@ public static class Cleaner
                 }
             }
 
-            // Check Temperature (0-45 °C).
+            // temperature (0-45 C)
             if (row.TryGetValue("Temperature °C", out var tempRaw) &&
                 !string.IsNullOrWhiteSpace(tempRaw) &&
                 double.TryParse(tempRaw, NumberStyles.Float, CultureInfo.InvariantCulture, out var temp))
@@ -336,7 +339,7 @@ public static class Cleaner
                 }
             }
 
-            // Check all other parameters for negatives.
+            // all other parameters for negatives
             foreach (var p in Schema.StandardParameterNames)
             {
                 if (p == "pH" || p == "Dissolved Oxygen, mg/L" || p == "Temperature °C")
@@ -416,6 +419,237 @@ public static class Cleaner
         }
 
         TableWriter.WriteTable(StageCPath, headers, table);
+    }
+
+    public static void RunPhaseD()
+    {
+        Console.WriteLine();
+        Console.WriteLine("*******************************************************");
+        Console.WriteLine("========= 4D: Cleaner (IQR Outlier Flagging) ==========");
+        if (!File.Exists(StageCPath))
+        {
+            Console.WriteLine($"[FATAL] Stage C file not found: {StageCPath}");
+            return;
+        }
+
+        var records = LoadStageA(StageCPath);
+        Console.WriteLine($"  Loaded {records.Count} stage-C records.");
+
+        var fences = ComputeFences(records);    // n<8
+
+        int totalFencesComputed = fences.Count(kv => kv.Value.HasValue);
+        Console.WriteLine($"  Fence groups computed : {totalFencesComputed}");
+        Console.WriteLine($"  Fence groups skipped  : {fences.Count - totalFencesComputed} (n < 8)");
+
+        int rowsWithOutlier = 0;
+        int outlierCells    = 0;
+
+        foreach (var row in records)
+        {
+            var sheet = row["SourceSheet"];
+            var paramsFlagged = new List<string>();
+
+            foreach (var p in Schema.StandardParameterNames)
+            {
+                if (!row.TryGetValue(p, out var raw)) continue;
+                if (string.IsNullOrWhiteSpace(raw)) continue;
+
+                var key = $"{sheet}\u0001{p}";
+                if (!fences.TryGetValue(key, out var fence) || fence == null) continue;
+
+                if (!double.TryParse(raw, NumberStyles.Float, CultureInfo.InvariantCulture, out var value))
+                    continue;
+
+                double compareValue = (p == Schema.ParamFecalColiform && value > 0)
+                    ? Math.Log10(value)
+                    : value;
+
+                if (compareValue < fence.Value.lower || compareValue > fence.Value.upper)
+                {
+                    paramsFlagged.Add(p);
+                    outlierCells++;
+                }
+            }
+
+            row["Is_Outlier"]     = paramsFlagged.Count > 0 ? "TRUE" : "";
+            row["Outlier_Params"] = string.Join("; ", paramsFlagged);
+            if (paramsFlagged.Count > 0) rowsWithOutlier++;
+        }
+
+        Console.WriteLine($"  Rows with outliers    : {rowsWithOutlier}");
+        Console.WriteLine($"  Outlier cells         : {outlierCells}");
+
+        foreach (var row in records)
+        {
+            if (row.TryGetValue(Schema.ParamFecalColiform, out var fc) &&
+                !string.IsNullOrWhiteSpace(fc) &&
+                double.TryParse(fc, NumberStyles.Float, CultureInfo.InvariantCulture, out var fcVal) &&
+                fcVal > 0)
+            {
+                row["FecalColiform_log10"] = Math.Log10(fcVal)
+                    .ToString("F4", CultureInfo.InvariantCulture);
+            }
+            else
+            {
+                row["FecalColiform_log10"] = "";
+            }
+        }
+
+        WriteStageD(records);
+        WriteOutlierSummary(records);
+
+        Console.WriteLine();
+        Console.WriteLine($"  Wrote {StageDPath}");
+        Console.WriteLine($"  Wrote {OutlierSummaryPath}");
+    }
+
+    // Fence
+    private record struct Fence(double lower, double upper);
+
+    private static Dictionary<string, Fence?> ComputeFences(
+        List<Dictionary<string, string>> records)
+    {
+        var fences = new Dictionary<string, Fence?>();
+
+        foreach (var sheetGroup in records.GroupBy(r => r["SourceSheet"]))
+        {
+            var sheet = sheetGroup.Key;
+            var list  = sheetGroup.ToList();
+
+            foreach (var p in Schema.StandardParameterNames)
+            {
+                var values = new List<double>();
+
+                foreach (var row in list)
+                {
+                    if (!row.TryGetValue(p, out var raw)) continue;
+                    if (string.IsNullOrWhiteSpace(raw)) continue;
+
+                    if (row.TryGetValue("SymbolValue_Params", out var sp) &&
+                        !string.IsNullOrWhiteSpace(sp) &&
+                        sp.Contains(p))
+                        continue;
+
+                    if (double.TryParse(raw, NumberStyles.Float, CultureInfo.InvariantCulture, out var v))
+                        values.Add(v);
+                }
+
+                var key = $"{sheet}\u0001{p}";
+
+                if (values.Count < 8)
+                {
+                    fences[key] = null;
+                    continue;
+                }
+
+                // log10 value of Fence for Fecal
+                List<double> series = (p == Schema.ParamFecalColiform)
+                    ? values.Where(v => v > 0).Select(Math.Log10).ToList()
+                    : values;
+
+                if (series.Count < 8)
+                {
+                    fences[key] = null;
+                    continue;
+                }
+
+                series.Sort();
+                double q1 = Quantile(series, 0.25);
+                double q3 = Quantile(series, 0.75);
+                double iqr = q3 - q1;
+
+                fences[key] = new Fence(q1 - 1.5 * iqr, q3 + 1.5 * iqr);
+            }
+        }
+
+        return fences;
+    }
+
+    private static double Quantile(List<double> sorted, double q)
+    {
+        if (sorted.Count == 0) return 0;
+        if (sorted.Count == 1) return sorted[0];
+
+        double pos = (sorted.Count - 1) * q;
+        int lo = (int)Math.Floor(pos);
+        int hi = (int)Math.Ceiling(pos);
+        if (lo == hi) return sorted[lo];
+
+        double frac = pos - lo;
+        return sorted[lo] * (1 - frac) + sorted[hi] * frac;
+    }
+
+    private static void WriteStageD(List<Dictionary<string, string>> rows)
+    {
+        var headers = new List<string>
+        {
+            "SourceSheet", "SourceRow",
+            "Year", "Month", "YearMonth",
+            "StationRaw", "StationID",
+            "Latitude", "Longitude",
+            "SampleDate", "SampleTime", "DateLabelMismatch",
+        };
+        headers.AddRange(Schema.StandardParameterNames);
+        headers.Add("FecalColiform_log10");
+        headers.Add("SymbolValue_Params");
+        headers.Add("Is_Outlier");
+        headers.Add("Outlier_Params");
+
+        var table = new List<IReadOnlyList<string>>();
+        foreach (var r in rows)
+        {
+            var line = new List<string>();
+            foreach (var h in headers)
+                line.Add(r.TryGetValue(h, out var v) ? (v ?? "") : "");
+            table.Add(line);
+        }
+
+        TableWriter.WriteTable(StageDPath, headers, table);
+    }
+
+    private static void WriteOutlierSummary(List<Dictionary<string, string>> records)
+    {
+        var rows = new List<IDictionary<string, string>>();
+
+        var fences = ComputeFences(records); 
+
+        foreach (var sheetGroup in records.GroupBy(r => r["SourceSheet"]))
+        {
+            var sheet = sheetGroup.Key;
+            var list  = sheetGroup.ToList();
+
+            foreach (var p in Schema.StandardParameterNames)
+            {
+                var key = $"{sheet}\u0001{p}";
+                fences.TryGetValue(key, out var fence);
+
+                int nonNull = 0, flagged = 0;
+                foreach (var row in list)
+                {
+                    if (!row.TryGetValue(p, out var raw) || string.IsNullOrWhiteSpace(raw)) continue;
+                    nonNull++;
+
+                    if (row.TryGetValue("Outlier_Params", out var op) &&
+                        !string.IsNullOrWhiteSpace(op) &&
+                        op.Contains(p))
+                        flagged++;
+                }
+
+                rows.Add(new Dictionary<string, string>
+                {
+                    ["Sheet"]          = sheet,
+                    ["Parameter"]      = p,
+                    ["NonEmptyCount"]  = nonNull.ToString(CultureInfo.InvariantCulture),
+                    ["FenceComputed"]  = fence.HasValue ? "YES" : "NO",
+                    ["LowerFence"]     = fence.HasValue ? fence.Value.lower.ToString("R", CultureInfo.InvariantCulture) : "",
+                    ["UpperFence"]     = fence.HasValue ? fence.Value.upper.ToString("R", CultureInfo.InvariantCulture) : "",
+                    ["OutlierCount"]   = flagged.ToString(CultureInfo.InvariantCulture),
+                    ["Scale"]          = p == Schema.ParamFecalColiform ? "log10" : "raw",
+                });
+            }
+        }
+
+        TableWriter.WriteRows(OutlierSummaryPath, rows);
     }
 
     // ---------- Shared helpers used by Phase A
