@@ -72,7 +72,7 @@ public static class Cleaner
 
         if (!File.Exists(StageAPath))
         {
-            Console.WriteLine($"[FATAL] Stage A file not found: {StageAPath}");
+            Console.WriteLine($"Stage A file not found: {StageAPath}");
             return;
         }
 
@@ -284,7 +284,7 @@ public static class Cleaner
 
         if (!File.Exists(StageBPath))
         {
-            Console.WriteLine($"[FATAL] Stage B file not found: {StageBPath}");
+            Console.WriteLine($"Stage B file not found: {StageBPath}");
             return;
         }
 
@@ -428,7 +428,7 @@ public static class Cleaner
         Console.WriteLine("========= 4D: Cleaner (IQR Outlier Flagging) ==========");
         if (!File.Exists(StageCPath))
         {
-            Console.WriteLine($"[FATAL] Stage C file not found: {StageCPath}");
+            Console.WriteLine($"Stage C file not found: {StageCPath}");
             return;
         }
 

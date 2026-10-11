@@ -1,0 +1,13 @@
+﻿Rank,Parameter,AvgMissingPercent,GapFromPrev,InDaoPrimary,DomainDrop
+1,Color TCU,78.98,0.00,YES,NO
+2,Temperature °C,78.53,0.45,YES,NO
+3,"Chlorides Cl, mg/L",73.38,5.14,YES,NO
+4,"Fecal Coliform, MPN/100mL",72.93,0.45,YES,NO
+5,"Total Coliform, MPN/100mL",44.03,28.90,NO,YES
+6,"Ammonia, mg/L",41.86,2.17,NO,YES
+7,"Total Suspended Solids, mg/L",17.14,24.72,YES,NO
+8,"Nitrates as Nitrogen, mg/L",17.14,0.00,YES,NO
+9,"Phosphates as Phosphorous, mg/L",17.14,0.00,YES,NO
+10,pH,16.96,0.18,YES,NO
+11,"Biochemical Oxygen Demand, mg/L",0.63,16.33,YES,NO
+12,"Dissolved Oxygen, mg/L",0.09,0.54,YES,NO

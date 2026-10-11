@@ -1,0 +1,37 @@
+﻿Sheet,Parameter,MissingCount,TotalCount,MissingPercent
+Marilao,"Dissolved Oxygen, mg/L",1,370,0.27
+Marilao,pH,60,370,16.22
+Marilao,Temperature °C,295,370,79.73
+Marilao,"Biochemical Oxygen Demand, mg/L",5,370,1.35
+Marilao,"Total Suspended Solids, mg/L",61,370,16.49
+Marilao,Color TCU,300,370,81.08
+Marilao,"Fecal Coliform, MPN/100mL",275,370,74.32
+Marilao,"Total Coliform, MPN/100mL",155,370,41.89
+Marilao,"Ammonia, mg/L",150,370,40.54
+Marilao,"Nitrates as Nitrogen, mg/L",60,370,16.22
+Marilao,"Phosphates as Phosphorous, mg/L",60,370,16.22
+Marilao,"Chlorides Cl, mg/L",280,370,75.68
+Meycauayan,"Dissolved Oxygen, mg/L",0,370,0.00
+Meycauayan,pH,62,370,16.76
+Meycauayan,Temperature °C,295,370,79.73
+Meycauayan,"Biochemical Oxygen Demand, mg/L",2,370,0.54
+Meycauayan,"Total Suspended Solids, mg/L",63,370,17.03
+Meycauayan,Color TCU,295,370,79.73
+Meycauayan,"Fecal Coliform, MPN/100mL",275,370,74.32
+Meycauayan,"Total Coliform, MPN/100mL",157,370,42.43
+Meycauayan,"Ammonia, mg/L",149,370,40.27
+Meycauayan,"Nitrates as Nitrogen, mg/L",64,370,17.30
+Meycauayan,"Phosphates as Phosphorous, mg/L",64,370,17.30
+Meycauayan,"Chlorides Cl, mg/L",275,370,74.32
+Obando,"Dissolved Oxygen, mg/L",0,201,0.00
+Obando,pH,36,201,17.91
+Obando,Temperature °C,153,201,76.12
+Obando,"Biochemical Oxygen Demand, mg/L",0,201,0.00
+Obando,"Total Suspended Solids, mg/L",36,201,17.91
+Obando,Color TCU,153,201,76.12
+Obando,"Fecal Coliform, MPN/100mL",141,201,70.15
+Obando,"Total Coliform, MPN/100mL",96,201,47.76
+Obando,"Ammonia, mg/L",90,201,44.78
+Obando,"Nitrates as Nitrogen, mg/L",36,201,17.91
+Obando,"Phosphates as Phosphorous, mg/L",36,201,17.91
+Obando,"Chlorides Cl, mg/L",141,201,70.15

@@ -1,0 +1,37 @@
+﻿Sheet,Parameter,MonitoredYears,RowsInWindow,MissingWithinWindow,MissingPercentInWindow
+Marilao,"Dissolved Oxygen, mg/L","2012,2013,2014,2015,2016,2017,2018",370,1,0.27
+Marilao,pH,"2013,2014,2015,2016,2017,2018",310,0,0.00
+Marilao,Temperature °C,"2017,2018",75,0,0.00
+Marilao,"Biochemical Oxygen Demand, mg/L","2012,2013,2014,2015,2016,2017,2018",370,5,1.35
+Marilao,"Total Suspended Solids, mg/L","2013,2014,2015,2016,2017,2018",310,1,0.32
+Marilao,Color TCU,"2017,2018",75,5,6.67
+Marilao,"Fecal Coliform, MPN/100mL","2016,2017,2018",130,35,26.92
+Marilao,"Total Coliform, MPN/100mL","2013,2014,2015,2016",235,20,8.51
+Marilao,"Ammonia, mg/L","2013,2014,2015,2016",235,15,6.38
+Marilao,"Nitrates as Nitrogen, mg/L","2013,2014,2015,2016,2017,2018",310,0,0.00
+Marilao,"Phosphates as Phosphorous, mg/L","2013,2014,2015,2016,2017,2018",310,0,0.00
+Marilao,"Chlorides Cl, mg/L","2016,2017,2018",130,40,30.77
+Meycauayan,"Dissolved Oxygen, mg/L","2012,2013,2014,2015,2016,2017,2018",370,0,0.00
+Meycauayan,pH,"2013,2014,2015,2016,2017,2018",310,2,0.65
+Meycauayan,Temperature °C,"2017,2018",75,0,0.00
+Meycauayan,"Biochemical Oxygen Demand, mg/L","2012,2013,2014,2015,2016,2017,2018",370,2,0.54
+Meycauayan,"Total Suspended Solids, mg/L","2013,2014,2015,2016,2017,2018",310,3,0.97
+Meycauayan,Color TCU,"2017,2018",75,0,0.00
+Meycauayan,"Fecal Coliform, MPN/100mL","2016,2017,2018",130,35,26.92
+Meycauayan,"Total Coliform, MPN/100mL","2013,2014,2015,2016",235,22,9.36
+Meycauayan,"Ammonia, mg/L","2013,2014,2015,2016",235,14,5.96
+Meycauayan,"Nitrates as Nitrogen, mg/L","2013,2014,2015,2016,2017,2018",310,4,1.29
+Meycauayan,"Phosphates as Phosphorous, mg/L","2013,2014,2015,2016,2017,2018",310,4,1.29
+Meycauayan,"Chlorides Cl, mg/L","2016,2017,2018",130,35,26.92
+Obando,"Dissolved Oxygen, mg/L","2012,2013,2014,2015,2016,2017,2018",201,0,0.00
+Obando,pH,"2013,2014,2015,2016,2017,2018",165,0,0.00
+Obando,Temperature °C,"2017,2018",48,0,0.00
+Obando,"Biochemical Oxygen Demand, mg/L","2012,2013,2014,2015,2016,2017,2018",201,0,0.00
+Obando,"Total Suspended Solids, mg/L","2013,2014,2015,2016,2017,2018",165,0,0.00
+Obando,Color TCU,"2017,2018",48,0,0.00
+Obando,"Fecal Coliform, MPN/100mL","2016,2017,2018",81,21,25.93
+Obando,"Total Coliform, MPN/100mL","2013,2014,2015,2016",117,12,10.26
+Obando,"Ammonia, mg/L","2013,2014,2015,2016",117,6,5.13
+Obando,"Nitrates as Nitrogen, mg/L","2013,2014,2015,2016,2017,2018",165,0,0.00
+Obando,"Phosphates as Phosphorous, mg/L","2013,2014,2015,2016,2017,2018",165,0,0.00
+Obando,"Chlorides Cl, mg/L","2016,2017,2018",81,21,25.93

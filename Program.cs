@@ -7,3 +7,4 @@ Inspector.Run();
 Extractor.Run();
 Assessor.Run();
 Cleaner.Run();
+Missingness.Run();

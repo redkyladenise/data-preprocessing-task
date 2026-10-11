@@ -1,0 +1,13 @@
+﻿Parameter,AvgMissing,AboveThreshold,InDaoPrimary,Decision,Reason
+"Dissolved Oxygen, mg/L",0.09,NO,YES,KEEP,Missing % is below the threshold.
+pH,16.96,NO,YES,KEEP,Missing % is below the threshold.
+Temperature °C,78.53,YES,YES,KEEP_PERIOD_LIMITED,Above threshold but is a DAO primary parameter; retained with period-limited coverage.
+"Biochemical Oxygen Demand, mg/L",0.63,NO,YES,KEEP,Missing % is below the threshold.
+"Total Suspended Solids, mg/L",17.14,NO,YES,KEEP,Missing % is below the threshold.
+Color TCU,78.98,YES,YES,KEEP_PERIOD_LIMITED,Above threshold but is a DAO primary parameter; retained with period-limited coverage.
+"Fecal Coliform, MPN/100mL",72.93,YES,YES,KEEP_PERIOD_LIMITED,Above threshold but is a DAO primary parameter; retained with period-limited coverage.
+"Total Coliform, MPN/100mL",44.03,NO,NO,DROP,Domain override: parameter is not on the DAO 2016-08 primary parameter list; excluded regardless of threshold.
+"Ammonia, mg/L",41.86,NO,NO,DROP,Domain override: parameter is not on the DAO 2016-08 primary parameter list; excluded regardless of threshold.
+"Nitrates as Nitrogen, mg/L",17.14,NO,YES,KEEP,Missing % is below the threshold.
+"Phosphates as Phosphorous, mg/L",17.14,NO,YES,KEEP,Missing % is below the threshold.
+"Chlorides Cl, mg/L",73.38,YES,YES,KEEP_PERIOD_LIMITED,Above threshold but is a DAO primary parameter; retained with period-limited coverage.
