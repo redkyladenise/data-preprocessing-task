@@ -16,10 +16,14 @@ public static class Cleaner
     public const string ExcludedPath          = "Data/interim/excluded_records.csv";
     public const string DuplicateReportPath   = "Output/tables/cleaning/duplicates_after_exclusion.csv";
 
+    public const string StageCPath               = "Data/interim/clean_stage_c.csv";
+    public const string ImpossibilityReportPath  = "Output/tables/cleaning/impossible_values.csv";
+
     public static void Run()
     {
         RunPhaseA();
         RunPhaseB();
+        RunPhaseC();
     }
 
     // 4A - Corrections and standardization
@@ -265,7 +269,156 @@ public static class Cleaner
         Console.WriteLine($"  Duplicate groups after exclusion: {byKey.Count}");
     }
 
-    // Shared helpers used by Phase A
+    // =================================================================
+    // PHASE 4C — Impossibility checks
+    // =================================================================
+    public static void RunPhaseC()
+    {
+        Console.WriteLine();
+        Console.WriteLine("==================================================");
+        Console.WriteLine(" STEP 4C: Cleaner (Impossibility Checks)");
+        Console.WriteLine("==================================================");
+
+        if (!File.Exists(StageBPath))
+        {
+            Console.WriteLine($"[FATAL] Stage B file not found: {StageBPath}");
+            return;
+        }
+
+        var stageB = LoadStageA(StageBPath);   // same loader as 4B
+        Console.WriteLine($"  Loaded {stageB.Count} stage-B records.");
+
+        var violations = new List<Dictionary<string, string>>();
+        int rowsWithViolations = 0;
+
+        foreach (var row in stageB)
+        {
+            bool rowHadViolation = false;
+
+            // Check pH (special range, not "non-negative").
+            if (row.TryGetValue("pH", out var phRaw) &&
+                !string.IsNullOrWhiteSpace(phRaw) &&
+                double.TryParse(phRaw, NumberStyles.Float, CultureInfo.InvariantCulture, out var ph))
+            {
+                if (ph < 0 || ph > 14)
+                {
+                    LogViolation(violations, row, "pH", phRaw, "pH must be between 0 and 14");
+                    row["pH"] = "";
+                    rowHadViolation = true;
+                }
+            }
+
+            // Check DO (0-20 mg/L).
+            if (row.TryGetValue("Dissolved Oxygen, mg/L", out var doRaw) &&
+                !string.IsNullOrWhiteSpace(doRaw) &&
+                double.TryParse(doRaw, NumberStyles.Float, CultureInfo.InvariantCulture, out var doVal))
+            {
+                if (doVal < 0 || doVal > 20)
+                {
+                    LogViolation(violations, row, "Dissolved Oxygen, mg/L", doRaw,
+                                 "DO must be between 0 and 20 mg/L");
+                    row["Dissolved Oxygen, mg/L"] = "";
+                    rowHadViolation = true;
+                }
+            }
+
+            // Check Temperature (0-45 °C).
+            if (row.TryGetValue("Temperature °C", out var tempRaw) &&
+                !string.IsNullOrWhiteSpace(tempRaw) &&
+                double.TryParse(tempRaw, NumberStyles.Float, CultureInfo.InvariantCulture, out var temp))
+            {
+                if (temp < 0 || temp > 45)
+                {
+                    LogViolation(violations, row, "Temperature °C", tempRaw,
+                                 "Temperature must be between 0 and 45 °C");
+                    row["Temperature °C"] = "";
+                    rowHadViolation = true;
+                }
+            }
+
+            // Check all other parameters for negatives.
+            foreach (var p in Schema.StandardParameterNames)
+            {
+                if (p == "pH" || p == "Dissolved Oxygen, mg/L" || p == "Temperature °C")
+                    continue;
+
+                if (!row.TryGetValue(p, out var raw) || string.IsNullOrWhiteSpace(raw))
+                    continue;
+
+                if (double.TryParse(raw, NumberStyles.Float, CultureInfo.InvariantCulture, out var v) && v < 0)
+                {
+                    LogViolation(violations, row, p, raw,
+                                 "Concentration cannot be negative");
+                    row[p] = "";
+                    rowHadViolation = true;
+                }
+            }
+
+            if (rowHadViolation) rowsWithViolations++;
+        }
+
+        Console.WriteLine($"  Rows with violations : {rowsWithViolations}");
+        Console.WriteLine($"  Total violations     : {violations.Count}");
+
+        if (violations.Count > 0)
+        {
+            foreach (var g in violations.GroupBy(v => v["Reason"]).OrderBy(g => g.Key))
+                Console.WriteLine($"    {g.Key,-45}: {g.Count()}");
+        }
+
+        WriteStageC(stageB);
+        TableWriter.WriteRows(ImpossibilityReportPath, violations);
+
+        Console.WriteLine();
+        Console.WriteLine($"  Wrote {StageCPath}");
+        Console.WriteLine($"  Wrote {ImpossibilityReportPath}");
+    }
+
+    private static void LogViolation(
+        List<Dictionary<string, string>> violations,
+        Dictionary<string, string> row,
+        string parameter,
+        string value,
+        string reason)
+    {
+        violations.Add(new Dictionary<string, string>
+        {
+            ["SourceSheet"] = row.TryGetValue("SourceSheet", out var s) ? s : "",
+            ["SourceRow"]   = row.TryGetValue("SourceRow",   out var r) ? r : "",
+            ["YearMonth"]   = row.TryGetValue("YearMonth",   out var y) ? y : "",
+            ["StationID"]   = row.TryGetValue("StationID",   out var st) ? st : "",
+            ["Parameter"]   = parameter,
+            ["Value"]       = value,
+            ["Reason"]      = reason,
+        });
+    }
+
+    private static void WriteStageC(List<Dictionary<string, string>> rows)
+    {
+        var headers = new List<string>
+        {
+            "SourceSheet", "SourceRow",
+            "Year", "Month", "YearMonth",
+            "StationRaw", "StationID",
+            "Latitude", "Longitude",
+            "SampleDate", "SampleTime", "DateLabelMismatch",
+        };
+        headers.AddRange(Schema.StandardParameterNames);
+        headers.Add("SymbolValue_Params");
+
+        var table = new List<IReadOnlyList<string>>();
+        foreach (var r in rows)
+        {
+            var line = new List<string>();
+            foreach (var h in headers)
+                line.Add(r.TryGetValue(h, out var v) ? (v ?? "") : "");
+            table.Add(line);
+        }
+
+        TableWriter.WriteTable(StageCPath, headers, table);
+    }
+
+    // ---------- Shared helpers used by Phase A
 
     private static List<RawRecord> LoadRawRecords(string path)
     {
