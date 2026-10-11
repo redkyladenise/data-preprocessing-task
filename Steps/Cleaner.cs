@@ -12,10 +12,22 @@ public static class Cleaner
     public const string ManualCorrectionsPath = "Data/interim/manual_corrections.csv";
     public const string StageAPath            = "Data/interim/clean_stage_a.csv";
 
+    public const string StageBPath            = "Data/interim/clean_stage_b.csv";
+    public const string ExcludedPath          = "Data/interim/excluded_records.csv";
+    public const string DuplicateReportPath   = "Output/tables/cleaning/duplicates_after_exclusion.csv";
+
     public static void Run()
+    {
+        RunPhaseA();
+        RunPhaseB();
+    }
+
+    // 4A - Corrections and standardization
+    public static void RunPhaseA()
     {
         Console.WriteLine("*******************************************************");
         Console.WriteLine("==== 4A: Cleaner (Corrections and Standardization =====");
+
         if (!File.Exists(InputPath))
         {
             Console.WriteLine($"Input not found: {InputPath}. Run Step 2 first.");
@@ -38,8 +50,222 @@ public static class Cleaner
         Console.WriteLine($"  Wrote {StageAPath}");
     }
 
-    // container for two stats
     private record StageAStats(int SymbolCells, int Mismatches);
+
+    // 4B - Placeholders, empty rows, and exclusion log
+    public static void RunPhaseB()
+    {
+        Console.WriteLine();
+        Console.WriteLine("*******************************************************");
+        Console.WriteLine("==== 4B: Cleaner (Placeholders and Empty Records) =====");
+
+        if (!File.Exists(StageAPath))
+        {
+            Console.WriteLine($"[FATAL] Stage A file not found: {StageAPath}");
+            return;
+        }
+
+        var stageA = LoadStageA(StageAPath);
+        Console.WriteLine($"  Loaded {stageA.Count} stage-A records.");
+
+        var rawIndex = BuildRawIndex(InputPath);
+
+        var kept     = new List<Dictionary<string, string>>();
+        var excluded = new List<Dictionary<string, string>>();
+
+        foreach (var row in stageA)
+        {
+            var key = MakeKey(row["SourceSheet"], row["SourceRow"]);
+            rawIndex.TryGetValue(key, out var raw);
+
+            bool hasAnyValue = HasAnyParameterValue(row);
+
+            if (hasAnyValue)
+            {
+                kept.Add(row);
+            }
+            else
+            {
+                var reason  = DetermineExclusionReason(row, raw);
+                var preview = BuildPreview(row, raw);
+
+                excluded.Add(new Dictionary<string, string>
+                {
+                    ["SourceSheet"] = row["SourceSheet"],
+                    ["SourceRow"]   = row["SourceRow"],
+                    ["YearMonth"]   = row["YearMonth"],
+                    ["StationID"]   = row["StationID"],
+                    ["Reason"]      = reason,
+                    ["Preview"]     = preview,
+                });
+            }
+        }
+
+        Console.WriteLine($"  Kept rows     : {kept.Count}");
+        Console.WriteLine($"  Excluded rows : {excluded.Count}");
+
+        foreach (var g in excluded.GroupBy(e => e["Reason"]).OrderBy(g => g.Key))
+            Console.WriteLine($"    {g.Key,-22}: {g.Count()}");
+
+        WriteExcluded(excluded);
+        WriteStageB(kept);
+        WriteDuplicateReport(kept);
+
+        Console.WriteLine();
+        Console.WriteLine($"  Wrote {ExcludedPath}");
+        Console.WriteLine($"  Wrote {StageBPath}");
+        Console.WriteLine($"  Wrote {DuplicateReportPath}");
+    }
+
+    private static string MakeKey(string sheet, string row) => sheet + "|" + row;
+
+    private static List<Dictionary<string, string>> LoadStageA(string path)
+    {
+        var list = new List<Dictionary<string, string>>();
+        using var reader = new StreamReader(path);
+        using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
+        csv.Read();
+        csv.ReadHeader();
+        var headers = csv.HeaderRecord ?? Array.Empty<string>();
+
+        while (csv.Read())
+        {
+            var row = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            foreach (var h in headers)
+                row[h] = csv.GetField(h) ?? "";
+            list.Add(row);
+        }
+        return list;
+    }
+
+    private record RawRecordMin(string Sheet, string Row, string DateText, string StationRaw);
+
+    private static Dictionary<string, RawRecordMin> BuildRawIndex(string path)
+    {
+        var dict = new Dictionary<string, RawRecordMin>();
+        using var reader = new StreamReader(path);
+        using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
+        csv.Read();
+        csv.ReadHeader();
+
+        while (csv.Read())
+        {
+            var sheet = csv.GetField("SourceSheet") ?? "";
+            var row   = csv.GetField("SourceRow")   ?? "";
+            var dt    = csv.GetField("DateText")    ?? "";
+            var st    = csv.GetField("StationRaw")  ?? "";
+            dict[MakeKey(sheet, row)] = new RawRecordMin(sheet, row, dt, st);
+        }
+        return dict;
+    }
+
+    private static bool HasAnyParameterValue(Dictionary<string, string> row)
+    {
+        foreach (var p in Schema.StandardParameterNames)
+        {
+            if (row.TryGetValue(p, out var v) && !string.IsNullOrWhiteSpace(v))
+                return true;
+        }
+        return false;
+    }
+
+    private static string DetermineExclusionReason(
+        Dictionary<string, string> stageRow,
+        RawRecordMin? raw)
+    {
+        if (string.IsNullOrWhiteSpace(stageRow["YearMonth"]))
+            return "BAD_LABEL";
+
+        if (raw != null && Parsers.IsNoSamplingText(raw.DateText))
+            return "NO_SAMPLING_TEXT";
+
+        bool hasDate = !string.IsNullOrWhiteSpace(stageRow["SampleDate"]);
+        if (!hasDate)
+            return "EMPTY_PLACEHOLDER";
+
+        return "NO_RESULTS";
+    }
+
+    private static string BuildPreview(
+        Dictionary<string, string> stageRow,
+        RawRecordMin? raw)
+    {
+        if (raw != null && Parsers.IsNoSamplingText(raw.DateText))
+            return raw.DateText;
+
+        if (!string.IsNullOrWhiteSpace(stageRow["SampleDate"]))
+            return "Date=" + stageRow["SampleDate"];
+
+        return "";
+    }
+
+    private static void WriteExcluded(List<Dictionary<string, string>> excluded)
+    {
+        var headers = new[] { "SourceSheet", "SourceRow", "YearMonth", "StationID", "Reason", "Preview" };
+        TableWriter.WriteRows(ExcludedPath, excluded.Select(e =>
+            (IDictionary<string, string>)new Dictionary<string, string>
+            {
+                ["SourceSheet"] = e["SourceSheet"],
+                ["SourceRow"]   = e["SourceRow"],
+                ["YearMonth"]   = e["YearMonth"],
+                ["StationID"]   = e["StationID"],
+                ["Reason"]      = e["Reason"],
+                ["Preview"]     = e["Preview"],
+            }).ToList());
+    }
+
+    private static void WriteStageB(List<Dictionary<string, string>> kept)
+    {
+        // Column order: preserve what stage A has, in the same order.
+        var headers = new List<string>
+        {
+            "SourceSheet", "SourceRow",
+            "Year", "Month", "YearMonth",
+            "StationRaw", "StationID",
+            "Latitude", "Longitude",
+            "SampleDate", "SampleTime", "DateLabelMismatch",
+        };
+        headers.AddRange(Schema.StandardParameterNames);
+        headers.Add("SymbolValue_Params");
+
+        var rows = new List<IReadOnlyList<string>>();
+        foreach (var k in kept)
+        {
+            var row = new List<string>();
+            foreach (var h in headers)
+                row.Add(k.TryGetValue(h, out var v) ? (v ?? "") : "");
+            rows.Add(row);
+        }
+
+        TableWriter.WriteTable(StageBPath, headers, rows);
+    }
+
+
+    private static void WriteDuplicateReport(List<Dictionary<string, string>> kept)
+    {
+        var byKey = kept
+            .GroupBy(r => $"{r["SourceSheet"]}|{r["YearMonth"]}|{r["StationID"]}")
+            .Where(g => g.Count() > 1)
+            .ToList();
+
+        var rows = new List<IDictionary<string, string>>();
+
+        foreach (var g in byKey)
+        {
+            rows.Add(new Dictionary<string, string>
+            {
+                ["Key"]        = g.Key,
+                ["Count"]      = g.Count().ToString(CultureInfo.InvariantCulture),
+                ["SourceRows"] = string.Join(" ; ",
+                                    g.Select(r => r["SourceRow"]).Take(5)),
+            });
+        }
+
+        TableWriter.WriteRows(DuplicateReportPath, rows);
+        Console.WriteLine($"  Duplicate groups after exclusion: {byKey.Count}");
+    }
+
+    // Shared helpers used by Phase A
 
     private static List<RawRecord> LoadRawRecords(string path)
     {
@@ -127,8 +353,6 @@ public static class Cleaner
 
             if (field == "YearMonthLabel")
             {
-                // Label rows are not records — match on YearMonthLabelRow
-                // and apply to every station row that inherited from it.
                 var targets = records
                     .Where(r => r.SourceSheet.Equals(c["Sheet"], StringComparison.OrdinalIgnoreCase) &&
                                 r.YearMonthLabelRow == rowNumber)
@@ -140,21 +364,7 @@ public static class Cleaner
                 if (targets.Count > 0) correctionsApplied++;
                 rowsAffected += targets.Count;
             }
-            else if (field == "DateText")
-            {
-                // Station rows are records — match on SourceRow.
-                var target = records.FirstOrDefault(r =>
-                    r.SourceSheet.Equals(c["Sheet"], StringComparison.OrdinalIgnoreCase) &&
-                    r.SourceRow == rowNumber);
-
-                if (target != null)
-                {
-                    target.DateText = newValue;
-                    correctionsApplied++;
-                    rowsAffected++;
-                }
-            }
-            else if (field == "TimeText")
+            else if (field == "DateText" || field == "TimeText")
             {
                 var target = records.FirstOrDefault(r =>
                     r.SourceSheet.Equals(c["Sheet"], StringComparison.OrdinalIgnoreCase) &&
@@ -162,7 +372,8 @@ public static class Cleaner
 
                 if (target != null)
                 {
-                    target.TimeText = newValue;
+                    if (field == "DateText") target.DateText = newValue;
+                    else                     target.TimeText = newValue;
                     correctionsApplied++;
                     rowsAffected++;
                 }
@@ -173,7 +384,6 @@ public static class Cleaner
         return correctionsApplied;
     }
 
-    // reads RawRecords, parses fields, writes stage_a.csv
     private static StageAStats WriteStageA(List<RawRecord> records)
     {
         var headers = new List<string>
@@ -200,10 +410,8 @@ public static class Cleaner
 
             var (latOk, latVal, _) = Parsers.TryParseNumber(rec.Latitude);
             var (lonOk, lonVal, _) = Parsers.TryParseNumber(rec.Longitude);
-
-            var (dateOk, dateVal) = Parsers.TryParseDate(rec.DateText);
-
-            var (timeOk, timeVal) = Parsers.TryParseTime(rec.TimeText);
+            var (dateOk, dateVal)  = Parsers.TryParseDate(rec.DateText);
+            var (timeOk, timeVal)  = Parsers.TryParseTime(rec.TimeText);
 
             bool mismatch = false;
             if (dateOk && year > 0 && month > 0)
@@ -242,7 +450,6 @@ public static class Cleaner
                 }
             }
 
-            // csv
             var row = new List<string>
             {
                 rec.SourceSheet,
