@@ -1,0 +1,11 @@
+﻿Parameter,Imputed,CountBefore,CountAfter,MeanBefore,MeanAfter,MedianBefore,MedianAfter
+"Dissolved Oxygen, mg/L",1,940,941,1.7078,1.7067,1.2000,1.2000
+pH,2,783,785,7.5988,7.5995,7.6500,7.6500
+Temperature °C,0,198,198,30.1676,30.1676,29.9750,29.9750
+"Biochemical Oxygen Demand, mg/L",5,934,939,43.4197,43.4617,31.0000,31.0000
+"Total Suspended Solids, mg/L",4,781,785,28.5506,28.5159,22.0000,22.0000
+Color TCU,5,193,198,64.3782,63.8005,40.0000,40.0000
+"Fecal Coliform, MPN/100mL",0,250,250,11905957.6000,11905957.6000,2400000.0000,2400000.0000
+"Nitrates as Nitrogen, mg/L",4,781,785,0.2599,0.2596,0.1440,0.1440
+"Phosphates as Phosphorous, mg/L",1,781,782,14.5554,14.5405,1.6690,1.6750
+"Chlorides Cl, mg/L",0,245,245,3443.7774,3443.7774,195.0000,195.0000

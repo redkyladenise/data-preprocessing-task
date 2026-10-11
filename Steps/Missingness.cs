@@ -54,7 +54,7 @@ public static class Missingness
         WriteThresholdDecision(records, threshold);
 
         Console.WriteLine();
-        Console.WriteLine($"Wrote 5 files to {OutputDir}/");
+        Console.WriteLine($"Wrote 6 files to {OutputDir}/");
     }
 
     private static List<Dictionary<string, string>> Load(string path)
