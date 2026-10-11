@@ -35,13 +35,60 @@ public static class Schema
         "BOD_mgL",
         "TSS_mgL",
         "Color_TCU",
-        "FecalColiform_MPN",
+        "FecalColiform_MPN_per100mL",
         "TotalColiform_MPN",
         "Ammonia_mgL",
-        "Nitrates_N_mgL",
-        "Phosphates_P_mgL",
+        "Nitrates_mgL",
+        "Phosphates_mgL",
         "Chlorides_mgL"
     };
+
+    public static readonly string[] FinalColumnOrder = {
+        "WaterBody", "StationID", "StationName", "Latitude", "Longitude",
+        "Year", "Month", "SampleDate", "SampleTime",
+        "DissolvedOxygen_mgL", "pH", "Temperature_C", "BOD_mgL", "TSS_mgL",
+        "Color_TCU", "FecalColiform_MPN_per100mL", "FecalColiform_log10",
+        "Nitrates_mgL", "Phosphates_mgL", "Chlorides_mgL",
+        "SourceSheet", "SourceRow"
+    };
+
+    public static readonly HashSet<string> DroppedParameters = new(StringComparer.OrdinalIgnoreCase)
+    {
+        "Ammonia, mg/L",
+        "Total Coliform, MPN/100mL"
+    };
+    public static readonly Dictionary<string, string> ParameterToSafeName = new(StringComparer.OrdinalIgnoreCase)
+    {
+        ["Dissolved Oxygen, mg/L"]           = "DissolvedOxygen_mgL",
+        ["pH"]                               = "pH",
+        ["Temperature °C"]                   = "Temperature_C",
+        ["Biochemical Oxygen Demand, mg/L"]  = "BOD_mgL",
+        ["Total Suspended Solids, mg/L"]     = "TSS_mgL",
+        ["Color TCU"]                        = "Color_TCU",
+        ["Fecal Coliform, MPN/100mL"]        = "FecalColiform_MPN_per100mL",
+        ["Total Coliform, MPN/100mL"]        = "TotalColiform_MPN",
+        ["Ammonia, mg/L"]                    = "Ammonia_mgL",
+        ["Nitrates as Nitrogen, mg/L"]       = "Nitrates_mgL",
+        ["Phosphates as Phosphorous, mg/L"]  = "Phosphates_mgL",
+        ["Chlorides Cl, mg/L"]               = "Chlorides_mgL"
+    };
+
+    public static readonly Dictionary<string, int> ImputedDecimalPlaces = new(StringComparer.OrdinalIgnoreCase)
+    {
+        ["Dissolved Oxygen, mg/L"]           = 2,
+        ["pH"]                               = 2,
+        ["Temperature °C"]                   = 1,
+        ["Biochemical Oxygen Demand, mg/L"]  = 0,
+        ["Total Suspended Solids, mg/L"]     = 0,
+        ["Color TCU"]                        = 0,
+        ["Fecal Coliform, MPN/100mL"]        = 0,
+        ["Nitrates as Nitrogen, mg/L"]       = 3,
+        ["Phosphates as Phosphorous, mg/L"]  = 3,
+        ["Chlorides Cl, mg/L"]               = 0
+    };
+
+    public const int LatLonDecimalPlaces = 6;
+    public const int Log10DecimalPlaces  = 4;
 
     // --- Non-parameter columns ---
     public const string ColStationRaw = "Name of Water Body";
