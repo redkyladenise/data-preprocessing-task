@@ -1,0 +1,16 @@
+﻿Sheet,Row,Col1,Col2,Col3,Col4,Col5,Col6,Col7,Col8,Col9,Col10,Col11,Col12,Col13,Col14,Col15,Col16,Col17,Col18
+Marilao,8,Name of Water Body:     Marilao River,,Coordinates,,Date,Time,Parameters,,,,,,,,,,,
+Marilao,9,,,"Latitude, North (degree)","Longitude, East (degree)",,,"Dissolved Oxygen, mg/L",PH,Temperature °C*,"Biochemical Oxygen Demand, mg/L","Total Suspended Solids, mg/L",Color TCU,"Fecal Coliform, MPN/100mL","Total Coliform, MPN/100mL","Ammonia, mg/L","Nitrates as Nitrogen, mg/L","Phosphates as Phosphorous, mg/L",Chlorides Cl - (mg/L)
+Marilao,10,"Water Quality Guideline (Class SB, DAO 2016-08):",,,,,,6,6.0-8.5,26-30,n/a,50,50,100,10,0.5,10,0.5,n/a
+Marilao,11,"Water Quality Guideline (Class B, DAO 2016-08):",,,,,,5,6.5-8.5,26-30,5,65,50,100,7,0.5,7,0.5,250
+Marilao,12,"Water Quality Guideline (Class C, DAO 2016-08):",,,,,,5,6.5-9.0,25-31,7,80,75,200,7,0.5,7,0.5,350
+Meycauayan,8,Name of Water Body:     Meycauayan River,,Coordinates,,Date,Time,Parameters,,,,,,,,,,,
+Meycauayan,9,,,"Latitude, North (degree)","Longitude, East (degree)",,,"Dissolved Oxygen, mg/L",PH,Temperature °C,"Biochemical Oxygen Demand, mg/L","Total Suspended Solids, mg/L",Color TCU,"Fecal Coliform, MPN/100mL","Total Coliform, MPN/100mL","Ammonia, mg/L","Nitrates as Nitrogen, mg/L","Phosphates as Phosphorous, mg/L",Chlorides Cl - (mg/L)
+Meycauayan,10,"Water Quality Guideline (Class SB, DAO 2016-08):",,,,,,6,6.0-8.5,26-30,n/a,50,50,100,10,0.5,10,0.5,n/a
+Meycauayan,11,"Water Quality Guideline (Class B, DAO 2016-08):",,,,,,5,6.5-8.5,26-30,5,65,50,100,7,0.5,7,0.5,250
+Meycauayan,12,"*Water Quality Guideline (Class C, DAO 2016-08):",,,,,,5,6.5-9.0,25-31,7,80,75,200,7,0.5,7,0.5,350
+Obando,8,Name of Water Body:     Obando River,,Coordinates,,Date,Time,Parameters,,,,,,,,,,,
+Obando,9,,,"Latitude, North (degree)","Longitude, East (degree)",,,"Dissolved Oxygen, mg/L",PH,Temperature °C,"Biochemical Oxygen Demand, mg/L","Total Suspended Solids, mg/L",Color TCU,"Fecal Coliform, MPN/100mL","Total Coliform, MPN/100mL","Ammonia, mg/L","Nitrates as Nitrogen, mg/L","Phosphates as Phosphorous, mg/L",Chlorides Cl - (mg/L)
+Obando,10,"Water Quality Guideline (Class SB, DAO 2016-08):",,,,,,6,6.0-8.5,26-30,n/a,50,50,100,10,0.5,10,0.5,n/a
+Obando,11,"Water Quality Guideline (Class B, DAO 2016-08):",,,,,,5,6.5-8.5,26-30,5,65,50,100,7,0.5,7,0.5,250
+Obando,12,"Water Quality Guideline (Class C, DAO 2016-08):",,,,,,5,6.5-9.0,25-31,7,80,75,200,7,0.5,7,0.5,350

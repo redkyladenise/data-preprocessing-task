@@ -2,6 +2,8 @@ using System.Globalization;
 using ClosedXML.Excel;
 using DataPreprocessingTask.Domain;
 using DataPreprocessingTask.Helpers;
+using System.Text.RegularExpressions;
+
 
 namespace DataPreprocessingTask.Steps;
 public static class Inspector
@@ -26,9 +28,10 @@ public static class Inspector
         DumpHeaderRows(wb);
         InspectDateAndTimeTypes(wb);
         VerifyMarilaoSideTable(wb);
+        InspectStations(wb);
 
         Console.WriteLine();
-        Console.WriteLine("==== Inspection complete. See Output/tables/inspector/. ====");
+        Console.WriteLine("==== Inspection complete. See Output/tables/01_inspector/. ====");
     }
 
     private static void InspectSheets(XLWorkbook wb)
@@ -70,7 +73,7 @@ public static class Inspector
             });
         }
 
-        TableWriter.WriteRows("Output/tables/inspector/01_sheet_structure.csv", rows);
+        TableWriter.WriteRows("Output/tables/01_inspector/01_sheet_structure.csv", rows);
     }
 
     private static void InspectIgnoredSheet(XLWorkbook wb)
@@ -107,7 +110,7 @@ public static class Inspector
             }
         }
 
-        TableWriter.WriteRows("Output/tables/inspector/02_table1_3_contents.csv", rows);
+        TableWriter.WriteRows("Output/tables/01_inspector/02_sheet table1_3_contents.csv", rows);
     }
 
     private static void DumpHeaderRows(XLWorkbook wb)
@@ -123,86 +126,106 @@ public static class Inspector
                 continue;
 
             Console.WriteLine($"Sheet: {sheetName}");
-            for (int r = 8; r <= 10; r++)
-            {
+            for (int r = 8; r <= 12; r++)
+{
                 var values = new List<string>();
-                for (int c = 1; c <= 10; c++)
+                for (int c = 1; c <= 18; c++)
                 {
                     values.Add(ExcelText.Read(ws.Cell(r, c)));
                 }
                 Console.WriteLine($"  Row {r}: [" + string.Join(" | ", values) + "]");
 
-                rows.Add(new Dictionary<string, string>
+                var dict = new Dictionary<string, string>
                 {
                     ["Sheet"] = sheetName,
                     ["Row"]   = r.ToString(CultureInfo.InvariantCulture),
-                    ["A"]     = values[0],
-                    ["B"]     = values[1],
-                    ["C"]     = values[2],
-                    ["D"]     = values[3],
-                    ["E"]     = values[4],
-                    ["F"]     = values[5],
-                    ["G"]     = values[6],
-                    ["H"]     = values[7],
-                    ["I"]     = values[8],
-                    ["J"]     = values[9],
-                });
+                };
+                for (int c = 1; c <= 18; c++)
+                    dict["Col" + c] = values[c - 1];
+                rows.Add(dict);
             }
         }
 
-        TableWriter.WriteRows("Output/tables/inspector/05_header_row_dump.csv", rows);
+        TableWriter.WriteRows("Output/tables/01_inspector/03_header_rows.csv", rows);
     }
 
-    // -----------------------------------------------------------------
     private static void InspectDateAndTimeTypes(XLWorkbook wb)
     {
         Console.WriteLine();
-        Console.WriteLine("--- Date/Time cell types (first 40 rows per sheet) ---");
+        Console.WriteLine("--- Date/Time cell types (all rows, all sheets) ---");
 
-        var rows = new List<IDictionary<string, string>>();
+        var summaryRows = new List<IDictionary<string, string>>();
 
         foreach (var sheetName in Schema.WaterBodySheets)
         {
             if (!wb.Worksheets.TryGetWorksheet(sheetName, out var ws))
                 continue;
 
-            // NEW: scan rows 5..13 for the header (not just row 9).
             int dateCol = FindHeaderColumn(ws, 5, 13, Schema.ColDate);
             int timeCol = FindHeaderColumn(ws, 5, 13, Schema.ColTime);
 
-            Console.WriteLine($"Sheet: {sheetName}  DateCol={dateCol}  TimeCol={timeCol}");
+            int dateText = 0, dateNum = 0, dateDt = 0, dateOther = 0;
+            int timeText = 0, timeNum = 0, timeDt = 0, timeOther = 0;
 
-            var lastRow = Math.Min(ws.LastRowUsed()?.RowNumber() ?? 0, 40);
+            var lastRow = ws.LastRowUsed()?.RowNumber() ?? 0;
 
             for (int r = 13; r <= lastRow; r++)
             {
-                var dCell = dateCol > 0 ? ws.Cell(r, dateCol) : null;
-                var tCell = timeCol > 0 ? ws.Cell(r, timeCol) : null;
-
-                string dText = ExcelText.Read(dCell);
-                string tText = ExcelText.Read(tCell);
-                string dType = dCell != null ? GetCellType(dCell) : "";
-                string tType = tCell != null ? GetCellType(tCell) : "";
-
-                if (dText.Length == 0 && tText.Length == 0) continue;
-
-                Console.WriteLine(
-                    $"  Row {r,4}: Date=\"{dText}\" [{dType}]  Time=\"{tText}\" [{tType}]");
-
-                rows.Add(new Dictionary<string, string>
+                if (dateCol > 0)
                 {
-                    ["Sheet"]    = sheetName,
-                    ["Row"]      = r.ToString(CultureInfo.InvariantCulture),
-                    ["DateText"] = dText,
-                    ["DateType"] = dType,
-                    ["TimeText"] = tText,
-                    ["TimeType"] = tType,
-                });
+                    var cell = ws.Cell(r, dateCol);
+                    var text = ExcelText.Read(cell);
+                    if (!string.IsNullOrWhiteSpace(text))
+                    {
+                        switch (GetCellType(cell))
+                        {
+                            case "text":     dateText++;  break;
+                            case "number":   dateNum++;   break;
+                            case "datetime": dateDt++;    break;
+                            default:         dateOther++; break;
+                        }
+                    }
+                }
+
+                if (timeCol > 0)
+                {
+                    var cell = ws.Cell(r, timeCol);
+                    var text = ExcelText.Read(cell);
+                    if (!string.IsNullOrWhiteSpace(text))
+                    {
+                        switch (GetCellType(cell))
+                        {
+                            case "text":     timeText++;  break;
+                            case "number":   timeNum++;   break;
+                            case "datetime": timeDt++;    break;
+                            default:         timeOther++; break;
+                        }
+                    }
+                }
             }
+
+            Console.WriteLine(
+                $"  {sheetName,-12} Date: text={dateText,4} num={dateNum,4} dt={dateDt,4} other={dateOther,4}");
+            Console.WriteLine(
+                $"  {sheetName,-12} Time: text={timeText,4} num={timeNum,4} dt={timeDt,4} other={timeOther,4}");
+
+            summaryRows.Add(new Dictionary<string, string>
+            {
+                ["Sheet"]      = sheetName,
+                ["Date_Text"]  = dateText.ToString(CultureInfo.InvariantCulture),
+                ["Date_Num"]   = dateNum.ToString(CultureInfo.InvariantCulture),
+                ["Date_DT"]    = dateDt.ToString(CultureInfo.InvariantCulture),
+                ["Date_Other"] = dateOther.ToString(CultureInfo.InvariantCulture),
+                ["Time_Text"]  = timeText.ToString(CultureInfo.InvariantCulture),
+                ["Time_Num"]   = timeNum.ToString(CultureInfo.InvariantCulture),
+                ["Time_DT"]    = timeDt.ToString(CultureInfo.InvariantCulture),
+                ["Time_Other"] = timeOther.ToString(CultureInfo.InvariantCulture),
+            });
         }
 
-        TableWriter.WriteRows("Output/tables/inspector/03_date_time_types.csv", rows);
+        TableWriter.WriteRows("Output/tables/01_inspector/04_date_time_format.csv", summaryRows);
     }
+
     private static int FindHeaderColumn(IXLWorksheet ws, int startRow, int endRow, string target)
     {
         var lastCol = ws.LastColumnUsed()?.ColumnNumber() ?? 0;
@@ -237,10 +260,11 @@ public static class Inspector
         }
     }
 
+    
     private static void VerifyMarilaoSideTable(XLWorkbook wb)
     {
         Console.WriteLine();
-        Console.WriteLine("--- Marilao side table V435:Z440 vs November 2017 block ---");
+        Console.WriteLine("--- Marilao side table automatic comparison ---");
 
         if (!wb.Worksheets.TryGetWorksheet(Schema.SheetMarilao, out var ws))
         {
@@ -248,67 +272,95 @@ public static class Inspector
             return;
         }
 
+        int labelRow = FindLabelRow(ws, "2017", "NOVEMBER");
+
+        if (labelRow < 0)
+        {
+            Console.WriteLine("  November 2017 label not found.");
+            return;
+        }
+
+        int firstDataRow = labelRow + 1;
+        int lastDataRow = labelRow + 5;
+
         var sideRange = ws.Range("V435:Z440");
         var rows = new List<IDictionary<string, string>>();
 
-        Console.WriteLine("Side table V435:Z440:");
-        int sideRowIndex = 0;
-        foreach (var row in sideRange.Rows())
+        int sideRow = 435;
+
+        foreach (var sideCells in sideRange.Rows())
         {
-            sideRowIndex++;
-            var values = new List<string>();
-            foreach (var cell in row.Cells())
+            var sideValues = new List<string>();
+
+            foreach (var cell in sideCells.Cells())
+                sideValues.Add(ExcelText.Read(cell));
+
+            if (sideValues.All(string.IsNullOrWhiteSpace))
             {
-                values.Add(ExcelText.Read(cell));
+                sideRow++;
+                continue;
             }
-            Console.WriteLine("  [" + string.Join(" | ", values) + "]");
 
-            rows.Add(new Dictionary<string, string>
+            bool foundMatch = false;
+
+            for (int c = 1; c <= 22; c++)
             {
-                ["Block"]    = "SideTable_V435_Z440",
-                ["RowIndex"] = sideRowIndex.ToString(CultureInfo.InvariantCulture),
-                ["C1"]       = values.Count > 0 ? values[0] : "",
-                ["C2"]       = values.Count > 1 ? values[1] : "",
-                ["C3"]       = values.Count > 2 ? values[2] : "",
-                ["C4"]       = values.Count > 3 ? values[3] : "",
-                ["C5"]       = values.Count > 4 ? values[4] : "",
-            });
-        }
+                var mainValues = new List<string>();
 
-        int labelRow = FindLabelRow(ws, "2017", "NOVEMBER");
-        Console.WriteLine();
-        Console.WriteLine($"Nearest 'CY 2017 NOVEMBER' label found at row {labelRow}.");
+                for (int r = firstDataRow; r <= lastDataRow; r++)
+                    mainValues.Add(ExcelText.Read(ws.Cell(r, c)));
 
-        if (labelRow > 0)
-        {
-            Console.WriteLine("Next 6 rows after that label:");
-            int blockIndex = 0;
-            for (int r = labelRow + 1;
-                 r <= labelRow + 6 && r <= (ws.LastRowUsed()?.RowNumber() ?? labelRow);
-                 r++)
-            {
-                blockIndex++;
-                var values = new List<string>();
-                for (int c = 1; c <= 22; c++)
-                {
-                    values.Add(ExcelText.Read(ws.Cell(r, c)));
-                }
-                Console.WriteLine($"  Row {r}: [" + string.Join(" | ", values) + "]");
+                bool exactMatch = sideValues.SequenceEqual(
+                    mainValues,
+                    StringComparer.Ordinal
+                );
+
+                if (!exactMatch)
+                    continue;
+
+                string columnLetter = ws.Column(c).ColumnLetter();
+
+                Console.WriteLine(
+                    $"Side row {sideRow} (V{sideRow}:Z{sideRow}) " +
+                    $"matches main-table column {columnLetter}."
+                );
 
                 rows.Add(new Dictionary<string, string>
                 {
-                    ["Block"]    = "MainBlock_Nov2017",
-                    ["RowIndex"] = blockIndex.ToString(CultureInfo.InvariantCulture),
-                    ["C1"]       = values.Count > 0 ? values[0] : "",
-                    ["C2"]       = values.Count > 1 ? values[1] : "",
-                    ["C3"]       = values.Count > 2 ? values[2] : "",
-                    ["C4"]       = values.Count > 3 ? values[3] : "",
-                    ["C5"]       = values.Count > 4 ? values[4] : "",
+                    ["SideTableRange"] = $"V{sideRow}:Z{sideRow}",
+                    ["MainTableColumn"] = columnLetter,
+                    ["SideTableValues"] = string.Join(", ", sideValues),
+                    ["MainTableValues"] = string.Join(", ", mainValues),
+                    ["Match?"] = "Yes"
+                });
+
+                foundMatch = true;
+            }
+
+            if (!foundMatch)
+            {
+                Console.WriteLine(
+                    $"Side row {sideRow} (V{sideRow}:Z{sideRow}): " +
+                    "No exact match found."
+                );
+
+                rows.Add(new Dictionary<string, string>
+                {
+                    ["SideTableRange"] = $"V{sideRow}:Z{sideRow}",
+                    ["MainTableColumn"] = "",
+                    ["SideTableValues"] = string.Join(" | ", sideValues),
+                    ["MainTableValues"] = "",
+                    ["Match?"] = "No"
                 });
             }
+
+            sideRow++;
         }
 
-        TableWriter.WriteRows("Output/tables/inspector/04_marilao_side_table.csv", rows);
+        TableWriter.WriteRows(
+            "Output/tables/01_inspector/05_marilao_side_table.csv",
+            rows
+        );
     }
 
     private static int FindLabelRow(IXLWorksheet ws, string year, string monthUpper)
@@ -322,4 +374,65 @@ public static class Inspector
         }
         return -1;
     }
+    private static void InspectStations(XLWorkbook wb)
+    {
+        Console.WriteLine();
+        Console.WriteLine("--- Distinct station names and coordinates ---");
+
+        var allStationRows = new List<IDictionary<string, string>>();
+
+        foreach (var sheetName in Schema.WaterBodySheets)
+        {
+            if (!wb.Worksheets.TryGetWorksheet(sheetName, out var ws))
+                continue;
+
+            var lastRow = ws.LastRowUsed()?.RowNumber() ?? 0;
+            var stations = new Dictionary<string, List<(string lat, string lon)>>();
+
+            for (int r = 13; r <= lastRow; r++)
+            {
+                var aText = ExcelText.Read(ws.Cell(r, 1));
+                if (!Regex.IsMatch(aText, @"^\d+$")) continue;
+
+                var bText = ExcelText.Read(ws.Cell(r, 2));
+                if (string.IsNullOrWhiteSpace(bText)) continue;
+
+                var clean = Regex.Replace(bText, @"\s+", " ").Trim();
+                var lat = ExcelText.Read(ws.Cell(r, 3));
+                var lon = ExcelText.Read(ws.Cell(r, 4));
+
+                if (!stations.TryGetValue(clean, out var list))
+                {
+                    list = new List<(string, string)>();
+                    stations[clean] = list;
+                }
+                list.Add((lat, lon));
+            }
+
+            Console.WriteLine($"  {sheetName,-12} total station rows: {stations.Values.Sum(l => l.Count)}");
+            Console.WriteLine($"  {sheetName,-12} distinct names    : {stations.Count}");
+
+            foreach (var kv in stations.OrderByDescending(k => k.Value.Count))
+            {
+                var distinctCoords = kv.Value
+                    .Select(v => v.lat + "," + v.lon)
+                    .Distinct()
+                    .ToList();
+
+                Console.WriteLine($"    [{kv.Value.Count,4}] \"{kv.Key}\"  distinct coords: {distinctCoords.Count}");
+
+                allStationRows.Add(new Dictionary<string, string>
+                {
+                    ["Sheet"]          = sheetName,
+                    ["StationName"]    = kv.Key,
+                    ["RowCount"]       = kv.Value.Count.ToString(CultureInfo.InvariantCulture),
+                    ["DistinctCoords"] = distinctCoords.Count.ToString(CultureInfo.InvariantCulture),
+                    ["SampleCoords"]   = string.Join(" ; ", distinctCoords.Take(3))
+                });
+            }
+        }
+
+        TableWriter.WriteRows("Output/tables/01_inspector/06_distinct_stations.csv", allStationRows);
+    }
+
 }
