@@ -10,3 +10,4 @@ Cleaner.Run();
 Missingness.Run();
 Imputer.Run();
 Transformer.Run();
+LogBuilder.Run();

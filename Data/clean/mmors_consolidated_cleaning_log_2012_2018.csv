@@ -1,0 +1,845 @@
+﻿LogID,Level,Action,SourceSheet,SourceRow,WaterBody,StationID,Year,Month,Parameter,OldValue,NewValue,Reason,EvidenceFile
+1,Cell,TYPO_FIXED,Marilao,105,Marilao,MAR-3,2013,4,"Ammonia, mg/L",26. 344,26.344,Internal space in decimal removed: '26. 344' -> '26.344',clean_stage_a.csv
+2,Cell,TIME_PARSED,Marilao,117,Marilao,MAR-3,2013,6,Time,9:30:00,09:30:00,Time parsed and standardized,clean_stage_a.csv
+3,Cell,TIME_PARSED,Marilao,118,Marilao,MAR-4,2013,6,Time,9:48:00,09:48:00,Time parsed and standardized,clean_stage_a.csv
+4,Cell,TIME_PARSED,Marilao,147,Marilao,MAR-3,2013,11,Time,8:51:00,08:51:00,Time parsed and standardized,clean_stage_a.csv
+5,Cell,TIME_PARSED,Marilao,148,Marilao,MAR-4,2013,11,Time,9:45:00,09:45:00,Time parsed and standardized,clean_stage_a.csv
+6,Cell,LIMIT_STANDARDIZED,Marilao,150,Marilao,MAR-5,2013,11,"Nitrates as Nitrogen, mg/L",<0.05,0.05,Measurement-limit symbol removed; value set to 0.05,clean_stage_a.csv
+7,Cell,LIMIT_STANDARDIZED,Marilao,151,Marilao,MAR-2,2013,11,"Nitrates as Nitrogen, mg/L",<0.05,0.05,Measurement-limit symbol removed; value set to 0.05,clean_stage_a.csv
+8,Cell,LIMIT_STANDARDIZED,Marilao,159,Marilao,MAR-3,2014,1,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+9,Cell,LIMIT_STANDARDIZED,Marilao,160,Marilao,MAR-4,2014,1,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+10,Cell,LIMIT_STANDARDIZED,Marilao,161,Marilao,MAR-1,2014,1,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+11,Cell,LIMIT_STANDARDIZED,Marilao,162,Marilao,MAR-5,2014,1,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+12,Cell,LIMIT_STANDARDIZED,Marilao,163,Marilao,MAR-2,2014,1,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+13,Cell,LIMIT_STANDARDIZED,Marilao,225,Marilao,MAR-3,2014,12,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+14,Cell,LIMIT_STANDARDIZED,Marilao,226,Marilao,MAR-4,2014,12,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+15,Cell,LIMIT_STANDARDIZED,Marilao,227,Marilao,MAR-1,2014,12,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+16,Cell,LIMIT_STANDARDIZED,Marilao,228,Marilao,MAR-5,2014,12,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+17,Cell,LIMIT_STANDARDIZED,Marilao,229,Marilao,MAR-2,2014,12,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+18,Cell,LIMIT_STANDARDIZED,Marilao,231,Marilao,MAR-3,2015,1,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+19,Cell,LIMIT_STANDARDIZED,Marilao,232,Marilao,MAR-4,2015,1,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+20,Cell,LIMIT_STANDARDIZED,Marilao,233,Marilao,MAR-1,2015,1,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+21,Cell,LIMIT_STANDARDIZED,Marilao,234,Marilao,MAR-5,2015,1,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+22,Cell,LIMIT_STANDARDIZED,Marilao,235,Marilao,MAR-2,2015,1,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+23,Cell,LIMIT_STANDARDIZED,Marilao,261,Marilao,MAR-3,2015,6,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+24,Cell,LIMIT_STANDARDIZED,Marilao,262,Marilao,MAR-4,2015,6,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+25,Cell,LIMIT_STANDARDIZED,Marilao,285,Marilao,MAR-3,2015,10,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+26,Cell,LIMIT_STANDARDIZED,Marilao,287,Marilao,MAR-1,2015,10,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+27,Cell,LIMIT_STANDARDIZED,Marilao,299,Marilao,MAR-1,2015,12,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+28,Cell,LIMIT_STANDARDIZED,Marilao,300,Marilao,MAR-5,2015,12,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+29,Cell,LIMIT_STANDARDIZED,Marilao,301,Marilao,MAR-2,2015,12,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+30,Cell,LIMIT_STANDARDIZED,Marilao,306,Marilao,MAR-5,2016,1,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+31,Cell,LIMIT_STANDARDIZED,Marilao,312,Marilao,MAR-5,2016,2,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+32,Cell,LIMIT_STANDARDIZED,Marilao,313,Marilao,MAR-2,2016,2,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+33,Cell,LIMIT_STANDARDIZED,Marilao,318,Marilao,MAR-5,2016,3,"Total Coliform, MPN/100mL",>16000000,16000000,Measurement-limit symbol removed; value set to 16000000,clean_stage_a.csv
+34,Cell,LIMIT_STANDARDIZED,Marilao,323,Marilao,MAR-1,2016,4,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+35,Cell,LIMIT_STANDARDIZED,Marilao,357,Marilao,MAR-3,2016,10,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+36,Cell,LIMIT_STANDARDIZED,Marilao,359,Marilao,MAR-1,2016,10,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+37,Cell,LIMIT_STANDARDIZED,Marilao,360,Marilao,MAR-5,2016,10,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+38,Cell,LIMIT_STANDARDIZED,Marilao,361,Marilao,MAR-2,2016,10,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+39,Cell,LIMIT_STANDARDIZED,Marilao,365,Marilao,MAR-1,2016,11,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+40,Cell,LIMIT_STANDARDIZED,Marilao,366,Marilao,MAR-5,2016,11,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+41,Cell,LIMIT_STANDARDIZED,Marilao,379,Marilao,MAR-5,2017,1,"Nitrates as Nitrogen, mg/L",< 0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+42,Cell,LIMIT_STANDARDIZED,Marilao,400,Marilao,MAR-3,2017,5,"Nitrates as Nitrogen, mg/L",< 0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+43,Cell,TIME_PARSED,Marilao,400,Marilao,MAR-3,2017,5,Time,11:10 AM,11:10:00,Time parsed and standardized,clean_stage_a.csv
+44,Cell,LIMIT_STANDARDIZED,Marilao,401,Marilao,MAR-4,2017,5,"Nitrates as Nitrogen, mg/L",< 0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+45,Cell,TIME_PARSED,Marilao,401,Marilao,MAR-4,2017,5,Time,11:31 AM,11:31:00,Time parsed and standardized,clean_stage_a.csv
+46,Cell,LIMIT_STANDARDIZED,Marilao,402,Marilao,MAR-1,2017,5,"Nitrates as Nitrogen, mg/L",< 0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+47,Cell,TIME_PARSED,Marilao,402,Marilao,MAR-1,2017,5,Time,11:55 AM,11:55:00,Time parsed and standardized,clean_stage_a.csv
+48,Cell,LIMIT_STANDARDIZED,Marilao,403,Marilao,MAR-5,2017,5,"Nitrates as Nitrogen, mg/L",< 0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+49,Cell,TIME_PARSED,Marilao,403,Marilao,MAR-5,2017,5,Time,12:20 PM,12:20:00,Time parsed and standardized,clean_stage_a.csv
+50,Cell,LIMIT_STANDARDIZED,Marilao,404,Marilao,MAR-2,2017,5,"Nitrates as Nitrogen, mg/L",< 0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+51,Cell,TIME_PARSED,Marilao,404,Marilao,MAR-2,2017,5,Time,12:41 PM,12:41:00,Time parsed and standardized,clean_stage_a.csv
+52,Cell,LIMIT_STANDARDIZED,Marilao,406,Marilao,MAR-3,2017,6,"Nitrates as Nitrogen, mg/L",< 0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+53,Cell,TIME_PARSED,Marilao,406,Marilao,MAR-3,2017,6,Time,11:23 AM,11:23:00,Time parsed and standardized,clean_stage_a.csv
+54,Cell,LIMIT_STANDARDIZED,Marilao,407,Marilao,MAR-4,2017,6,"Nitrates as Nitrogen, mg/L",< 0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+55,Cell,TIME_PARSED,Marilao,407,Marilao,MAR-4,2017,6,Time,11:41 AM,11:41:00,Time parsed and standardized,clean_stage_a.csv
+56,Cell,LIMIT_STANDARDIZED,Marilao,408,Marilao,MAR-1,2017,6,"Nitrates as Nitrogen, mg/L",< 0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+57,Cell,TIME_PARSED,Marilao,408,Marilao,MAR-1,2017,6,Time,12:15 PM,12:15:00,Time parsed and standardized,clean_stage_a.csv
+58,Cell,TIME_PARSED,Marilao,409,Marilao,MAR-5,2017,6,Time,12:45 PM,12:45:00,Time parsed and standardized,clean_stage_a.csv
+59,Cell,TIME_PARSED,Marilao,410,Marilao,MAR-2,2017,6,Time,1:20 PM,13:20:00,Time parsed and standardized,clean_stage_a.csv
+60,Cell,LIMIT_STANDARDIZED,Marilao,412,Marilao,MAR-3,2017,7,"Nitrates as Nitrogen, mg/L",< 0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+61,Cell,LIMIT_STANDARDIZED,Marilao,413,Marilao,MAR-4,2017,7,"Nitrates as Nitrogen, mg/L",< 0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+62,Cell,LIMIT_STANDARDIZED,Marilao,414,Marilao,MAR-1,2017,7,"Nitrates as Nitrogen, mg/L",< 0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+63,Cell,LIMIT_STANDARDIZED,Marilao,415,Marilao,MAR-5,2017,7,"Nitrates as Nitrogen, mg/L",< 0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+64,Cell,LIMIT_STANDARDIZED,Marilao,416,Marilao,MAR-2,2017,7,"Nitrates as Nitrogen, mg/L",< 0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+65,Cell,LIMIT_STANDARDIZED,Marilao,419,Marilao,MAR-4,2017,8,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+66,Cell,LIMIT_STANDARDIZED,Marilao,421,Marilao,MAR-5,2017,8,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+67,Cell,LIMIT_STANDARDIZED,Marilao,430,Marilao,MAR-3,2017,10,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+68,Cell,LIMIT_STANDARDIZED,Marilao,443,Marilao,MAR-3,2018,1,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+69,Cell,LIMIT_STANDARDIZED,Marilao,449,Marilao,MAR-3,2018,2,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+70,Cell,LIMIT_STANDARDIZED,Marilao,450,Marilao,MAR-4,2018,2,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+71,Cell,LIMIT_STANDARDIZED,Marilao,453,Marilao,MAR-2,2018,2,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+72,Cell,DATE_PARSED,Marilao,459,Marilao,MAR-2,2018,3,Date,2018-02-14,2018-03-16,Date parsed and standardized,clean_stage_a.csv
+73,Cell,LIMIT_STANDARDIZED,Marilao,461,Marilao,MAR-3,2018,4,"Nitrates as Nitrogen, mg/L",<0.048,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+74,Cell,LIMIT_STANDARDIZED,Marilao,463,Marilao,MAR-1,2018,4,"Nitrates as Nitrogen, mg/L",<0.048,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+75,Cell,LIMIT_STANDARDIZED,Marilao,468,Marilao,MAR-4,2018,5,"Nitrates as Nitrogen, mg/L",<0.048,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+76,Cell,LIMIT_STANDARDIZED,Marilao,469,Marilao,MAR-1,2018,5,"Nitrates as Nitrogen, mg/L",<0.048,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+77,Cell,LIMIT_STANDARDIZED,Marilao,471,Marilao,MAR-2,2018,5,"Nitrates as Nitrogen, mg/L",<0.048,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+78,Cell,TIME_PARSED,Meycauayan,108,Meycauayan,MEY-3,2013,4,Time,0:18:00,00:18:00,Time parsed and standardized,clean_stage_a.csv
+79,Cell,TIME_PARSED,Meycauayan,128,Meycauayan,MEY-4,2013,8,Time,9:57:00,09:57:00,Time parsed and standardized,clean_stage_a.csv
+80,Cell,LIMIT_STANDARDIZED,Meycauayan,136,Meycauayan,MEY-5,2013,9,"Nitrates as Nitrogen, mg/L",<0.05,0.05,Measurement-limit symbol removed; value set to 0.05,clean_stage_a.csv
+81,Cell,LIMIT_STANDARDIZED,Meycauayan,137,Meycauayan,MEY-2,2013,9,"Nitrates as Nitrogen, mg/L",<0.05,0.05,Measurement-limit symbol removed; value set to 0.05,clean_stage_a.csv
+82,Cell,LIMIT_STANDARDIZED,Meycauayan,138,Meycauayan,MEY-3,2013,9,"Nitrates as Nitrogen, mg/L",<0.05,0.05,Measurement-limit symbol removed; value set to 0.05,clean_stage_a.csv
+83,Cell,TIME_PARSED,Meycauayan,152,Meycauayan,MEY-4,2013,12,Time,9:40:00,09:40:00,Time parsed and standardized,clean_stage_a.csv
+84,Cell,LIMIT_STANDARDIZED,Meycauayan,167,Meycauayan,MEY-2,2014,2,"Total Coliform, MPN/100mL",>1600,1600,Measurement-limit symbol removed; value set to 1600,clean_stage_a.csv
+85,Cell,LIMIT_STANDARDIZED,Meycauayan,168,Meycauayan,MEY-3,2014,2,"Total Coliform, MPN/100mL",>1600,1600,Measurement-limit symbol removed; value set to 1600,clean_stage_a.csv
+86,Cell,LIMIT_STANDARDIZED,Meycauayan,173,Meycauayan,MEY-2,2014,3,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+87,Cell,LIMIT_STANDARDIZED,Meycauayan,176,Meycauayan,MEY-4,2014,4,"Total Coliform, MPN/100mL",>16000000,16000000,Measurement-limit symbol removed; value set to 16000000,clean_stage_a.csv
+88,Cell,TIME_PARSED,Meycauayan,176,Meycauayan,MEY-4,2014,4,Time,9:23:00,09:23:00,Time parsed and standardized,clean_stage_a.csv
+89,Cell,TIME_PARSED,Meycauayan,194,Meycauayan,MEY-4,2014,7,Time,8:50:00,08:50:00,Time parsed and standardized,clean_stage_a.csv
+90,Cell,TIME_PARSED,Meycauayan,195,Meycauayan,MEY-1,2014,7,Time,9:19:00,09:19:00,Time parsed and standardized,clean_stage_a.csv
+91,Cell,TIME_PARSED,Meycauayan,196,Meycauayan,MEY-5,2014,7,Time,9:45:00,09:45:00,Time parsed and standardized,clean_stage_a.csv
+92,Cell,DATE_PARSED,Meycauayan,212,Meycauayan,MEY-4,2014,10,Date,10/17//2016,2014-10-17,Date parsed and standardized,clean_stage_a.csv
+93,Cell,TIME_PARSED,Meycauayan,212,Meycauayan,MEY-4,2014,10,Time,9:45:00,09:45:00,Time parsed and standardized,clean_stage_a.csv
+94,Cell,DATE_PARSED,Meycauayan,213,Meycauayan,MEY-1,2014,10,Date,10/17//2016,2014-10-17,Date parsed and standardized,clean_stage_a.csv
+95,Cell,DATE_PARSED,Meycauayan,214,Meycauayan,MEY-5,2014,10,Date,10/17//2016,2014-10-17,Date parsed and standardized,clean_stage_a.csv
+96,Cell,LIMIT_STANDARDIZED,Meycauayan,215,Meycauayan,MEY-2,2014,10,"Total Coliform, MPN/100mL",>16000000,16000000,Measurement-limit symbol removed; value set to 16000000,clean_stage_a.csv
+97,Cell,DATE_PARSED,Meycauayan,215,Meycauayan,MEY-2,2014,10,Date,10/17//2016,2014-10-17,Date parsed and standardized,clean_stage_a.csv
+98,Cell,PLACEHOLDER_TO_NULL,Meycauayan,216,Meycauayan,MEY-3,2014,10,"Ammonia, mg/L",_,,Placeholder '_' converted to null,clean_stage_a.csv
+99,Cell,PLACEHOLDER_TO_NULL,Meycauayan,216,Meycauayan,MEY-3,2014,10,"Nitrates as Nitrogen, mg/L",_,,Placeholder '_' converted to null,clean_stage_a.csv
+100,Cell,PLACEHOLDER_TO_NULL,Meycauayan,216,Meycauayan,MEY-3,2014,10,"Phosphates as Phosphorous, mg/L",_,,Placeholder '_' converted to null,clean_stage_a.csv
+101,Cell,DATE_PARSED,Meycauayan,216,Meycauayan,MEY-3,2014,10,Date,10/17//2016,2014-10-17,Date parsed and standardized,clean_stage_a.csv
+102,Cell,TIME_PARSED,Meycauayan,224,Meycauayan,MEY-4,2014,12,Time,9:35:00,09:35:00,Time parsed and standardized,clean_stage_a.csv
+103,Cell,TIME_PARSED,Meycauayan,225,Meycauayan,MEY-1,2014,12,Time,9:54:00,09:54:00,Time parsed and standardized,clean_stage_a.csv
+104,Cell,PLACEHOLDER_TO_NULL,Meycauayan,230,Meycauayan,MEY-4,2015,1,"Biochemical Oxygen Demand, mg/L",-,,Placeholder '-' converted to null,clean_stage_a.csv
+105,Cell,PLACEHOLDER_TO_NULL,Meycauayan,230,Meycauayan,MEY-4,2015,1,"Total Suspended Solids, mg/L",-,,Placeholder '-' converted to null,clean_stage_a.csv
+106,Cell,PLACEHOLDER_TO_NULL,Meycauayan,230,Meycauayan,MEY-4,2015,1,"Total Coliform, MPN/100mL",-,,Placeholder '-' converted to null,clean_stage_a.csv
+107,Cell,LIMIT_STANDARDIZED,Meycauayan,231,Meycauayan,MEY-1,2015,1,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+108,Cell,PLACEHOLDER_TO_NULL,Meycauayan,232,Meycauayan,MEY-5,2015,1,"Biochemical Oxygen Demand, mg/L",-,,Placeholder '-' converted to null,clean_stage_a.csv
+109,Cell,PLACEHOLDER_TO_NULL,Meycauayan,232,Meycauayan,MEY-5,2015,1,"Total Suspended Solids, mg/L",-,,Placeholder '-' converted to null,clean_stage_a.csv
+110,Cell,PLACEHOLDER_TO_NULL,Meycauayan,232,Meycauayan,MEY-5,2015,1,"Total Coliform, MPN/100mL",-,,Placeholder '-' converted to null,clean_stage_a.csv
+111,Cell,LIMIT_STANDARDIZED,Meycauayan,233,Meycauayan,MEY-2,2015,1,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+112,Cell,LIMIT_STANDARDIZED,Meycauayan,234,Meycauayan,MEY-3,2015,1,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+113,Cell,PLACEHOLDER_TO_NULL,Meycauayan,242,Meycauayan,MEY-4,2015,3,"Ammonia, mg/L",_,,Placeholder '_' converted to null,clean_stage_a.csv
+114,Cell,PLACEHOLDER_TO_NULL,Meycauayan,242,Meycauayan,MEY-4,2015,3,"Nitrates as Nitrogen, mg/L",_,,Placeholder '_' converted to null,clean_stage_a.csv
+115,Cell,PLACEHOLDER_TO_NULL,Meycauayan,242,Meycauayan,MEY-4,2015,3,"Phosphates as Phosphorous, mg/L",_,,Placeholder '_' converted to null,clean_stage_a.csv
+116,Cell,LIMIT_STANDARDIZED,Meycauayan,260,Meycauayan,MEY-4,2015,6,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+117,Cell,LIMIT_STANDARDIZED,Meycauayan,261,Meycauayan,MEY-1,2015,6,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+118,Cell,LIMIT_STANDARDIZED,Meycauayan,262,Meycauayan,MEY-5,2015,6,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+119,Cell,LIMIT_STANDARDIZED,Meycauayan,263,Meycauayan,MEY-2,2015,6,"Total Coliform, MPN/100mL",>16000000,16000000,Measurement-limit symbol removed; value set to 16000000,clean_stage_a.csv
+120,Cell,LIMIT_STANDARDIZED,Meycauayan,263,Meycauayan,MEY-2,2015,6,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+121,Cell,LIMIT_STANDARDIZED,Meycauayan,264,Meycauayan,MEY-3,2015,6,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+122,Cell,LIMIT_STANDARDIZED,Meycauayan,266,Meycauayan,MEY-4,2015,7,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+123,Cell,LIMIT_STANDARDIZED,Meycauayan,267,Meycauayan,MEY-1,2015,7,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+124,Cell,LIMIT_STANDARDIZED,Meycauayan,268,Meycauayan,MEY-5,2015,7,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+125,Cell,LIMIT_STANDARDIZED,Meycauayan,269,Meycauayan,MEY-2,2015,7,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+126,Cell,LIMIT_STANDARDIZED,Meycauayan,270,Meycauayan,MEY-3,2015,7,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+127,Cell,LIMIT_STANDARDIZED,Meycauayan,273,Meycauayan,MEY-1,2015,8,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+128,Cell,LIMIT_STANDARDIZED,Meycauayan,274,Meycauayan,MEY-5,2015,8,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+129,Cell,LIMIT_STANDARDIZED,Meycauayan,275,Meycauayan,MEY-2,2015,8,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+130,Cell,LIMIT_STANDARDIZED,Meycauayan,276,Meycauayan,MEY-3,2015,8,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+131,Cell,LIMIT_STANDARDIZED,Meycauayan,279,Meycauayan,MEY-1,2015,9,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+132,Cell,LIMIT_STANDARDIZED,Meycauayan,280,Meycauayan,MEY-5,2015,9,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+133,Cell,TIME_PARSED,Meycauayan,290,Meycauayan,MEY-4,2015,11,Time,9:55:00,09:55:00,Time parsed and standardized,clean_stage_a.csv
+134,Cell,LIMIT_STANDARDIZED,Meycauayan,296,Meycauayan,MEY-4,2015,12,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+135,Cell,LIMIT_STANDARDIZED,Meycauayan,297,Meycauayan,MEY-1,2015,12,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+136,Cell,LIMIT_STANDARDIZED,Meycauayan,298,Meycauayan,MEY-5,2015,12,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+137,Cell,LIMIT_STANDARDIZED,Meycauayan,299,Meycauayan,MEY-2,2015,12,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+138,Cell,LIMIT_STANDARDIZED,Meycauayan,300,Meycauayan,MEY-3,2015,12,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+139,Cell,LIMIT_STANDARDIZED,Meycauayan,302,Meycauayan,MEY-4,2016,1,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+140,Cell,LIMIT_STANDARDIZED,Meycauayan,303,Meycauayan,MEY-1,2016,1,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+141,Cell,LIMIT_STANDARDIZED,Meycauayan,304,Meycauayan,MEY-5,2016,1,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+142,Cell,LIMIT_STANDARDIZED,Meycauayan,305,Meycauayan,MEY-2,2016,1,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+143,Cell,LIMIT_STANDARDIZED,Meycauayan,306,Meycauayan,MEY-3,2016,1,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+144,Cell,LIMIT_STANDARDIZED,Meycauayan,312,Meycauayan,MEY-3,2016,2,"Total Coliform, MPN/100mL",>16000000,16000000,Measurement-limit symbol removed; value set to 16000000,clean_stage_a.csv
+145,Cell,LIMIT_STANDARDIZED,Meycauayan,314,Meycauayan,MEY-4,2016,3,"Total Coliform, MPN/100mL",>16000000,16000000,Measurement-limit symbol removed; value set to 16000000,clean_stage_a.csv
+146,Cell,LIMIT_STANDARDIZED,Meycauayan,318,Meycauayan,MEY-3,2016,3,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+147,Cell,LIMIT_STANDARDIZED,Meycauayan,320,Meycauayan,MEY-4,2016,4,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+148,Cell,LIMIT_STANDARDIZED,Meycauayan,321,Meycauayan,MEY-1,2016,4,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+149,Cell,LIMIT_STANDARDIZED,Meycauayan,322,Meycauayan,MEY-5,2016,4,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+150,Cell,TIME_PARSED,Meycauayan,322,Meycauayan,MEY-5,2016,4,Time,1:46:00,01:46:00,Time parsed and standardized,clean_stage_a.csv
+151,Cell,LIMIT_STANDARDIZED,Meycauayan,323,Meycauayan,MEY-2,2016,4,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+152,Cell,TIME_PARSED,Meycauayan,323,Meycauayan,MEY-2,2016,4,Time,12:06PM,12:06:00,Time parsed and standardized,clean_stage_a.csv
+153,Cell,LIMIT_STANDARDIZED,Meycauayan,324,Meycauayan,MEY-3,2016,4,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+154,Cell,LIMIT_STANDARDIZED,Meycauayan,326,Meycauayan,MEY-4,2016,5,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+155,Cell,LIMIT_STANDARDIZED,Meycauayan,333,Meycauayan,MEY-1,2016,6,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+156,Cell,LIMIT_STANDARDIZED,Meycauayan,335,Meycauayan,MEY-2,2016,6,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+157,Cell,LIMIT_STANDARDIZED,Meycauayan,336,Meycauayan,MEY-3,2016,6,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+158,Cell,LIMIT_STANDARDIZED,Meycauayan,344,Meycauayan,MEY-4,2016,8,"Nitrates as Nitrogen, mg/L",< 0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+159,Cell,LIMIT_STANDARDIZED,Meycauayan,347,Meycauayan,MEY-2,2016,8,"Nitrates as Nitrogen, mg/L",< 0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+160,Cell,LIMIT_STANDARDIZED,Meycauayan,348,Meycauayan,MEY-3,2016,8,"Nitrates as Nitrogen, mg/L",< 0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+161,Cell,LIMIT_STANDARDIZED,Meycauayan,350,Meycauayan,MEY-4,2016,9,"Nitrates as Nitrogen, mg/L",< 0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+162,Cell,LIMIT_STANDARDIZED,Meycauayan,352,Meycauayan,MEY-5,2016,9,"Nitrates as Nitrogen, mg/L",< 0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+163,Cell,LIMIT_STANDARDIZED,Meycauayan,354,Meycauayan,MEY-3,2016,9,"Nitrates as Nitrogen, mg/L",< 0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+164,Cell,LIMIT_STANDARDIZED,Meycauayan,358,Meycauayan,MEY-5,2016,10,"Fecal Coliform, MPN/100mL",>160000000,160000000,Measurement-limit symbol removed; value set to 160000000,clean_stage_a.csv
+165,Cell,LIMIT_STANDARDIZED,Meycauayan,363,Meycauayan,MEY-1,2016,11,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+166,Cell,LIMIT_STANDARDIZED,Meycauayan,364,Meycauayan,MEY-5,2016,11,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+167,Cell,LIMIT_STANDARDIZED,Meycauayan,365,Meycauayan,MEY-2,2016,11,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+168,Cell,LIMIT_STANDARDIZED,Meycauayan,366,Meycauayan,MEY-3,2016,11,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+169,Cell,LIMIT_STANDARDIZED,Meycauayan,375,Meycauayan,MEY-4,2017,1,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+170,Cell,LIMIT_STANDARDIZED,Meycauayan,382,Meycauayan,MEY-1,2017,2,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+171,Cell,LIMIT_STANDARDIZED,Meycauayan,383,Meycauayan,MEY-5,2017,2,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+172,Cell,LIMIT_STANDARDIZED,Meycauayan,384,Meycauayan,MEY-2,2017,2,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+173,Cell,LIMIT_STANDARDIZED,Meycauayan,385,Meycauayan,MEY-3,2017,2,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+174,Cell,TIME_PARSED,Meycauayan,387,Meycauayan,MEY-4,2017,3,Time,9:53:00,09:53:00,Time parsed and standardized,clean_stage_a.csv
+175,Cell,LIMIT_STANDARDIZED,Meycauayan,391,Meycauayan,MEY-3,2017,3,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+176,Cell,LIMIT_STANDARDIZED,Meycauayan,399,Meycauayan,MEY-4,2017,5,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+177,Cell,LIMIT_STANDARDIZED,Meycauayan,400,Meycauayan,MEY-1,2017,5,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+178,Cell,LIMIT_STANDARDIZED,Meycauayan,401,Meycauayan,MEY-5,2017,5,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+179,Cell,LIMIT_STANDARDIZED,Meycauayan,402,Meycauayan,MEY-2,2017,5,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+180,Cell,LIMIT_STANDARDIZED,Meycauayan,403,Meycauayan,MEY-3,2017,5,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+181,Cell,LIMIT_STANDARDIZED,Meycauayan,413,Meycauayan,MEY-5,2017,7,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+182,Cell,LIMIT_STANDARDIZED,Meycauayan,414,Meycauayan,MEY-2,2017,7,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+183,Cell,LIMIT_STANDARDIZED,Meycauayan,415,Meycauayan,MEY-3,2017,7,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+184,Cell,LIMIT_STANDARDIZED,Meycauayan,417,Meycauayan,MEY-4,2017,8,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+185,Cell,LIMIT_STANDARDIZED,Meycauayan,418,Meycauayan,MEY-1,2017,8,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+186,Cell,LIMIT_STANDARDIZED,Meycauayan,419,Meycauayan,MEY-5,2017,8,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+187,Cell,LIMIT_STANDARDIZED,Meycauayan,420,Meycauayan,MEY-2,2017,8,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+188,Cell,LIMIT_STANDARDIZED,Meycauayan,421,Meycauayan,MEY-3,2017,8,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+189,Cell,LIMIT_STANDARDIZED,Meycauayan,424,Meycauayan,MEY-1,2017,9,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+190,Cell,LIMIT_STANDARDIZED,Meycauayan,426,Meycauayan,MEY-2,2017,9,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+191,Cell,LIMIT_STANDARDIZED,Meycauayan,427,Meycauayan,MEY-3,2017,9,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+192,Cell,LIMIT_STANDARDIZED,Meycauayan,449,Meycauayan,MEY-4,2018,1,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+193,Cell,LIMIT_STANDARDIZED,Meycauayan,450,Meycauayan,MEY-1,2018,1,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+194,Cell,LIMIT_STANDARDIZED,Meycauayan,451,Meycauayan,MEY-5,2018,1,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+195,Cell,LIMIT_STANDARDIZED,Meycauayan,452,Meycauayan,MEY-2,2018,1,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+196,Cell,LIMIT_STANDARDIZED,Meycauayan,453,Meycauayan,MEY-3,2018,1,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+197,Cell,LIMIT_STANDARDIZED,Meycauayan,456,Meycauayan,MEY-1,2018,2,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+198,Cell,LIMIT_STANDARDIZED,Meycauayan,457,Meycauayan,MEY-5,2018,2,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+199,Cell,LIMIT_STANDARDIZED,Meycauayan,459,Meycauayan,MEY-3,2018,2,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+200,Cell,LIMIT_STANDARDIZED,Meycauayan,467,Meycauayan,MEY-4,2018,4,"Nitrates as Nitrogen, mg/L",<0.048,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+201,Cell,LIMIT_STANDARDIZED,Meycauayan,473,Meycauayan,MEY-4,2018,5,"Nitrates as Nitrogen, mg/L",<0.048,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+202,Cell,LIMIT_STANDARDIZED,Meycauayan,475,Meycauayan,MEY-5,2018,5,"Nitrates as Nitrogen, mg/L",<0.048,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+203,Cell,LIMIT_STANDARDIZED,Meycauayan,477,Meycauayan,MEY-3,2018,5,"Nitrates as Nitrogen, mg/L",<0.048,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+204,Cell,TIME_PARSED,Obando,86,Obando,OBA-2,2013,7,Time,9:43:00,09:43:00,Time parsed and standardized,clean_stage_a.csv
+205,Cell,LIMIT_STANDARDIZED,Obando,88,Obando,OBA-3,2013,7,"Nitrates as Nitrogen, mg/L",<0.05,0.05,Measurement-limit symbol removed; value set to 0.05,clean_stage_a.csv
+206,Cell,TIME_PARSED,Obando,90,Obando,OBA-2,2013,8,Time,9:41:00,09:41:00,Time parsed and standardized,clean_stage_a.csv
+207,Cell,LIMIT_STANDARDIZED,Obando,94,Obando,OBA-2,2013,9,"Nitrates as Nitrogen, mg/L",<0.05,0.05,Measurement-limit symbol removed; value set to 0.05,clean_stage_a.csv
+208,Cell,LIMIT_STANDARDIZED,Obando,95,Obando,OBA-1,2013,9,"Nitrates as Nitrogen, mg/L",<0.05,0.05,Measurement-limit symbol removed; value set to 0.05,clean_stage_a.csv
+209,Cell,LIMIT_STANDARDIZED,Obando,96,Obando,OBA-3,2013,9,"Nitrates as Nitrogen, mg/L",<0.05,0.05,Measurement-limit symbol removed; value set to 0.05,clean_stage_a.csv
+210,Cell,LIMIT_STANDARDIZED,Obando,102,Obando,OBA-2,2013,11,"Nitrates as Nitrogen, mg/L",<0.05,0.05,Measurement-limit symbol removed; value set to 0.05,clean_stage_a.csv
+211,Cell,LIMIT_STANDARDIZED,Obando,103,Obando,OBA-1,2013,11,"Nitrates as Nitrogen, mg/L",<0.05,0.05,Measurement-limit symbol removed; value set to 0.05,clean_stage_a.csv
+212,Cell,LIMIT_STANDARDIZED,Obando,104,Obando,OBA-3,2013,11,"Nitrates as Nitrogen, mg/L",<0.05,0.05,Measurement-limit symbol removed; value set to 0.05,clean_stage_a.csv
+213,Cell,LIMIT_STANDARDIZED,Obando,110,Obando,OBA-2,2014,1,"Total Suspended Solids, mg/L",<2*,2,Measurement-limit symbol removed; value set to 2,clean_stage_a.csv
+214,Cell,LIMIT_STANDARDIZED,Obando,110,Obando,OBA-2,2014,1,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+215,Cell,TIME_PARSED,Obando,110,Obando,OBA-2,2014,1,Time,9:24:00,09:24:00,Time parsed and standardized,clean_stage_a.csv
+216,Cell,LIMIT_STANDARDIZED,Obando,111,Obando,OBA-1,2014,1,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+217,Cell,LIMIT_STANDARDIZED,Obando,112,Obando,OBA-3,2014,1,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+218,Cell,LIMIT_STANDARDIZED,Obando,115,Obando,OBA-1,2014,2,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+219,Cell,LIMIT_STANDARDIZED,Obando,116,Obando,OBA-3,2014,2,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+220,Cell,LIMIT_STANDARDIZED,Obando,120,Obando,OBA-3,2014,3,"Total Coliform, MPN/100mL",<1.8,1.8,Measurement-limit symbol removed; value set to 1.8,clean_stage_a.csv
+221,Cell,LIMIT_STANDARDIZED,Obando,123,Obando,OBA-1,2014,4,"Total Coliform, MPN/100mL",>16000,16000,Measurement-limit symbol removed; value set to 16000,clean_stage_a.csv
+222,Cell,LIMIT_STANDARDIZED,Obando,130,Obando,OBA-2,2014,6,"Total Coliform, MPN/100mL",>160000,160000,Measurement-limit symbol removed; value set to 160000,clean_stage_a.csv
+223,Cell,TIME_PARSED,Obando,150,Obando,OBA-2,2014,11,Time,9:40:00,09:40:00,Time parsed and standardized,clean_stage_a.csv
+224,Cell,LIMIT_STANDARDIZED,Obando,155,Obando,OBA-1,2014,12,"Total Coliform, MPN/100mL",>160000,160000,Measurement-limit symbol removed; value set to 160000,clean_stage_a.csv
+225,Cell,LIMIT_STANDARDIZED,Obando,187,Obando,OBA-1,2015,8,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+226,Cell,LIMIT_STANDARDIZED,Obando,188,Obando,OBA-3,2015,8,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+227,Cell,LIMIT_STANDARDIZED,Obando,191,Obando,OBA-1,2015,9,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+228,Cell,LIMIT_STANDARDIZED,Obando,192,Obando,OBA-3,2015,9,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+229,Cell,LIMIT_STANDARDIZED,Obando,194,Obando,OBA-2,2015,10,"Total Coliform, MPN/100mL",>16000000,16000000,Measurement-limit symbol removed; value set to 16000000,clean_stage_a.csv
+230,Cell,LIMIT_STANDARDIZED,Obando,195,Obando,OBA-1,2015,10,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+231,Cell,LIMIT_STANDARDIZED,Obando,202,Obando,OBA-2,2015,12,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+232,Cell,TIME_PARSED,Obando,202,Obando,OBA-2,2015,12,Time,9:48:00,09:48:00,Time parsed and standardized,clean_stage_a.csv
+233,Cell,LIMIT_STANDARDIZED,Obando,203,Obando,OBA-1,2015,12,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+234,Cell,LIMIT_STANDARDIZED,Obando,204,Obando,OBA-3,2015,12,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+235,Cell,LIMIT_STANDARDIZED,Obando,206,Obando,OBA-2,2016,1,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+236,Cell,LIMIT_STANDARDIZED,Obando,214,Obando,OBA-2,2016,3,"Total Coliform, MPN/100mL",>16000,16000,Measurement-limit symbol removed; value set to 16000,clean_stage_a.csv
+237,Cell,LIMIT_STANDARDIZED,Obando,215,Obando,OBA-1,2016,3,"Total Coliform, MPN/100mL",>16000,16000,Measurement-limit symbol removed; value set to 16000,clean_stage_a.csv
+238,Cell,LIMIT_STANDARDIZED,Obando,216,Obando,OBA-3,2016,3,"Total Coliform, MPN/100mL",>16000,16000,Measurement-limit symbol removed; value set to 16000,clean_stage_a.csv
+239,Cell,LIMIT_STANDARDIZED,Obando,220,Obando,OBA-3,2016,4,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+240,Cell,LIMIT_STANDARDIZED,Obando,222,Obando,OBA-2,2016,5,"Total Coliform, MPN/100mL",>1600000,1600000,Measurement-limit symbol removed; value set to 1600000,clean_stage_a.csv
+241,Cell,LIMIT_STANDARDIZED,Obando,236,Obando,OBA-3,2016,8,"Nitrates as Nitrogen, mg/L",< 0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+242,Cell,LIMIT_STANDARDIZED,Obando,246,Obando,OBA-2,2016,11,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+243,Cell,LIMIT_STANDARDIZED,Obando,248,Obando,OBA-3,2016,11,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+244,Cell,LIMIT_STANDARDIZED,Obando,257,Obando,OBA-1,2017,1,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+245,Cell,LIMIT_STANDARDIZED,Obando,261,Obando,OBA-1,2017,2,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+246,Cell,LIMIT_STANDARDIZED,Obando,262,Obando,OBA-3,2017,2,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+247,Cell,LIMIT_STANDARDIZED,Obando,264,Obando,OBA-2,2017,3,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+248,Cell,LIMIT_STANDARDIZED,Obando,265,Obando,OBA-1,2017,3,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+249,Cell,LIMIT_STANDARDIZED,Obando,266,Obando,OBA-3,2017,3,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+250,Cell,LIMIT_STANDARDIZED,Obando,268,Obando,OBA-2,2017,4,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+251,Cell,LIMIT_STANDARDIZED,Obando,269,Obando,OBA-1,2017,4,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+252,Cell,LIMIT_STANDARDIZED,Obando,270,Obando,OBA-3,2017,4,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+253,Cell,LIMIT_STANDARDIZED,Obando,272,Obando,OBA-2,2017,5,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+254,Cell,LIMIT_STANDARDIZED,Obando,273,Obando,OBA-1,2017,5,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+255,Cell,LIMIT_STANDARDIZED,Obando,274,Obando,OBA-3,2017,5,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+256,Cell,LIMIT_STANDARDIZED,Obando,280,Obando,OBA-2,2017,7,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+257,Cell,LIMIT_STANDARDIZED,Obando,281,Obando,OBA-1,2017,7,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+258,Cell,LIMIT_STANDARDIZED,Obando,284,Obando,OBA-2,2017,8,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+259,Cell,LIMIT_STANDARDIZED,Obando,285,Obando,OBA-1,2017,8,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+260,Cell,LIMIT_STANDARDIZED,Obando,288,Obando,OBA-2,2017,9,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+261,Cell,LIMIT_STANDARDIZED,Obando,290,Obando,OBA-3,2017,9,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+262,Cell,TIME_PARSED,Obando,296,Obando,OBA-2,2017,11,Time,9:55:00,09:55:00,Time parsed and standardized,clean_stage_a.csv
+263,Cell,LIMIT_STANDARDIZED,Obando,307,Obando,OBA-1,2018,1,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+264,Cell,LIMIT_STANDARDIZED,Obando,310,Obando,OBA-2,2018,2,"Nitrates as Nitrogen, mg/L",<0.048*,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+265,Cell,LIMIT_STANDARDIZED,Obando,322,Obando,OBA-2,2018,5,"Nitrates as Nitrogen, mg/L",<0.048,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+266,Cell,LIMIT_STANDARDIZED,Obando,323,Obando,OBA-1,2018,5,"Nitrates as Nitrogen, mg/L",<0.048,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+267,Cell,LIMIT_STANDARDIZED,Obando,324,Obando,OBA-3,2018,5,"Nitrates as Nitrogen, mg/L",<0.048,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
+268,Cell,MANUAL_CORRECTION,Marilao,417,Marilao,,2017,8,YearMonthLabel,CY 2016 AUGUST,CY 2017 AUGUST,Mislabeled year - station dates are Aug 2017,manual_corrections.csv
+269,Cell,MANUAL_CORRECTION,Marilao,423,Marilao,,2017,9,YearMonthLabel,CY 2016 SEPTEMBER,CY 2017 SEPTEMBER,Mislabeled year - station dates are Sep 2017,manual_corrections.csv
+270,Cell,MANUAL_CORRECTION,Marilao,466,Marilao,,2018,5,YearMonthLabel,CY 2017 MAY,CY 2018 MAY,Mislabeled year - station dates are May 2018,manual_corrections.csv
+271,Cell,MANUAL_CORRECTION,Marilao,459,Marilao,,,,DateText,,2018-03-16,Decision 2 - correct sample date,manual_corrections.csv
+272,Cell,MANUAL_CORRECTION,Meycauayan,212,Meycauayan,,,,DateText,,2014-10-17,Decision 1 - correct sample date,manual_corrections.csv
+273,Cell,MANUAL_CORRECTION,Meycauayan,213,Meycauayan,,,,DateText,,2014-10-17,Decision 1 - correct sample date,manual_corrections.csv
+274,Cell,MANUAL_CORRECTION,Meycauayan,214,Meycauayan,,,,DateText,,2014-10-17,Decision 1 - correct sample date,manual_corrections.csv
+275,Cell,MANUAL_CORRECTION,Meycauayan,215,Meycauayan,,,,DateText,,2014-10-17,Decision 1 - correct sample date,manual_corrections.csv
+276,Cell,MANUAL_CORRECTION,Meycauayan,216,Meycauayan,,,,DateText,,2014-10-17,Decision 1 - correct sample date,manual_corrections.csv
+277,Row,ROW_EXCLUDED,Marilao,369,Marilao,MAR-3,2016,12,,,,NO_RESULTS,excluded_records.csv
+278,Row,ROW_EXCLUDED,Marilao,370,Marilao,MAR-4,2016,12,,,,NO_RESULTS,excluded_records.csv
+279,Row,ROW_EXCLUDED,Marilao,371,Marilao,MAR-1,2016,12,,,,NO_RESULTS,excluded_records.csv
+280,Row,ROW_EXCLUDED,Marilao,372,Marilao,MAR-5,2016,12,,,,NO_RESULTS,excluded_records.csv
+281,Row,ROW_EXCLUDED,Marilao,373,Marilao,MAR-2,2016,12,,,,NO_RESULTS,excluded_records.csv
+282,Row,ROW_EXCLUDED,Marilao,455,Marilao,MAR-3,2018,3,,,,NO_RESULTS,excluded_records.csv
+283,Row,ROW_EXCLUDED,Marilao,456,Marilao,MAR-4,2018,3,,,,NO_RESULTS,excluded_records.csv
+284,Row,ROW_EXCLUDED,Marilao,457,Marilao,MAR-1,2018,3,,,,NO_RESULTS,excluded_records.csv
+285,Row,ROW_EXCLUDED,Marilao,458,Marilao,MAR-5,2018,3,,,,NO_RESULTS,excluded_records.csv
+286,Row,ROW_EXCLUDED,Marilao,459,Marilao,MAR-2,2018,3,,,,NO_RESULTS,excluded_records.csv
+287,Row,ROW_EXCLUDED,Marilao,473,Marilao,MAR-3,2018,6,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+288,Row,ROW_EXCLUDED,Marilao,474,Marilao,MAR-4,2018,6,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+289,Row,ROW_EXCLUDED,Marilao,475,Marilao,MAR-1,2018,6,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+290,Row,ROW_EXCLUDED,Marilao,476,Marilao,MAR-5,2018,6,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+291,Row,ROW_EXCLUDED,Marilao,477,Marilao,MAR-2,2018,6,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+292,Row,ROW_EXCLUDED,Marilao,479,Marilao,MAR-3,2018,7,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+293,Row,ROW_EXCLUDED,Marilao,480,Marilao,MAR-4,2018,7,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+294,Row,ROW_EXCLUDED,Marilao,481,Marilao,MAR-1,2018,7,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+295,Row,ROW_EXCLUDED,Marilao,482,Marilao,MAR-5,2018,7,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+296,Row,ROW_EXCLUDED,Marilao,483,Marilao,MAR-2,2018,7,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+297,Row,ROW_EXCLUDED,Marilao,485,Marilao,MAR-3,2018,8,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+298,Row,ROW_EXCLUDED,Marilao,486,Marilao,MAR-4,2018,8,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+299,Row,ROW_EXCLUDED,Marilao,487,Marilao,MAR-1,2018,8,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+300,Row,ROW_EXCLUDED,Marilao,488,Marilao,MAR-5,2018,8,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+301,Row,ROW_EXCLUDED,Marilao,489,Marilao,MAR-2,2018,8,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+302,Row,ROW_EXCLUDED,Marilao,491,Marilao,MAR-3,2018,9,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+303,Row,ROW_EXCLUDED,Marilao,492,Marilao,MAR-4,2018,9,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+304,Row,ROW_EXCLUDED,Marilao,493,Marilao,MAR-1,2018,9,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+305,Row,ROW_EXCLUDED,Marilao,494,Marilao,MAR-5,2018,9,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+306,Row,ROW_EXCLUDED,Marilao,495,Marilao,MAR-2,2018,9,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+307,Row,ROW_EXCLUDED,Marilao,497,Marilao,MAR-3,2018,10,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+308,Row,ROW_EXCLUDED,Marilao,498,Marilao,MAR-4,2018,10,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+309,Row,ROW_EXCLUDED,Marilao,499,Marilao,MAR-1,2018,10,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+310,Row,ROW_EXCLUDED,Marilao,500,Marilao,MAR-5,2018,10,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+311,Row,ROW_EXCLUDED,Marilao,501,Marilao,MAR-2,2018,10,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+312,Row,ROW_EXCLUDED,Marilao,503,Marilao,MAR-3,2018,11,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+313,Row,ROW_EXCLUDED,Marilao,504,Marilao,MAR-4,2018,11,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+314,Row,ROW_EXCLUDED,Marilao,505,Marilao,MAR-1,2018,11,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+315,Row,ROW_EXCLUDED,Marilao,506,Marilao,MAR-5,2018,11,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+316,Row,ROW_EXCLUDED,Marilao,507,Marilao,MAR-2,2018,11,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+317,Row,ROW_EXCLUDED,Marilao,509,Marilao,MAR-3,2018,11,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+318,Row,ROW_EXCLUDED,Marilao,510,Marilao,MAR-4,2018,11,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+319,Row,ROW_EXCLUDED,Marilao,511,Marilao,MAR-1,2018,11,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+320,Row,ROW_EXCLUDED,Marilao,512,Marilao,MAR-5,2018,11,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+321,Row,ROW_EXCLUDED,Marilao,513,Marilao,MAR-2,2018,11,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+322,Row,ROW_EXCLUDED,Marilao,517,Marilao,MAR-3,2018,1,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+323,Row,ROW_EXCLUDED,Marilao,518,Marilao,MAR-4,2018,1,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+324,Row,ROW_EXCLUDED,Marilao,519,Marilao,MAR-1,2018,1,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+325,Row,ROW_EXCLUDED,Marilao,520,Marilao,MAR-5,2018,1,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+326,Row,ROW_EXCLUDED,Marilao,521,Marilao,MAR-2,2018,1,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+327,Row,ROW_EXCLUDED,Marilao,523,Marilao,MAR-3,2018,2,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+328,Row,ROW_EXCLUDED,Marilao,524,Marilao,MAR-4,2018,2,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+329,Row,ROW_EXCLUDED,Marilao,525,Marilao,MAR-1,2018,2,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+330,Row,ROW_EXCLUDED,Marilao,526,Marilao,MAR-5,2018,2,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+331,Row,ROW_EXCLUDED,Marilao,527,Marilao,MAR-2,2018,2,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+332,Row,ROW_EXCLUDED,Marilao,529,Marilao,MAR-3,2018,3,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+333,Row,ROW_EXCLUDED,Marilao,530,Marilao,MAR-4,2018,3,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+334,Row,ROW_EXCLUDED,Marilao,531,Marilao,MAR-1,2018,3,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+335,Row,ROW_EXCLUDED,Marilao,532,Marilao,MAR-5,2018,3,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+336,Row,ROW_EXCLUDED,Marilao,533,Marilao,MAR-2,2018,3,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+337,Row,ROW_EXCLUDED,Marilao,535,Marilao,MAR-3,2017,4,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+338,Row,ROW_EXCLUDED,Marilao,536,Marilao,MAR-4,2017,4,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+339,Row,ROW_EXCLUDED,Marilao,537,Marilao,MAR-1,2017,4,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+340,Row,ROW_EXCLUDED,Marilao,538,Marilao,MAR-5,2017,4,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+341,Row,ROW_EXCLUDED,Marilao,539,Marilao,MAR-2,2017,4,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+342,Row,ROW_EXCLUDED,Marilao,541,Marilao,MAR-3,2018,5,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+343,Row,ROW_EXCLUDED,Marilao,542,Marilao,MAR-4,2018,5,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+344,Row,ROW_EXCLUDED,Marilao,543,Marilao,MAR-1,2018,5,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+345,Row,ROW_EXCLUDED,Marilao,544,Marilao,MAR-5,2018,5,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+346,Row,ROW_EXCLUDED,Marilao,545,Marilao,MAR-2,2018,5,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+347,Row,ROW_EXCLUDED,Marilao,547,Marilao,MAR-3,2018,6,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+348,Row,ROW_EXCLUDED,Marilao,548,Marilao,MAR-4,2018,6,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+349,Row,ROW_EXCLUDED,Marilao,549,Marilao,MAR-1,2018,6,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+350,Row,ROW_EXCLUDED,Marilao,550,Marilao,MAR-5,2018,6,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+351,Row,ROW_EXCLUDED,Marilao,551,Marilao,MAR-2,2018,6,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+352,Row,ROW_EXCLUDED,Marilao,553,Marilao,MAR-3,2018,7,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+353,Row,ROW_EXCLUDED,Marilao,554,Marilao,MAR-4,2018,7,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+354,Row,ROW_EXCLUDED,Marilao,555,Marilao,MAR-1,2018,7,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+355,Row,ROW_EXCLUDED,Marilao,556,Marilao,MAR-5,2018,7,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+356,Row,ROW_EXCLUDED,Marilao,557,Marilao,MAR-2,2018,7,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+357,Row,ROW_EXCLUDED,Marilao,559,Marilao,MAR-3,2018,8,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+358,Row,ROW_EXCLUDED,Marilao,560,Marilao,MAR-4,2018,8,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+359,Row,ROW_EXCLUDED,Marilao,561,Marilao,MAR-1,2018,8,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+360,Row,ROW_EXCLUDED,Marilao,562,Marilao,MAR-5,2018,8,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+361,Row,ROW_EXCLUDED,Marilao,563,Marilao,MAR-2,2018,8,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+362,Row,ROW_EXCLUDED,Marilao,565,Marilao,MAR-3,2018,9,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+363,Row,ROW_EXCLUDED,Marilao,566,Marilao,MAR-4,2018,9,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+364,Row,ROW_EXCLUDED,Marilao,567,Marilao,MAR-1,2018,9,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+365,Row,ROW_EXCLUDED,Marilao,568,Marilao,MAR-5,2018,9,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+366,Row,ROW_EXCLUDED,Marilao,569,Marilao,MAR-2,2018,9,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+367,Row,ROW_EXCLUDED,Marilao,571,Marilao,MAR-3,2018,10,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+368,Row,ROW_EXCLUDED,Marilao,572,Marilao,MAR-4,2018,10,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+369,Row,ROW_EXCLUDED,Marilao,573,Marilao,MAR-1,2018,10,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+370,Row,ROW_EXCLUDED,Marilao,574,Marilao,MAR-5,2018,10,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+371,Row,ROW_EXCLUDED,Marilao,575,Marilao,MAR-2,2018,10,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+372,Row,ROW_EXCLUDED,Marilao,577,Marilao,MAR-3,2018,11,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+373,Row,ROW_EXCLUDED,Marilao,578,Marilao,MAR-4,2018,11,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+374,Row,ROW_EXCLUDED,Marilao,579,Marilao,MAR-1,2018,11,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+375,Row,ROW_EXCLUDED,Marilao,580,Marilao,MAR-5,2018,11,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+376,Row,ROW_EXCLUDED,Marilao,581,Marilao,MAR-2,2018,11,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+377,Row,ROW_EXCLUDED,Marilao,583,Marilao,MAR-3,2018,12,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+378,Row,ROW_EXCLUDED,Marilao,584,Marilao,MAR-4,2018,12,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+379,Row,ROW_EXCLUDED,Marilao,585,Marilao,MAR-1,2018,12,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+380,Row,ROW_EXCLUDED,Marilao,586,Marilao,MAR-5,2018,12,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+381,Row,ROW_EXCLUDED,Marilao,587,Marilao,MAR-2,2018,12,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+382,Row,ROW_EXCLUDED,Meycauayan,368,Meycauayan,MEY-4,2016,12,,,,NO_SAMPLING_TEXT,excluded_records.csv
+383,Row,ROW_EXCLUDED,Meycauayan,369,Meycauayan,MEY-1,2016,12,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+384,Row,ROW_EXCLUDED,Meycauayan,370,Meycauayan,MEY-5,2016,12,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+385,Row,ROW_EXCLUDED,Meycauayan,371,Meycauayan,MEY-2,2016,12,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+386,Row,ROW_EXCLUDED,Meycauayan,372,Meycauayan,MEY-3,2016,12,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+387,Row,ROW_EXCLUDED,Meycauayan,441,Meycauayan,MEY-4,2017,12,,,,NO_SAMPLING_TEXT,excluded_records.csv
+388,Row,ROW_EXCLUDED,Meycauayan,442,Meycauayan,MEY-1,2017,12,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+389,Row,ROW_EXCLUDED,Meycauayan,443,Meycauayan,MEY-5,2017,12,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+390,Row,ROW_EXCLUDED,Meycauayan,444,Meycauayan,MEY-2,2017,12,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+391,Row,ROW_EXCLUDED,Meycauayan,445,Meycauayan,MEY-3,2017,12,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+392,Row,ROW_EXCLUDED,Meycauayan,461,Meycauayan,MEY-4,2018,3,,,,NO_SAMPLING_TEXT,excluded_records.csv
+393,Row,ROW_EXCLUDED,Meycauayan,462,Meycauayan,MEY-1,2018,3,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+394,Row,ROW_EXCLUDED,Meycauayan,463,Meycauayan,MEY-5,2018,3,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+395,Row,ROW_EXCLUDED,Meycauayan,464,Meycauayan,MEY-2,2018,3,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+396,Row,ROW_EXCLUDED,Meycauayan,465,Meycauayan,MEY-3,2018,3,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+397,Row,ROW_EXCLUDED,Meycauayan,479,Meycauayan,MEY-4,2018,6,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+398,Row,ROW_EXCLUDED,Meycauayan,480,Meycauayan,MEY-1,2018,6,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+399,Row,ROW_EXCLUDED,Meycauayan,481,Meycauayan,MEY-5,2018,6,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+400,Row,ROW_EXCLUDED,Meycauayan,482,Meycauayan,MEY-2,2018,6,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+401,Row,ROW_EXCLUDED,Meycauayan,483,Meycauayan,MEY-3,2018,6,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+402,Row,ROW_EXCLUDED,Meycauayan,485,Meycauayan,MEY-4,2018,7,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+403,Row,ROW_EXCLUDED,Meycauayan,486,Meycauayan,MEY-1,2018,7,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+404,Row,ROW_EXCLUDED,Meycauayan,487,Meycauayan,MEY-5,2018,7,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+405,Row,ROW_EXCLUDED,Meycauayan,488,Meycauayan,MEY-2,2018,7,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+406,Row,ROW_EXCLUDED,Meycauayan,489,Meycauayan,MEY-3,2018,7,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+407,Row,ROW_EXCLUDED,Meycauayan,491,Meycauayan,MEY-4,2018,8,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+408,Row,ROW_EXCLUDED,Meycauayan,492,Meycauayan,MEY-1,2018,8,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+409,Row,ROW_EXCLUDED,Meycauayan,493,Meycauayan,MEY-5,2018,8,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+410,Row,ROW_EXCLUDED,Meycauayan,494,Meycauayan,MEY-2,2018,8,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+411,Row,ROW_EXCLUDED,Meycauayan,495,Meycauayan,MEY-3,2018,8,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+412,Row,ROW_EXCLUDED,Meycauayan,497,Meycauayan,MEY-4,2018,9,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+413,Row,ROW_EXCLUDED,Meycauayan,498,Meycauayan,MEY-1,2018,9,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+414,Row,ROW_EXCLUDED,Meycauayan,499,Meycauayan,MEY-5,2018,9,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+415,Row,ROW_EXCLUDED,Meycauayan,500,Meycauayan,MEY-2,2018,9,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+416,Row,ROW_EXCLUDED,Meycauayan,501,Meycauayan,MEY-3,2018,9,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+417,Row,ROW_EXCLUDED,Meycauayan,503,Meycauayan,MEY-4,2018,10,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+418,Row,ROW_EXCLUDED,Meycauayan,504,Meycauayan,MEY-1,2018,10,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+419,Row,ROW_EXCLUDED,Meycauayan,505,Meycauayan,MEY-5,2018,10,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+420,Row,ROW_EXCLUDED,Meycauayan,506,Meycauayan,MEY-2,2018,10,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+421,Row,ROW_EXCLUDED,Meycauayan,507,Meycauayan,MEY-3,2018,10,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+422,Row,ROW_EXCLUDED,Meycauayan,509,Meycauayan,MEY-4,2018,11,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+423,Row,ROW_EXCLUDED,Meycauayan,510,Meycauayan,MEY-1,2018,11,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+424,Row,ROW_EXCLUDED,Meycauayan,511,Meycauayan,MEY-5,2018,11,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+425,Row,ROW_EXCLUDED,Meycauayan,512,Meycauayan,MEY-2,2018,11,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+426,Row,ROW_EXCLUDED,Meycauayan,513,Meycauayan,MEY-3,2018,11,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+427,Row,ROW_EXCLUDED,Meycauayan,515,Meycauayan,MEY-4,2018,12,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+428,Row,ROW_EXCLUDED,Meycauayan,516,Meycauayan,MEY-1,2018,12,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+429,Row,ROW_EXCLUDED,Meycauayan,517,Meycauayan,MEY-5,2018,12,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+430,Row,ROW_EXCLUDED,Meycauayan,518,Meycauayan,MEY-2,2018,12,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+431,Row,ROW_EXCLUDED,Meycauayan,519,Meycauayan,MEY-3,2018,12,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+432,Row,ROW_EXCLUDED,Obando,106,Obando,OBA-2,2013,12,,,,NO_SAMPLING_TEXT,excluded_records.csv
+433,Row,ROW_EXCLUDED,Obando,107,Obando,OBA-1,2013,12,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+434,Row,ROW_EXCLUDED,Obando,108,Obando,OBA-3,2013,12,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+435,Row,ROW_EXCLUDED,Obando,158,Obando,OBA-2,2015,1,,,,NO_SAMPLING_TEXT,excluded_records.csv
+436,Row,ROW_EXCLUDED,Obando,159,Obando,OBA-1,2015,1,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+437,Row,ROW_EXCLUDED,Obando,160,Obando,OBA-3,2015,1,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+438,Row,ROW_EXCLUDED,Obando,162,Obando,OBA-2,2015,2,,,,NO_SAMPLING_TEXT,excluded_records.csv
+439,Row,ROW_EXCLUDED,Obando,163,Obando,OBA-1,2015,2,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+440,Row,ROW_EXCLUDED,Obando,164,Obando,OBA-3,2015,2,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+441,Row,ROW_EXCLUDED,Obando,166,Obando,OBA-2,2015,3,,,,NO_SAMPLING_TEXT,excluded_records.csv
+442,Row,ROW_EXCLUDED,Obando,167,Obando,OBA-1,2015,3,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+443,Row,ROW_EXCLUDED,Obando,168,Obando,OBA-3,2015,3,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+444,Row,ROW_EXCLUDED,Obando,170,Obando,OBA-2,2015,4,,,,NO_SAMPLING_TEXT,excluded_records.csv
+445,Row,ROW_EXCLUDED,Obando,171,Obando,OBA-1,2015,4,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+446,Row,ROW_EXCLUDED,Obando,172,Obando,OBA-3,2015,4,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+447,Row,ROW_EXCLUDED,Obando,174,Obando,OBA-2,2015,5,,,,NO_SAMPLING_TEXT,excluded_records.csv
+448,Row,ROW_EXCLUDED,Obando,175,Obando,OBA-1,2015,5,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+449,Row,ROW_EXCLUDED,Obando,176,Obando,OBA-3,2015,5,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+450,Row,ROW_EXCLUDED,Obando,178,Obando,OBA-2,2015,6,,,,NO_SAMPLING_TEXT,excluded_records.csv
+451,Row,ROW_EXCLUDED,Obando,179,Obando,OBA-1,2015,6,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+452,Row,ROW_EXCLUDED,Obando,180,Obando,OBA-3,2015,6,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+453,Row,ROW_EXCLUDED,Obando,182,Obando,OBA-2,2015,7,,,,NO_SAMPLING_TEXT,excluded_records.csv
+454,Row,ROW_EXCLUDED,Obando,183,Obando,OBA-1,2015,7,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+455,Row,ROW_EXCLUDED,Obando,184,Obando,OBA-3,2015,7,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+456,Row,ROW_EXCLUDED,Obando,250,Obando,OBA-2,2016,12,,,,NO_SAMPLING_TEXT,excluded_records.csv
+457,Row,ROW_EXCLUDED,Obando,251,Obando,OBA-1,2016,12,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+458,Row,ROW_EXCLUDED,Obando,252,Obando,OBA-3,2016,12,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+459,Row,ROW_EXCLUDED,Obando,300,Obando,OBA-2,2017,12,,,,NO_SAMPLING_TEXT,excluded_records.csv
+460,Row,ROW_EXCLUDED,Obando,301,Obando,OBA-1,2017,12,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+461,Row,ROW_EXCLUDED,Obando,302,Obando,OBA-3,2017,12,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+462,Row,ROW_EXCLUDED,Obando,326,Obando,OBA-2,2018,6,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+463,Row,ROW_EXCLUDED,Obando,327,Obando,OBA-1,2018,6,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+464,Row,ROW_EXCLUDED,Obando,328,Obando,OBA-3,2018,6,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+465,Row,ROW_EXCLUDED,Obando,330,Obando,OBA-2,2018,7,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+466,Row,ROW_EXCLUDED,Obando,331,Obando,OBA-1,2018,7,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+467,Row,ROW_EXCLUDED,Obando,332,Obando,OBA-3,2018,7,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+468,Row,ROW_EXCLUDED,Obando,334,Obando,OBA-2,2018,8,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+469,Row,ROW_EXCLUDED,Obando,335,Obando,OBA-1,2018,8,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+470,Row,ROW_EXCLUDED,Obando,336,Obando,OBA-3,2018,8,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+471,Row,ROW_EXCLUDED,Obando,338,Obando,OBA-2,2018,9,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+472,Row,ROW_EXCLUDED,Obando,339,Obando,OBA-1,2018,9,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+473,Row,ROW_EXCLUDED,Obando,340,Obando,OBA-3,2018,9,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+474,Row,ROW_EXCLUDED,Obando,342,Obando,OBA-2,2018,10,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+475,Row,ROW_EXCLUDED,Obando,343,Obando,OBA-1,2018,10,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+476,Row,ROW_EXCLUDED,Obando,344,Obando,OBA-3,2018,10,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+477,Row,ROW_EXCLUDED,Obando,346,Obando,OBA-2,2018,11,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+478,Row,ROW_EXCLUDED,Obando,347,Obando,OBA-1,2018,11,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+479,Row,ROW_EXCLUDED,Obando,348,Obando,OBA-3,2018,11,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+480,Row,ROW_EXCLUDED,Obando,350,Obando,OBA-2,2018,12,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+481,Row,ROW_EXCLUDED,Obando,351,Obando,OBA-1,2018,12,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+482,Row,ROW_EXCLUDED,Obando,352,Obando,OBA-3,2018,12,,,,EMPTY_PLACEHOLDER,excluded_records.csv
+483,Cell,FLAGGED_OUTLIER,Marilao,18,Marilao,MAR-5,2012,1,"Biochemical Oxygen Demand, mg/L",225,225,Outside IQR fence; value flagged but retained,outlier_summary.csv
+484,Cell,FLAGGED_OUTLIER,Marilao,30,Marilao,MAR-5,2012,3,"Biochemical Oxygen Demand, mg/L",195,195,Outside IQR fence; value flagged but retained,outlier_summary.csv
+485,Cell,FLAGGED_OUTLIER,Marilao,41,Marilao,MAR-1,2012,5,"Biochemical Oxygen Demand, mg/L",82,82,Outside IQR fence; value flagged but retained,outlier_summary.csv
+486,Cell,FLAGGED_OUTLIER,Marilao,47,Marilao,MAR-1,2012,6,"Dissolved Oxygen, mg/L",7.48,7.48,Outside IQR fence; value flagged but retained,outlier_summary.csv
+487,Cell,FLAGGED_OUTLIER,Marilao,82,Marilao,MAR-4,2012,12,"Biochemical Oxygen Demand, mg/L",87,87,Outside IQR fence; value flagged but retained,outlier_summary.csv
+488,Cell,FLAGGED_OUTLIER,Marilao,83,Marilao,MAR-1,2012,12,"Biochemical Oxygen Demand, mg/L",108,108,Outside IQR fence; value flagged but retained,outlier_summary.csv
+489,Cell,FLAGGED_OUTLIER,Marilao,84,Marilao,MAR-5,2012,12,"Biochemical Oxygen Demand, mg/L",100,100,Outside IQR fence; value flagged but retained,outlier_summary.csv
+490,Cell,FLAGGED_OUTLIER,Marilao,85,Marilao,MAR-2,2012,12,"Biochemical Oxygen Demand, mg/L",106,106,Outside IQR fence; value flagged but retained,outlier_summary.csv
+491,Cell,FLAGGED_OUTLIER,Marilao,87,Marilao,MAR-3,2013,1,"Total Coliform, MPN/100mL",35000000,35000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+492,Cell,FLAGGED_OUTLIER,Marilao,90,Marilao,MAR-5,2013,1,"Total Coliform, MPN/100mL",160000000,160000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+493,Cell,FLAGGED_OUTLIER,Marilao,91,Marilao,MAR-2,2013,1,"Total Coliform, MPN/100mL",160000000,160000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+494,Cell,FLAGGED_OUTLIER,Marilao,93,Marilao,MAR-3,2013,2,"Total Coliform, MPN/100mL",92000000,92000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+495,Cell,FLAGGED_OUTLIER,Marilao,97,Marilao,MAR-2,2013,2,"Biochemical Oxygen Demand, mg/L",96,96,Outside IQR fence; value flagged but retained,outlier_summary.csv
+496,Cell,FLAGGED_OUTLIER,Marilao,97,Marilao,MAR-2,2013,2,"Total Coliform, MPN/100mL",160000000,160000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+497,Cell,FLAGGED_OUTLIER,Marilao,105,Marilao,MAR-3,2013,4,"Total Coliform, MPN/100mL",54000000,54000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+498,Cell,FLAGGED_OUTLIER,Marilao,106,Marilao,MAR-4,2013,4,"Total Coliform, MPN/100mL",35000000,35000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+499,Cell,FLAGGED_OUTLIER,Marilao,109,Marilao,MAR-2,2013,4,"Total Coliform, MPN/100mL",35000000,35000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+500,Cell,FLAGGED_OUTLIER,Marilao,111,Marilao,MAR-3,2013,5,"Ammonia, mg/L",80.735,80.735,Outside IQR fence; value flagged but retained,outlier_summary.csv
+501,Cell,FLAGGED_OUTLIER,Marilao,112,Marilao,MAR-4,2013,5,"Biochemical Oxygen Demand, mg/L",118,118,Outside IQR fence; value flagged but retained,outlier_summary.csv
+502,Cell,FLAGGED_OUTLIER,Marilao,112,Marilao,MAR-4,2013,5,"Total Coliform, MPN/100mL",160000000,160000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+503,Cell,FLAGGED_OUTLIER,Marilao,112,Marilao,MAR-4,2013,5,"Ammonia, mg/L",73.866,73.866,Outside IQR fence; value flagged but retained,outlier_summary.csv
+504,Cell,FLAGGED_OUTLIER,Marilao,113,Marilao,MAR-1,2013,5,"Biochemical Oxygen Demand, mg/L",230,230,Outside IQR fence; value flagged but retained,outlier_summary.csv
+505,Cell,FLAGGED_OUTLIER,Marilao,114,Marilao,MAR-5,2013,5,"Biochemical Oxygen Demand, mg/L",181,181,Outside IQR fence; value flagged but retained,outlier_summary.csv
+506,Cell,FLAGGED_OUTLIER,Marilao,114,Marilao,MAR-5,2013,5,"Total Suspended Solids, mg/L",300,300,Outside IQR fence; value flagged but retained,outlier_summary.csv
+507,Cell,FLAGGED_OUTLIER,Marilao,114,Marilao,MAR-5,2013,5,"Phosphates as Phosphorous, mg/L",7.015,7.015,Outside IQR fence; value flagged but retained,outlier_summary.csv
+508,Cell,FLAGGED_OUTLIER,Marilao,115,Marilao,MAR-2,2013,5,"Biochemical Oxygen Demand, mg/L",169,169,Outside IQR fence; value flagged but retained,outlier_summary.csv
+509,Cell,FLAGGED_OUTLIER,Marilao,115,Marilao,MAR-2,2013,5,"Phosphates as Phosphorous, mg/L",7.346,7.346,Outside IQR fence; value flagged but retained,outlier_summary.csv
+510,Cell,FLAGGED_OUTLIER,Marilao,117,Marilao,MAR-3,2013,6,"Total Suspended Solids, mg/L",330,330,Outside IQR fence; value flagged but retained,outlier_summary.csv
+511,Cell,FLAGGED_OUTLIER,Marilao,117,Marilao,MAR-3,2013,6,"Phosphates as Phosphorous, mg/L",10.098,10.098,Outside IQR fence; value flagged but retained,outlier_summary.csv
+512,Cell,FLAGGED_OUTLIER,Marilao,119,Marilao,MAR-1,2013,6,"Total Suspended Solids, mg/L",140,140,Outside IQR fence; value flagged but retained,outlier_summary.csv
+513,Cell,FLAGGED_OUTLIER,Marilao,120,Marilao,MAR-5,2013,6,"Total Suspended Solids, mg/L",120,120,Outside IQR fence; value flagged but retained,outlier_summary.csv
+514,Cell,FLAGGED_OUTLIER,Marilao,121,Marilao,MAR-2,2013,6,"Total Suspended Solids, mg/L",140,140,Outside IQR fence; value flagged but retained,outlier_summary.csv
+515,Cell,FLAGGED_OUTLIER,Marilao,123,Marilao,MAR-3,2013,7,pH,6.1,6.1,Outside IQR fence; value flagged but retained,outlier_summary.csv
+516,Cell,FLAGGED_OUTLIER,Marilao,123,Marilao,MAR-3,2013,7,"Total Coliform, MPN/100mL",92000000,92000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+517,Cell,FLAGGED_OUTLIER,Marilao,124,Marilao,MAR-4,2013,7,pH,6.2,6.2,Outside IQR fence; value flagged but retained,outlier_summary.csv
+518,Cell,FLAGGED_OUTLIER,Marilao,124,Marilao,MAR-4,2013,7,"Total Suspended Solids, mg/L",114,114,Outside IQR fence; value flagged but retained,outlier_summary.csv
+519,Cell,FLAGGED_OUTLIER,Marilao,125,Marilao,MAR-1,2013,7,"Total Suspended Solids, mg/L",72,72,Outside IQR fence; value flagged but retained,outlier_summary.csv
+520,Cell,FLAGGED_OUTLIER,Marilao,126,Marilao,MAR-5,2013,7,"Total Suspended Solids, mg/L",137,137,Outside IQR fence; value flagged but retained,outlier_summary.csv
+521,Cell,FLAGGED_OUTLIER,Marilao,127,Marilao,MAR-2,2013,7,pH,6.2,6.2,Outside IQR fence; value flagged but retained,outlier_summary.csv
+522,Cell,FLAGGED_OUTLIER,Marilao,127,Marilao,MAR-2,2013,7,"Total Suspended Solids, mg/L",132,132,Outside IQR fence; value flagged but retained,outlier_summary.csv
+523,Cell,FLAGGED_OUTLIER,Marilao,129,Marilao,MAR-3,2013,8,pH,6.1,6.1,Outside IQR fence; value flagged but retained,outlier_summary.csv
+524,Cell,FLAGGED_OUTLIER,Marilao,130,Marilao,MAR-4,2013,8,pH,6.2,6.2,Outside IQR fence; value flagged but retained,outlier_summary.csv
+525,Cell,FLAGGED_OUTLIER,Marilao,132,Marilao,MAR-5,2013,8,pH,6.01,6.01,Outside IQR fence; value flagged but retained,outlier_summary.csv
+526,Cell,FLAGGED_OUTLIER,Marilao,133,Marilao,MAR-2,2013,8,pH,6.1,6.1,Outside IQR fence; value flagged but retained,outlier_summary.csv
+527,Cell,FLAGGED_OUTLIER,Marilao,135,Marilao,MAR-3,2013,9,pH,6.1,6.1,Outside IQR fence; value flagged but retained,outlier_summary.csv
+528,Cell,FLAGGED_OUTLIER,Marilao,135,Marilao,MAR-3,2013,9,"Total Coliform, MPN/100mL",92000000,92000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+529,Cell,FLAGGED_OUTLIER,Marilao,136,Marilao,MAR-4,2013,9,pH,6.2,6.2,Outside IQR fence; value flagged but retained,outlier_summary.csv
+530,Cell,FLAGGED_OUTLIER,Marilao,136,Marilao,MAR-4,2013,9,"Total Suspended Solids, mg/L",55,55,Outside IQR fence; value flagged but retained,outlier_summary.csv
+531,Cell,FLAGGED_OUTLIER,Marilao,136,Marilao,MAR-4,2013,9,"Nitrates as Nitrogen, mg/L",1.367,1.367,Outside IQR fence; value flagged but retained,outlier_summary.csv
+532,Cell,FLAGGED_OUTLIER,Marilao,137,Marilao,MAR-1,2013,9,pH,6.1,6.1,Outside IQR fence; value flagged but retained,outlier_summary.csv
+533,Cell,FLAGGED_OUTLIER,Marilao,139,Marilao,MAR-2,2013,9,pH,6.2,6.2,Outside IQR fence; value flagged but retained,outlier_summary.csv
+534,Cell,FLAGGED_OUTLIER,Marilao,159,Marilao,MAR-3,2014,1,"Total Coliform, MPN/100mL",24000000,24000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+535,Cell,FLAGGED_OUTLIER,Marilao,162,Marilao,MAR-5,2014,1,"Total Coliform, MPN/100mL",24000000,24000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+536,Cell,FLAGGED_OUTLIER,Marilao,168,Marilao,MAR-5,2014,2,"Total Coliform, MPN/100mL",700000000,700000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+537,Cell,FLAGGED_OUTLIER,Marilao,169,Marilao,MAR-2,2014,2,"Total Coliform, MPN/100mL",160000000,160000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+538,Cell,FLAGGED_OUTLIER,Marilao,171,Marilao,MAR-3,2014,3,"Total Coliform, MPN/100mL",35000000,35000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+539,Cell,FLAGGED_OUTLIER,Marilao,175,Marilao,MAR-2,2014,3,"Total Coliform, MPN/100mL",54000000,54000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+540,Cell,FLAGGED_OUTLIER,Marilao,186,Marilao,MAR-5,2014,5,"Total Coliform, MPN/100mL",54000000,54000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+541,Cell,FLAGGED_OUTLIER,Marilao,202,Marilao,MAR-4,2014,8,"Nitrates as Nitrogen, mg/L",1.496,1.496,Outside IQR fence; value flagged but retained,outlier_summary.csv
+542,Cell,FLAGGED_OUTLIER,Marilao,213,Marilao,MAR-3,2014,10,"Nitrates as Nitrogen, mg/L",1.656,1.656,Outside IQR fence; value flagged but retained,outlier_summary.csv
+543,Cell,FLAGGED_OUTLIER,Marilao,253,Marilao,MAR-2,2015,4,"Total Suspended Solids, mg/L",52,52,Outside IQR fence; value flagged but retained,outlier_summary.csv
+544,Cell,FLAGGED_OUTLIER,Marilao,257,Marilao,MAR-1,2015,5,"Total Suspended Solids, mg/L",54,54,Outside IQR fence; value flagged but retained,outlier_summary.csv
+545,Cell,FLAGGED_OUTLIER,Marilao,258,Marilao,MAR-5,2015,5,"Biochemical Oxygen Demand, mg/L",111,111,Outside IQR fence; value flagged but retained,outlier_summary.csv
+546,Cell,FLAGGED_OUTLIER,Marilao,258,Marilao,MAR-5,2015,5,"Total Suspended Solids, mg/L",81,81,Outside IQR fence; value flagged but retained,outlier_summary.csv
+547,Cell,FLAGGED_OUTLIER,Marilao,259,Marilao,MAR-2,2015,5,"Biochemical Oxygen Demand, mg/L",86,86,Outside IQR fence; value flagged but retained,outlier_summary.csv
+548,Cell,FLAGGED_OUTLIER,Marilao,259,Marilao,MAR-2,2015,5,"Total Suspended Solids, mg/L",52,52,Outside IQR fence; value flagged but retained,outlier_summary.csv
+549,Cell,FLAGGED_OUTLIER,Marilao,261,Marilao,MAR-3,2015,6,"Ammonia, mg/L",61.906,61.906,Outside IQR fence; value flagged but retained,outlier_summary.csv
+550,Cell,FLAGGED_OUTLIER,Marilao,262,Marilao,MAR-4,2015,6,"Total Coliform, MPN/100mL",160000000,160000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+551,Cell,FLAGGED_OUTLIER,Marilao,262,Marilao,MAR-4,2015,6,"Ammonia, mg/L",59.489,59.489,Outside IQR fence; value flagged but retained,outlier_summary.csv
+552,Cell,FLAGGED_OUTLIER,Marilao,271,Marilao,MAR-2,2015,7,"Total Coliform, MPN/100mL",35000000,35000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+553,Cell,FLAGGED_OUTLIER,Marilao,276,Marilao,MAR-5,2015,8,"Total Suspended Solids, mg/L",54,54,Outside IQR fence; value flagged but retained,outlier_summary.csv
+554,Cell,FLAGGED_OUTLIER,Marilao,281,Marilao,MAR-1,2015,9,"Nitrates as Nitrogen, mg/L",1.658,1.658,Outside IQR fence; value flagged but retained,outlier_summary.csv
+555,Cell,FLAGGED_OUTLIER,Marilao,282,Marilao,MAR-5,2015,9,"Nitrates as Nitrogen, mg/L",1.664,1.664,Outside IQR fence; value flagged but retained,outlier_summary.csv
+556,Cell,FLAGGED_OUTLIER,Marilao,283,Marilao,MAR-2,2015,9,"Nitrates as Nitrogen, mg/L",1.737,1.737,Outside IQR fence; value flagged but retained,outlier_summary.csv
+557,Cell,FLAGGED_OUTLIER,Marilao,285,Marilao,MAR-3,2015,10,"Total Coliform, MPN/100mL",160000000,160000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+558,Cell,FLAGGED_OUTLIER,Marilao,293,Marilao,MAR-1,2015,11,"Biochemical Oxygen Demand, mg/L",116,116,Outside IQR fence; value flagged but retained,outlier_summary.csv
+559,Cell,FLAGGED_OUTLIER,Marilao,317,Marilao,MAR-1,2016,3,"Total Coliform, MPN/100mL",35000000,35000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+560,Cell,FLAGGED_OUTLIER,Marilao,323,Marilao,MAR-1,2016,4,"Biochemical Oxygen Demand, mg/L",221,221,Outside IQR fence; value flagged but retained,outlier_summary.csv
+561,Cell,FLAGGED_OUTLIER,Marilao,323,Marilao,MAR-1,2016,4,"Total Suspended Solids, mg/L",57,57,Outside IQR fence; value flagged but retained,outlier_summary.csv
+562,Cell,FLAGGED_OUTLIER,Marilao,323,Marilao,MAR-1,2016,4,"Total Coliform, MPN/100mL",35000000,35000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+563,Cell,FLAGGED_OUTLIER,Marilao,324,Marilao,MAR-5,2016,4,"Biochemical Oxygen Demand, mg/L",106,106,Outside IQR fence; value flagged but retained,outlier_summary.csv
+564,Cell,FLAGGED_OUTLIER,Marilao,325,Marilao,MAR-2,2016,4,"Biochemical Oxygen Demand, mg/L",102,102,Outside IQR fence; value flagged but retained,outlier_summary.csv
+565,Cell,FLAGGED_OUTLIER,Marilao,329,Marilao,MAR-1,2016,5,"Biochemical Oxygen Demand, mg/L",93,93,Outside IQR fence; value flagged but retained,outlier_summary.csv
+566,Cell,FLAGGED_OUTLIER,Marilao,331,Marilao,MAR-2,2016,5,"Biochemical Oxygen Demand, mg/L",114,114,Outside IQR fence; value flagged but retained,outlier_summary.csv
+567,Cell,FLAGGED_OUTLIER,Marilao,340,Marilao,MAR-4,2016,7,"Nitrates as Nitrogen, mg/L",1.367,1.367,Outside IQR fence; value flagged but retained,outlier_summary.csv
+568,Cell,FLAGGED_OUTLIER,Marilao,345,Marilao,MAR-3,2016,8,"Ammonia, mg/L",124,124,Outside IQR fence; value flagged but retained,outlier_summary.csv
+569,Cell,FLAGGED_OUTLIER,Marilao,345,Marilao,MAR-3,2016,8,"Nitrates as Nitrogen, mg/L",1.589,1.589,Outside IQR fence; value flagged but retained,outlier_summary.csv
+570,Cell,FLAGGED_OUTLIER,Marilao,346,Marilao,MAR-4,2016,8,"Nitrates as Nitrogen, mg/L",1.397,1.397,Outside IQR fence; value flagged but retained,outlier_summary.csv
+571,Cell,FLAGGED_OUTLIER,Marilao,347,Marilao,MAR-1,2016,8,"Biochemical Oxygen Demand, mg/L",147,147,Outside IQR fence; value flagged but retained,outlier_summary.csv
+572,Cell,FLAGGED_OUTLIER,Marilao,348,Marilao,MAR-5,2016,8,"Biochemical Oxygen Demand, mg/L",102,102,Outside IQR fence; value flagged but retained,outlier_summary.csv
+573,Cell,FLAGGED_OUTLIER,Marilao,348,Marilao,MAR-5,2016,8,"Nitrates as Nitrogen, mg/L",1.964,1.964,Outside IQR fence; value flagged but retained,outlier_summary.csv
+574,Cell,FLAGGED_OUTLIER,Marilao,349,Marilao,MAR-2,2016,8,"Nitrates as Nitrogen, mg/L",2.037,2.037,Outside IQR fence; value flagged but retained,outlier_summary.csv
+575,Cell,FLAGGED_OUTLIER,Marilao,355,Marilao,MAR-2,2016,9,"Fecal Coliform, MPN/100mL",54000,54000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+576,Cell,FLAGGED_OUTLIER,Marilao,359,Marilao,MAR-1,2016,10,"Biochemical Oxygen Demand, mg/L",85,85,Outside IQR fence; value flagged but retained,outlier_summary.csv
+577,Cell,FLAGGED_OUTLIER,Marilao,366,Marilao,MAR-5,2016,11,"Chlorides Cl, mg/L",648,648,Outside IQR fence; value flagged but retained,outlier_summary.csv
+578,Cell,FLAGGED_OUTLIER,Marilao,367,Marilao,MAR-2,2016,11,"Phosphates as Phosphorous, mg/L",30.894,30.894,Outside IQR fence; value flagged but retained,outlier_summary.csv
+579,Cell,FLAGGED_OUTLIER,Marilao,367,Marilao,MAR-2,2016,11,"Chlorides Cl, mg/L",754,754,Outside IQR fence; value flagged but retained,outlier_summary.csv
+580,Cell,FLAGGED_OUTLIER,Marilao,384,Marilao,MAR-1,2017,2,Color TCU,100,100,Outside IQR fence; value flagged but retained,outlier_summary.csv
+581,Cell,FLAGGED_OUTLIER,Marilao,384,Marilao,MAR-1,2017,2,"Chlorides Cl, mg/L",481,481,Outside IQR fence; value flagged but retained,outlier_summary.csv
+582,Cell,FLAGGED_OUTLIER,Marilao,385,Marilao,MAR-5,2017,2,Color TCU,100,100,Outside IQR fence; value flagged but retained,outlier_summary.csv
+583,Cell,FLAGGED_OUTLIER,Marilao,385,Marilao,MAR-5,2017,2,"Chlorides Cl, mg/L",515,515,Outside IQR fence; value flagged but retained,outlier_summary.csv
+584,Cell,FLAGGED_OUTLIER,Marilao,386,Marilao,MAR-2,2017,2,Color TCU,125,125,Outside IQR fence; value flagged but retained,outlier_summary.csv
+585,Cell,FLAGGED_OUTLIER,Marilao,386,Marilao,MAR-2,2017,2,"Chlorides Cl, mg/L",573,573,Outside IQR fence; value flagged but retained,outlier_summary.csv
+586,Cell,FLAGGED_OUTLIER,Marilao,388,Marilao,MAR-3,2017,3,"Nitrates as Nitrogen, mg/L",1.518,1.518,Outside IQR fence; value flagged but retained,outlier_summary.csv
+587,Cell,FLAGGED_OUTLIER,Marilao,389,Marilao,MAR-4,2017,3,"Nitrates as Nitrogen, mg/L",1.872,1.872,Outside IQR fence; value flagged but retained,outlier_summary.csv
+588,Cell,FLAGGED_OUTLIER,Marilao,401,Marilao,MAR-4,2017,5,"Chlorides Cl, mg/L",420,420,Outside IQR fence; value flagged but retained,outlier_summary.csv
+589,Cell,FLAGGED_OUTLIER,Marilao,403,Marilao,MAR-5,2017,5,Color TCU,100,100,Outside IQR fence; value flagged but retained,outlier_summary.csv
+590,Cell,FLAGGED_OUTLIER,Marilao,403,Marilao,MAR-5,2017,5,"Chlorides Cl, mg/L",430,430,Outside IQR fence; value flagged but retained,outlier_summary.csv
+591,Cell,FLAGGED_OUTLIER,Marilao,404,Marilao,MAR-2,2017,5,Color TCU,150,150,Outside IQR fence; value flagged but retained,outlier_summary.csv
+592,Cell,FLAGGED_OUTLIER,Marilao,427,Marilao,MAR-5,2017,9,"Nitrates as Nitrogen, mg/L",1.555,1.555,Outside IQR fence; value flagged but retained,outlier_summary.csv
+593,Cell,FLAGGED_OUTLIER,Marilao,428,Marilao,MAR-2,2017,9,"Nitrates as Nitrogen, mg/L",1.581,1.581,Outside IQR fence; value flagged but retained,outlier_summary.csv
+594,Cell,FLAGGED_OUTLIER,Marilao,432,Marilao,MAR-1,2017,10,"Total Suspended Solids, mg/L",57,57,Outside IQR fence; value flagged but retained,outlier_summary.csv
+595,Cell,FLAGGED_OUTLIER,Marilao,438,Marilao,MAR-1,2017,11,"Fecal Coliform, MPN/100mL",160000000,160000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+596,Cell,FLAGGED_OUTLIER,Marilao,445,Marilao,MAR-1,2018,1,"Chlorides Cl, mg/L",1152,1152,Outside IQR fence; value flagged but retained,outlier_summary.csv
+597,Cell,FLAGGED_OUTLIER,Marilao,446,Marilao,MAR-5,2018,1,"Chlorides Cl, mg/L",1103,1103,Outside IQR fence; value flagged but retained,outlier_summary.csv
+598,Cell,FLAGGED_OUTLIER,Marilao,447,Marilao,MAR-2,2018,1,"Chlorides Cl, mg/L",1098,1098,Outside IQR fence; value flagged but retained,outlier_summary.csv
+599,Cell,FLAGGED_OUTLIER,Marilao,463,Marilao,MAR-1,2018,4,Color TCU,250,250,Outside IQR fence; value flagged but retained,outlier_summary.csv
+600,Cell,FLAGGED_OUTLIER,Marilao,463,Marilao,MAR-1,2018,4,"Chlorides Cl, mg/L",480,480,Outside IQR fence; value flagged but retained,outlier_summary.csv
+601,Cell,FLAGGED_OUTLIER,Marilao,464,Marilao,MAR-5,2018,4,Color TCU,250,250,Outside IQR fence; value flagged but retained,outlier_summary.csv
+602,Cell,FLAGGED_OUTLIER,Marilao,464,Marilao,MAR-5,2018,4,"Chlorides Cl, mg/L",437,437,Outside IQR fence; value flagged but retained,outlier_summary.csv
+603,Cell,FLAGGED_OUTLIER,Marilao,465,Marilao,MAR-2,2018,4,Color TCU,250,250,Outside IQR fence; value flagged but retained,outlier_summary.csv
+604,Cell,FLAGGED_OUTLIER,Marilao,465,Marilao,MAR-2,2018,4,"Chlorides Cl, mg/L",738,738,Outside IQR fence; value flagged but retained,outlier_summary.csv
+605,Cell,FLAGGED_OUTLIER,Marilao,469,Marilao,MAR-1,2018,5,"Biochemical Oxygen Demand, mg/L",289,289,Outside IQR fence; value flagged but retained,outlier_summary.csv
+606,Cell,FLAGGED_OUTLIER,Marilao,469,Marilao,MAR-1,2018,5,"Fecal Coliform, MPN/100mL",92000000,92000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+607,Cell,FLAGGED_OUTLIER,Marilao,469,Marilao,MAR-1,2018,5,"Chlorides Cl, mg/L",821,821,Outside IQR fence; value flagged but retained,outlier_summary.csv
+608,Cell,FLAGGED_OUTLIER,Marilao,470,Marilao,MAR-5,2018,5,"Biochemical Oxygen Demand, mg/L",244,244,Outside IQR fence; value flagged but retained,outlier_summary.csv
+609,Cell,FLAGGED_OUTLIER,Marilao,470,Marilao,MAR-5,2018,5,"Fecal Coliform, MPN/100mL",92000000,92000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+610,Cell,FLAGGED_OUTLIER,Marilao,470,Marilao,MAR-5,2018,5,"Chlorides Cl, mg/L",976,976,Outside IQR fence; value flagged but retained,outlier_summary.csv
+611,Cell,FLAGGED_OUTLIER,Marilao,471,Marilao,MAR-2,2018,5,"Biochemical Oxygen Demand, mg/L",189,189,Outside IQR fence; value flagged but retained,outlier_summary.csv
+612,Cell,FLAGGED_OUTLIER,Marilao,471,Marilao,MAR-2,2018,5,"Chlorides Cl, mg/L",864,864,Outside IQR fence; value flagged but retained,outlier_summary.csv
+613,Cell,FLAGGED_OUTLIER,Meycauayan,14,Meycauayan,MEY-4,2012,1,"Dissolved Oxygen, mg/L",4.08,4.08,Outside IQR fence; value flagged but retained,outlier_summary.csv
+614,Cell,FLAGGED_OUTLIER,Meycauayan,15,Meycauayan,MEY-1,2012,1,"Biochemical Oxygen Demand, mg/L",204,204,Outside IQR fence; value flagged but retained,outlier_summary.csv
+615,Cell,FLAGGED_OUTLIER,Meycauayan,20,Meycauayan,MEY-4,2012,2,"Dissolved Oxygen, mg/L",4.5,4.5,Outside IQR fence; value flagged but retained,outlier_summary.csv
+616,Cell,FLAGGED_OUTLIER,Meycauayan,27,Meycauayan,MEY-1,2012,3,"Biochemical Oxygen Demand, mg/L",190,190,Outside IQR fence; value flagged but retained,outlier_summary.csv
+617,Cell,FLAGGED_OUTLIER,Meycauayan,38,Meycauayan,MEY-4,2012,5,"Dissolved Oxygen, mg/L",3.2,3.2,Outside IQR fence; value flagged but retained,outlier_summary.csv
+618,Cell,FLAGGED_OUTLIER,Meycauayan,50,Meycauayan,MEY-4,2012,7,"Dissolved Oxygen, mg/L",3.2,3.2,Outside IQR fence; value flagged but retained,outlier_summary.csv
+619,Cell,FLAGGED_OUTLIER,Meycauayan,51,Meycauayan,MEY-1,2012,7,"Dissolved Oxygen, mg/L",3.1,3.1,Outside IQR fence; value flagged but retained,outlier_summary.csv
+620,Cell,FLAGGED_OUTLIER,Meycauayan,52,Meycauayan,MEY-5,2012,7,"Dissolved Oxygen, mg/L",3,3,Outside IQR fence; value flagged but retained,outlier_summary.csv
+621,Cell,FLAGGED_OUTLIER,Meycauayan,53,Meycauayan,MEY-2,2012,7,"Dissolved Oxygen, mg/L",3.7,3.7,Outside IQR fence; value flagged but retained,outlier_summary.csv
+622,Cell,FLAGGED_OUTLIER,Meycauayan,54,Meycauayan,MEY-3,2012,7,"Dissolved Oxygen, mg/L",4.6,4.6,Outside IQR fence; value flagged but retained,outlier_summary.csv
+623,Cell,FLAGGED_OUTLIER,Meycauayan,75,Meycauayan,MEY-1,2012,11,"Biochemical Oxygen Demand, mg/L",183,183,Outside IQR fence; value flagged but retained,outlier_summary.csv
+624,Cell,FLAGGED_OUTLIER,Meycauayan,86,Meycauayan,MEY-4,2013,1,"Total Suspended Solids, mg/L",114,114,Outside IQR fence; value flagged but retained,outlier_summary.csv
+625,Cell,FLAGGED_OUTLIER,Meycauayan,86,Meycauayan,MEY-4,2013,1,"Phosphates as Phosphorous, mg/L",5.002,5.002,Outside IQR fence; value flagged but retained,outlier_summary.csv
+626,Cell,FLAGGED_OUTLIER,Meycauayan,92,Meycauayan,MEY-4,2013,2,"Total Suspended Solids, mg/L",77,77,Outside IQR fence; value flagged but retained,outlier_summary.csv
+627,Cell,FLAGGED_OUTLIER,Meycauayan,92,Meycauayan,MEY-4,2013,2,"Phosphates as Phosphorous, mg/L",6.247,6.247,Outside IQR fence; value flagged but retained,outlier_summary.csv
+628,Cell,FLAGGED_OUTLIER,Meycauayan,93,Meycauayan,MEY-1,2013,2,"Total Suspended Solids, mg/L",72,72,Outside IQR fence; value flagged but retained,outlier_summary.csv
+629,Cell,FLAGGED_OUTLIER,Meycauayan,94,Meycauayan,MEY-5,2013,2,"Total Suspended Solids, mg/L",64,64,Outside IQR fence; value flagged but retained,outlier_summary.csv
+630,Cell,FLAGGED_OUTLIER,Meycauayan,94,Meycauayan,MEY-5,2013,2,"Total Coliform, MPN/100mL",54000000,54000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+631,Cell,FLAGGED_OUTLIER,Meycauayan,94,Meycauayan,MEY-5,2013,2,"Phosphates as Phosphorous, mg/L",21.756,21.756,Outside IQR fence; value flagged but retained,outlier_summary.csv
+632,Cell,FLAGGED_OUTLIER,Meycauayan,98,Meycauayan,MEY-4,2013,3,"Total Suspended Solids, mg/L",121,121,Outside IQR fence; value flagged but retained,outlier_summary.csv
+633,Cell,FLAGGED_OUTLIER,Meycauayan,104,Meycauayan,MEY-4,2013,4,"Phosphates as Phosphorous, mg/L",6.242,6.242,Outside IQR fence; value flagged but retained,outlier_summary.csv
+634,Cell,FLAGGED_OUTLIER,Meycauayan,105,Meycauayan,MEY-1,2013,4,"Total Suspended Solids, mg/L",60,60,Outside IQR fence; value flagged but retained,outlier_summary.csv
+635,Cell,FLAGGED_OUTLIER,Meycauayan,106,Meycauayan,MEY-5,2013,4,"Biochemical Oxygen Demand, mg/L",270,270,Outside IQR fence; value flagged but retained,outlier_summary.csv
+636,Cell,FLAGGED_OUTLIER,Meycauayan,106,Meycauayan,MEY-5,2013,4,"Total Suspended Solids, mg/L",280,280,Outside IQR fence; value flagged but retained,outlier_summary.csv
+637,Cell,FLAGGED_OUTLIER,Meycauayan,106,Meycauayan,MEY-5,2013,4,"Total Coliform, MPN/100mL",160000000,160000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+638,Cell,FLAGGED_OUTLIER,Meycauayan,110,Meycauayan,MEY-4,2013,5,"Total Suspended Solids, mg/L",145,145,Outside IQR fence; value flagged but retained,outlier_summary.csv
+639,Cell,FLAGGED_OUTLIER,Meycauayan,111,Meycauayan,MEY-1,2013,5,"Total Suspended Solids, mg/L",90,90,Outside IQR fence; value flagged but retained,outlier_summary.csv
+640,Cell,FLAGGED_OUTLIER,Meycauayan,112,Meycauayan,MEY-5,2013,5,"Total Suspended Solids, mg/L",80,80,Outside IQR fence; value flagged but retained,outlier_summary.csv
+641,Cell,FLAGGED_OUTLIER,Meycauayan,114,Meycauayan,MEY-3,2013,5,"Total Suspended Solids, mg/L",80,80,Outside IQR fence; value flagged but retained,outlier_summary.csv
+642,Cell,FLAGGED_OUTLIER,Meycauayan,124,Meycauayan,MEY-5,2013,7,"Total Coliform, MPN/100mL",160000000,160000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+643,Cell,FLAGGED_OUTLIER,Meycauayan,125,Meycauayan,MEY-2,2013,7,"Total Coliform, MPN/100mL",92000000,92000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+644,Cell,FLAGGED_OUTLIER,Meycauayan,126,Meycauayan,MEY-3,2013,7,"Total Coliform, MPN/100mL",3500000000,3500000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+645,Cell,FLAGGED_OUTLIER,Meycauayan,130,Meycauayan,MEY-5,2013,8,"Total Coliform, MPN/100mL",160000000,160000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+646,Cell,FLAGGED_OUTLIER,Meycauayan,134,Meycauayan,MEY-4,2013,9,"Total Suspended Solids, mg/L",60,60,Outside IQR fence; value flagged but retained,outlier_summary.csv
+647,Cell,FLAGGED_OUTLIER,Meycauayan,136,Meycauayan,MEY-5,2013,9,"Total Coliform, MPN/100mL",54000000,54000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+648,Cell,FLAGGED_OUTLIER,Meycauayan,140,Meycauayan,MEY-4,2013,10,"Dissolved Oxygen, mg/L",3.78,3.78,Outside IQR fence; value flagged but retained,outlier_summary.csv
+649,Cell,FLAGGED_OUTLIER,Meycauayan,140,Meycauayan,MEY-4,2013,10,"Total Coliform, MPN/100mL",3500000000,3500000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+650,Cell,FLAGGED_OUTLIER,Meycauayan,141,Meycauayan,MEY-1,2013,10,"Total Coliform, MPN/100mL",92000000,92000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+651,Cell,FLAGGED_OUTLIER,Meycauayan,143,Meycauayan,MEY-2,2013,10,"Total Coliform, MPN/100mL",540000000,540000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+652,Cell,FLAGGED_OUTLIER,Meycauayan,144,Meycauayan,MEY-3,2013,10,"Total Coliform, MPN/100mL",46000000,46000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+653,Cell,FLAGGED_OUTLIER,Meycauayan,146,Meycauayan,MEY-4,2013,11,"Dissolved Oxygen, mg/L",3.1,3.1,Outside IQR fence; value flagged but retained,outlier_summary.csv
+654,Cell,FLAGGED_OUTLIER,Meycauayan,149,Meycauayan,MEY-2,2013,11,"Biochemical Oxygen Demand, mg/L",169,169,Outside IQR fence; value flagged but retained,outlier_summary.csv
+655,Cell,FLAGGED_OUTLIER,Meycauayan,153,Meycauayan,MEY-1,2013,12,"Total Suspended Solids, mg/L",74,74,Outside IQR fence; value flagged but retained,outlier_summary.csv
+656,Cell,FLAGGED_OUTLIER,Meycauayan,154,Meycauayan,MEY-5,2013,12,"Total Coliform, MPN/100mL",54000000,54000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+657,Cell,FLAGGED_OUTLIER,Meycauayan,159,Meycauayan,MEY-1,2014,1,"Biochemical Oxygen Demand, mg/L",270,270,Outside IQR fence; value flagged but retained,outlier_summary.csv
+658,Cell,FLAGGED_OUTLIER,Meycauayan,160,Meycauayan,MEY-5,2014,1,"Total Coliform, MPN/100mL",160000000,160000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+659,Cell,FLAGGED_OUTLIER,Meycauayan,161,Meycauayan,MEY-2,2014,1,"Total Coliform, MPN/100mL",54000000,54000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+660,Cell,FLAGGED_OUTLIER,Meycauayan,164,Meycauayan,MEY-4,2014,2,"Total Suspended Solids, mg/L",64,64,Outside IQR fence; value flagged but retained,outlier_summary.csv
+661,Cell,FLAGGED_OUTLIER,Meycauayan,164,Meycauayan,MEY-4,2014,2,"Nitrates as Nitrogen, mg/L",1.009,1.009,Outside IQR fence; value flagged but retained,outlier_summary.csv
+662,Cell,FLAGGED_OUTLIER,Meycauayan,166,Meycauayan,MEY-5,2014,2,"Nitrates as Nitrogen, mg/L",0.741,0.741,Outside IQR fence; value flagged but retained,outlier_summary.csv
+663,Cell,FLAGGED_OUTLIER,Meycauayan,167,Meycauayan,MEY-2,2014,2,"Nitrates as Nitrogen, mg/L",0.741,0.741,Outside IQR fence; value flagged but retained,outlier_summary.csv
+664,Cell,FLAGGED_OUTLIER,Meycauayan,168,Meycauayan,MEY-3,2014,2,"Nitrates as Nitrogen, mg/L",0.741,0.741,Outside IQR fence; value flagged but retained,outlier_summary.csv
+665,Cell,FLAGGED_OUTLIER,Meycauayan,176,Meycauayan,MEY-4,2014,4,"Phosphates as Phosphorous, mg/L",5.679,5.679,Outside IQR fence; value flagged but retained,outlier_summary.csv
+666,Cell,FLAGGED_OUTLIER,Meycauayan,177,Meycauayan,MEY-1,2014,4,"Total Suspended Solids, mg/L",118,118,Outside IQR fence; value flagged but retained,outlier_summary.csv
+667,Cell,FLAGGED_OUTLIER,Meycauayan,177,Meycauayan,MEY-1,2014,4,"Nitrates as Nitrogen, mg/L",1.113,1.113,Outside IQR fence; value flagged but retained,outlier_summary.csv
+668,Cell,FLAGGED_OUTLIER,Meycauayan,178,Meycauayan,MEY-5,2014,4,"Total Coliform, MPN/100mL",92000000,92000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+669,Cell,FLAGGED_OUTLIER,Meycauayan,183,Meycauayan,MEY-1,2014,5,"Total Suspended Solids, mg/L",89,89,Outside IQR fence; value flagged but retained,outlier_summary.csv
+670,Cell,FLAGGED_OUTLIER,Meycauayan,188,Meycauayan,MEY-4,2014,6,"Dissolved Oxygen, mg/L",2.9,2.9,Outside IQR fence; value flagged but retained,outlier_summary.csv
+671,Cell,FLAGGED_OUTLIER,Meycauayan,188,Meycauayan,MEY-4,2014,6,"Nitrates as Nitrogen, mg/L",0.743,0.743,Outside IQR fence; value flagged but retained,outlier_summary.csv
+672,Cell,FLAGGED_OUTLIER,Meycauayan,195,Meycauayan,MEY-1,2014,7,"Nitrates as Nitrogen, mg/L",1.103,1.103,Outside IQR fence; value flagged but retained,outlier_summary.csv
+673,Cell,FLAGGED_OUTLIER,Meycauayan,196,Meycauayan,MEY-5,2014,7,"Nitrates as Nitrogen, mg/L",1.218,1.218,Outside IQR fence; value flagged but retained,outlier_summary.csv
+674,Cell,FLAGGED_OUTLIER,Meycauayan,197,Meycauayan,MEY-2,2014,7,"Nitrates as Nitrogen, mg/L",1.146,1.146,Outside IQR fence; value flagged but retained,outlier_summary.csv
+675,Cell,FLAGGED_OUTLIER,Meycauayan,198,Meycauayan,MEY-3,2014,7,"Nitrates as Nitrogen, mg/L",1.166,1.166,Outside IQR fence; value flagged but retained,outlier_summary.csv
+676,Cell,FLAGGED_OUTLIER,Meycauayan,206,Meycauayan,MEY-4,2014,9,"Phosphates as Phosphorous, mg/L",6.13,6.13,Outside IQR fence; value flagged but retained,outlier_summary.csv
+677,Cell,FLAGGED_OUTLIER,Meycauayan,207,Meycauayan,MEY-1,2014,9,"Phosphates as Phosphorous, mg/L",8.134,8.134,Outside IQR fence; value flagged but retained,outlier_summary.csv
+678,Cell,FLAGGED_OUTLIER,Meycauayan,208,Meycauayan,MEY-5,2014,9,"Phosphates as Phosphorous, mg/L",5.407,5.407,Outside IQR fence; value flagged but retained,outlier_summary.csv
+679,Cell,FLAGGED_OUTLIER,Meycauayan,212,Meycauayan,MEY-4,2014,10,"Dissolved Oxygen, mg/L",3.2,3.2,Outside IQR fence; value flagged but retained,outlier_summary.csv
+680,Cell,FLAGGED_OUTLIER,Meycauayan,218,Meycauayan,MEY-4,2014,11,"Phosphates as Phosphorous, mg/L",5.321,5.321,Outside IQR fence; value flagged but retained,outlier_summary.csv
+681,Cell,FLAGGED_OUTLIER,Meycauayan,236,Meycauayan,MEY-4,2015,2,"Phosphates as Phosphorous, mg/L",7.438,7.438,Outside IQR fence; value flagged but retained,outlier_summary.csv
+682,Cell,FLAGGED_OUTLIER,Meycauayan,237,Meycauayan,MEY-1,2015,2,"Phosphates as Phosphorous, mg/L",5.32,5.32,Outside IQR fence; value flagged but retained,outlier_summary.csv
+683,Cell,FLAGGED_OUTLIER,Meycauayan,238,Meycauayan,MEY-5,2015,2,"Phosphates as Phosphorous, mg/L",5.281,5.281,Outside IQR fence; value flagged but retained,outlier_summary.csv
+684,Cell,FLAGGED_OUTLIER,Meycauayan,239,Meycauayan,MEY-2,2015,2,"Phosphates as Phosphorous, mg/L",5.295,5.295,Outside IQR fence; value flagged but retained,outlier_summary.csv
+685,Cell,FLAGGED_OUTLIER,Meycauayan,240,Meycauayan,MEY-3,2015,2,"Phosphates as Phosphorous, mg/L",5.342,5.342,Outside IQR fence; value flagged but retained,outlier_summary.csv
+686,Cell,FLAGGED_OUTLIER,Meycauayan,262,Meycauayan,MEY-5,2015,6,"Total Suspended Solids, mg/L",67,67,Outside IQR fence; value flagged but retained,outlier_summary.csv
+687,Cell,FLAGGED_OUTLIER,Meycauayan,264,Meycauayan,MEY-3,2015,6,"Total Suspended Solids, mg/L",63,63,Outside IQR fence; value flagged but retained,outlier_summary.csv
+688,Cell,FLAGGED_OUTLIER,Meycauayan,272,Meycauayan,MEY-4,2015,8,"Dissolved Oxygen, mg/L",3.2,3.2,Outside IQR fence; value flagged but retained,outlier_summary.csv
+689,Cell,FLAGGED_OUTLIER,Meycauayan,287,Meycauayan,MEY-2,2015,10,"Total Coliform, MPN/100mL",110000000,110000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+690,Cell,FLAGGED_OUTLIER,Meycauayan,296,Meycauayan,MEY-4,2015,12,"Ammonia, mg/L",34.209,34.209,Outside IQR fence; value flagged but retained,outlier_summary.csv
+691,Cell,FLAGGED_OUTLIER,Meycauayan,302,Meycauayan,MEY-4,2016,1,"Ammonia, mg/L",36.519,36.519,Outside IQR fence; value flagged but retained,outlier_summary.csv
+692,Cell,FLAGGED_OUTLIER,Meycauayan,302,Meycauayan,MEY-4,2016,1,"Phosphates as Phosphorous, mg/L",5.196,5.196,Outside IQR fence; value flagged but retained,outlier_summary.csv
+693,Cell,FLAGGED_OUTLIER,Meycauayan,305,Meycauayan,MEY-2,2016,1,"Biochemical Oxygen Demand, mg/L",172,172,Outside IQR fence; value flagged but retained,outlier_summary.csv
+694,Cell,FLAGGED_OUTLIER,Meycauayan,308,Meycauayan,MEY-4,2016,2,"Phosphates as Phosphorous, mg/L",5.26,5.26,Outside IQR fence; value flagged but retained,outlier_summary.csv
+695,Cell,FLAGGED_OUTLIER,Meycauayan,314,Meycauayan,MEY-4,2016,3,"Ammonia, mg/L",36.745,36.745,Outside IQR fence; value flagged but retained,outlier_summary.csv
+696,Cell,FLAGGED_OUTLIER,Meycauayan,320,Meycauayan,MEY-4,2016,4,"Ammonia, mg/L",36.747,36.747,Outside IQR fence; value flagged but retained,outlier_summary.csv
+697,Cell,FLAGGED_OUTLIER,Meycauayan,332,Meycauayan,MEY-4,2016,6,"Dissolved Oxygen, mg/L",2.95,2.95,Outside IQR fence; value flagged but retained,outlier_summary.csv
+698,Cell,FLAGGED_OUTLIER,Meycauayan,338,Meycauayan,MEY-4,2016,7,"Dissolved Oxygen, mg/L",3.52,3.52,Outside IQR fence; value flagged but retained,outlier_summary.csv
+699,Cell,FLAGGED_OUTLIER,Meycauayan,341,Meycauayan,MEY-2,2016,7,"Total Coliform, MPN/100mL",54000000,54000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+700,Cell,FLAGGED_OUTLIER,Meycauayan,344,Meycauayan,MEY-4,2016,8,"Dissolved Oxygen, mg/L",3.5,3.5,Outside IQR fence; value flagged but retained,outlier_summary.csv
+701,Cell,FLAGGED_OUTLIER,Meycauayan,356,Meycauayan,MEY-4,2016,10,"Dissolved Oxygen, mg/L",3.3,3.3,Outside IQR fence; value flagged but retained,outlier_summary.csv
+702,Cell,FLAGGED_OUTLIER,Meycauayan,357,Meycauayan,MEY-1,2016,10,"Fecal Coliform, MPN/100mL",920000000,920000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+703,Cell,FLAGGED_OUTLIER,Meycauayan,364,Meycauayan,MEY-5,2016,11,"Fecal Coliform, MPN/100mL",54000,54000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+704,Cell,FLAGGED_OUTLIER,Meycauayan,366,Meycauayan,MEY-3,2016,11,"Fecal Coliform, MPN/100mL",46000,46000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+705,Cell,FLAGGED_OUTLIER,Meycauayan,381,Meycauayan,MEY-4,2017,2,"Dissolved Oxygen, mg/L",4.48,4.48,Outside IQR fence; value flagged but retained,outlier_summary.csv
+706,Cell,FLAGGED_OUTLIER,Meycauayan,381,Meycauayan,MEY-4,2017,2,"Phosphates as Phosphorous, mg/L",5.051,5.051,Outside IQR fence; value flagged but retained,outlier_summary.csv
+707,Cell,FLAGGED_OUTLIER,Meycauayan,382,Meycauayan,MEY-1,2017,2,"Total Suspended Solids, mg/L",110,110,Outside IQR fence; value flagged but retained,outlier_summary.csv
+708,Cell,FLAGGED_OUTLIER,Meycauayan,384,Meycauayan,MEY-2,2017,2,"Total Suspended Solids, mg/L",61,61,Outside IQR fence; value flagged but retained,outlier_summary.csv
+709,Cell,FLAGGED_OUTLIER,Meycauayan,388,Meycauayan,MEY-1,2017,3,Color TCU,200,200,Outside IQR fence; value flagged but retained,outlier_summary.csv
+710,Cell,FLAGGED_OUTLIER,Meycauayan,390,Meycauayan,MEY-2,2017,3,"Total Suspended Solids, mg/L",76,76,Outside IQR fence; value flagged but retained,outlier_summary.csv
+711,Cell,FLAGGED_OUTLIER,Meycauayan,390,Meycauayan,MEY-2,2017,3,Color TCU,250,250,Outside IQR fence; value flagged but retained,outlier_summary.csv
+712,Cell,FLAGGED_OUTLIER,Meycauayan,399,Meycauayan,MEY-4,2017,5,"Phosphates as Phosphorous, mg/L",3103,3103,Outside IQR fence; value flagged but retained,outlier_summary.csv
+713,Cell,FLAGGED_OUTLIER,Meycauayan,400,Meycauayan,MEY-1,2017,5,"Phosphates as Phosphorous, mg/L",1578,1578,Outside IQR fence; value flagged but retained,outlier_summary.csv
+714,Cell,FLAGGED_OUTLIER,Meycauayan,401,Meycauayan,MEY-5,2017,5,"Phosphates as Phosphorous, mg/L",1598,1598,Outside IQR fence; value flagged but retained,outlier_summary.csv
+715,Cell,FLAGGED_OUTLIER,Meycauayan,402,Meycauayan,MEY-2,2017,5,"Phosphates as Phosphorous, mg/L",1585,1585,Outside IQR fence; value flagged but retained,outlier_summary.csv
+716,Cell,FLAGGED_OUTLIER,Meycauayan,403,Meycauayan,MEY-3,2017,5,"Total Suspended Solids, mg/L",76,76,Outside IQR fence; value flagged but retained,outlier_summary.csv
+717,Cell,FLAGGED_OUTLIER,Meycauayan,403,Meycauayan,MEY-3,2017,5,"Phosphates as Phosphorous, mg/L",1863,1863,Outside IQR fence; value flagged but retained,outlier_summary.csv
+718,Cell,FLAGGED_OUTLIER,Meycauayan,406,Meycauayan,MEY-1,2017,6,"Nitrates as Nitrogen, mg/L",0.756,0.756,Outside IQR fence; value flagged but retained,outlier_summary.csv
+719,Cell,FLAGGED_OUTLIER,Meycauayan,409,Meycauayan,MEY-3,2017,6,"Nitrates as Nitrogen, mg/L",1.482,1.482,Outside IQR fence; value flagged but retained,outlier_summary.csv
+720,Cell,FLAGGED_OUTLIER,Meycauayan,423,Meycauayan,MEY-4,2017,9,"Dissolved Oxygen, mg/L",3.18,3.18,Outside IQR fence; value flagged but retained,outlier_summary.csv
+721,Cell,FLAGGED_OUTLIER,Meycauayan,429,Meycauayan,MEY-4,2017,10,"Dissolved Oxygen, mg/L",3.95,3.95,Outside IQR fence; value flagged but retained,outlier_summary.csv
+722,Cell,FLAGGED_OUTLIER,Meycauayan,436,Meycauayan,MEY-1,2017,11,Color TCU,200,200,Outside IQR fence; value flagged but retained,outlier_summary.csv
+723,Cell,FLAGGED_OUTLIER,Meycauayan,437,Meycauayan,MEY-5,2017,11,Color TCU,200,200,Outside IQR fence; value flagged but retained,outlier_summary.csv
+724,Cell,FLAGGED_OUTLIER,Meycauayan,438,Meycauayan,MEY-2,2017,11,Color TCU,200,200,Outside IQR fence; value flagged but retained,outlier_summary.csv
+725,Cell,FLAGGED_OUTLIER,Meycauayan,439,Meycauayan,MEY-3,2017,11,Color TCU,200,200,Outside IQR fence; value flagged but retained,outlier_summary.csv
+726,Cell,FLAGGED_OUTLIER,Meycauayan,452,Meycauayan,MEY-2,2018,1,"Total Suspended Solids, mg/L",59,59,Outside IQR fence; value flagged but retained,outlier_summary.csv
+727,Cell,FLAGGED_OUTLIER,Meycauayan,453,Meycauayan,MEY-3,2018,1,"Total Suspended Solids, mg/L",63,63,Outside IQR fence; value flagged but retained,outlier_summary.csv
+728,Cell,FLAGGED_OUTLIER,Meycauayan,455,Meycauayan,MEY-4,2018,2,"Phosphates as Phosphorous, mg/L",5.42,5.42,Outside IQR fence; value flagged but retained,outlier_summary.csv
+729,Cell,FLAGGED_OUTLIER,Meycauayan,456,Meycauayan,MEY-1,2018,2,"Total Suspended Solids, mg/L",68,68,Outside IQR fence; value flagged but retained,outlier_summary.csv
+730,Cell,FLAGGED_OUTLIER,Meycauayan,456,Meycauayan,MEY-1,2018,2,Color TCU,250,250,Outside IQR fence; value flagged but retained,outlier_summary.csv
+731,Cell,FLAGGED_OUTLIER,Meycauayan,457,Meycauayan,MEY-5,2018,2,"Total Suspended Solids, mg/L",77,77,Outside IQR fence; value flagged but retained,outlier_summary.csv
+732,Cell,FLAGGED_OUTLIER,Meycauayan,458,Meycauayan,MEY-2,2018,2,"Total Suspended Solids, mg/L",89,89,Outside IQR fence; value flagged but retained,outlier_summary.csv
+733,Cell,FLAGGED_OUTLIER,Meycauayan,459,Meycauayan,MEY-3,2018,2,"Total Suspended Solids, mg/L",112,112,Outside IQR fence; value flagged but retained,outlier_summary.csv
+734,Cell,FLAGGED_OUTLIER,Meycauayan,459,Meycauayan,MEY-3,2018,2,"Chlorides Cl, mg/L",3755,3755,Outside IQR fence; value flagged but retained,outlier_summary.csv
+735,Cell,FLAGGED_OUTLIER,Meycauayan,468,Meycauayan,MEY-1,2018,4,"Chlorides Cl, mg/L",4222,4222,Outside IQR fence; value flagged but retained,outlier_summary.csv
+736,Cell,FLAGGED_OUTLIER,Meycauayan,469,Meycauayan,MEY-5,2018,4,"Chlorides Cl, mg/L",4106,4106,Outside IQR fence; value flagged but retained,outlier_summary.csv
+737,Cell,FLAGGED_OUTLIER,Meycauayan,470,Meycauayan,MEY-2,2018,4,"Chlorides Cl, mg/L",5193,5193,Outside IQR fence; value flagged but retained,outlier_summary.csv
+738,Cell,FLAGGED_OUTLIER,Meycauayan,471,Meycauayan,MEY-3,2018,4,"Chlorides Cl, mg/L",5193,5193,Outside IQR fence; value flagged but retained,outlier_summary.csv
+739,Cell,FLAGGED_OUTLIER,Meycauayan,473,Meycauayan,MEY-4,2018,5,"Dissolved Oxygen, mg/L",2.89,2.89,Outside IQR fence; value flagged but retained,outlier_summary.csv
+740,Cell,FLAGGED_OUTLIER,Meycauayan,474,Meycauayan,MEY-1,2018,5,"Chlorides Cl, mg/L",5185,5185,Outside IQR fence; value flagged but retained,outlier_summary.csv
+741,Cell,FLAGGED_OUTLIER,Meycauayan,475,Meycauayan,MEY-5,2018,5,"Chlorides Cl, mg/L",6026,6026,Outside IQR fence; value flagged but retained,outlier_summary.csv
+742,Cell,FLAGGED_OUTLIER,Meycauayan,476,Meycauayan,MEY-2,2018,5,"Chlorides Cl, mg/L",4998,4998,Outside IQR fence; value flagged but retained,outlier_summary.csv
+743,Cell,FLAGGED_OUTLIER,Meycauayan,477,Meycauayan,MEY-3,2018,5,"Chlorides Cl, mg/L",6400,6400,Outside IQR fence; value flagged but retained,outlier_summary.csv
+744,Cell,FLAGGED_OUTLIER,Obando,62,Obando,OBA-2,2013,1,"Total Coliform, MPN/100mL",2400000,2400000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+745,Cell,FLAGGED_OUTLIER,Obando,62,Obando,OBA-2,2013,1,"Phosphates as Phosphorous, mg/L",1.873,1.873,Outside IQR fence; value flagged but retained,outlier_summary.csv
+746,Cell,FLAGGED_OUTLIER,Obando,67,Obando,OBA-1,2013,2,"Total Suspended Solids, mg/L",118,118,Outside IQR fence; value flagged but retained,outlier_summary.csv
+747,Cell,FLAGGED_OUTLIER,Obando,68,Obando,OBA-3,2013,2,"Total Suspended Solids, mg/L",108,108,Outside IQR fence; value flagged but retained,outlier_summary.csv
+748,Cell,FLAGGED_OUTLIER,Obando,68,Obando,OBA-3,2013,2,"Total Coliform, MPN/100mL",920000,920000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+749,Cell,FLAGGED_OUTLIER,Obando,70,Obando,OBA-2,2013,3,"Total Coliform, MPN/100mL",5400000,5400000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+750,Cell,FLAGGED_OUTLIER,Obando,72,Obando,OBA-3,2013,3,"Total Suspended Solids, mg/L",133,133,Outside IQR fence; value flagged but retained,outlier_summary.csv
+751,Cell,FLAGGED_OUTLIER,Obando,74,Obando,OBA-2,2013,4,"Ammonia, mg/L",9.457,9.457,Outside IQR fence; value flagged but retained,outlier_summary.csv
+752,Cell,FLAGGED_OUTLIER,Obando,78,Obando,OBA-2,2013,5,"Total Coliform, MPN/100mL",2400000,2400000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+753,Cell,FLAGGED_OUTLIER,Obando,78,Obando,OBA-2,2013,5,"Phosphates as Phosphorous, mg/L",1.973,1.973,Outside IQR fence; value flagged but retained,outlier_summary.csv
+754,Cell,FLAGGED_OUTLIER,Obando,82,Obando,OBA-2,2013,6,"Total Coliform, MPN/100mL",920000,920000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+755,Cell,FLAGGED_OUTLIER,Obando,86,Obando,OBA-2,2013,7,"Total Coliform, MPN/100mL",920000,920000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+756,Cell,FLAGGED_OUTLIER,Obando,87,Obando,OBA-1,2013,7,pH,6.1,6.1,Outside IQR fence; value flagged but retained,outlier_summary.csv
+757,Cell,FLAGGED_OUTLIER,Obando,88,Obando,OBA-3,2013,7,pH,6.4,6.4,Outside IQR fence; value flagged but retained,outlier_summary.csv
+758,Cell,FLAGGED_OUTLIER,Obando,90,Obando,OBA-2,2013,8,"Total Coliform, MPN/100mL",3500000,3500000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+759,Cell,FLAGGED_OUTLIER,Obando,90,Obando,OBA-2,2013,8,"Nitrates as Nitrogen, mg/L",0.914,0.914,Outside IQR fence; value flagged but retained,outlier_summary.csv
+760,Cell,FLAGGED_OUTLIER,Obando,91,Obando,OBA-1,2013,8,"Total Coliform, MPN/100mL",3500000,3500000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+761,Cell,FLAGGED_OUTLIER,Obando,92,Obando,OBA-3,2013,8,"Total Coliform, MPN/100mL",2400000,2400000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+762,Cell,FLAGGED_OUTLIER,Obando,100,Obando,OBA-3,2013,10,"Total Coliform, MPN/100mL",2400000,2400000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+763,Cell,FLAGGED_OUTLIER,Obando,104,Obando,OBA-3,2013,11,"Total Coliform, MPN/100mL",1600000,1600000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+764,Cell,FLAGGED_OUTLIER,Obando,112,Obando,OBA-3,2014,1,"Ammonia, mg/L",12.033,12.033,Outside IQR fence; value flagged but retained,outlier_summary.csv
+765,Cell,FLAGGED_OUTLIER,Obando,118,Obando,OBA-2,2014,3,"Total Coliform, MPN/100mL",1600000,1600000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+766,Cell,FLAGGED_OUTLIER,Obando,118,Obando,OBA-2,2014,3,"Phosphates as Phosphorous, mg/L",3.446,3.446,Outside IQR fence; value flagged but retained,outlier_summary.csv
+767,Cell,FLAGGED_OUTLIER,Obando,120,Obando,OBA-3,2014,3,"Total Suspended Solids, mg/L",96,96,Outside IQR fence; value flagged but retained,outlier_summary.csv
+768,Cell,FLAGGED_OUTLIER,Obando,122,Obando,OBA-2,2014,4,"Nitrates as Nitrogen, mg/L",0.601,0.601,Outside IQR fence; value flagged but retained,outlier_summary.csv
+769,Cell,FLAGGED_OUTLIER,Obando,126,Obando,OBA-2,2014,5,"Phosphates as Phosphorous, mg/L",3.591,3.591,Outside IQR fence; value flagged but retained,outlier_summary.csv
+770,Cell,FLAGGED_OUTLIER,Obando,127,Obando,OBA-1,2014,5,"Phosphates as Phosphorous, mg/L",3.562,3.562,Outside IQR fence; value flagged but retained,outlier_summary.csv
+771,Cell,FLAGGED_OUTLIER,Obando,128,Obando,OBA-3,2014,5,"Phosphates as Phosphorous, mg/L",3.598,3.598,Outside IQR fence; value flagged but retained,outlier_summary.csv
+772,Cell,FLAGGED_OUTLIER,Obando,138,Obando,OBA-2,2014,8,"Total Coliform, MPN/100mL",920000,920000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+773,Cell,FLAGGED_OUTLIER,Obando,138,Obando,OBA-2,2014,8,"Phosphates as Phosphorous, mg/L",1.912,1.912,Outside IQR fence; value flagged but retained,outlier_summary.csv
+774,Cell,FLAGGED_OUTLIER,Obando,140,Obando,OBA-3,2014,8,"Biochemical Oxygen Demand, mg/L",57,57,Outside IQR fence; value flagged but retained,outlier_summary.csv
+775,Cell,FLAGGED_OUTLIER,Obando,151,Obando,OBA-1,2014,11,"Nitrates as Nitrogen, mg/L",0.465,0.465,Outside IQR fence; value flagged but retained,outlier_summary.csv
+776,Cell,FLAGGED_OUTLIER,Obando,152,Obando,OBA-3,2014,11,"Nitrates as Nitrogen, mg/L",0.461,0.461,Outside IQR fence; value flagged but retained,outlier_summary.csv
+777,Cell,FLAGGED_OUTLIER,Obando,186,Obando,OBA-2,2015,8,"Total Coliform, MPN/100mL",1600000,1600000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+778,Cell,FLAGGED_OUTLIER,Obando,187,Obando,OBA-1,2015,8,"Total Coliform, MPN/100mL",920000,920000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+779,Cell,FLAGGED_OUTLIER,Obando,191,Obando,OBA-1,2015,9,"Biochemical Oxygen Demand, mg/L",67,67,Outside IQR fence; value flagged but retained,outlier_summary.csv
+780,Cell,FLAGGED_OUTLIER,Obando,194,Obando,OBA-2,2015,10,"Total Coliform, MPN/100mL",16000000,16000000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+781,Cell,FLAGGED_OUTLIER,Obando,194,Obando,OBA-2,2015,10,"Ammonia, mg/L",9.692,9.692,Outside IQR fence; value flagged but retained,outlier_summary.csv
+782,Cell,FLAGGED_OUTLIER,Obando,198,Obando,OBA-2,2015,11,"Biochemical Oxygen Demand, mg/L",58,58,Outside IQR fence; value flagged but retained,outlier_summary.csv
+783,Cell,FLAGGED_OUTLIER,Obando,203,Obando,OBA-1,2015,12,"Ammonia, mg/L",9.266,9.266,Outside IQR fence; value flagged but retained,outlier_summary.csv
+784,Cell,FLAGGED_OUTLIER,Obando,204,Obando,OBA-3,2015,12,"Biochemical Oxygen Demand, mg/L",57,57,Outside IQR fence; value flagged but retained,outlier_summary.csv
+785,Cell,FLAGGED_OUTLIER,Obando,204,Obando,OBA-3,2015,12,"Ammonia, mg/L",10.481,10.481,Outside IQR fence; value flagged but retained,outlier_summary.csv
+786,Cell,FLAGGED_OUTLIER,Obando,207,Obando,OBA-1,2016,1,"Biochemical Oxygen Demand, mg/L",63,63,Outside IQR fence; value flagged but retained,outlier_summary.csv
+787,Cell,FLAGGED_OUTLIER,Obando,207,Obando,OBA-1,2016,1,"Total Coliform, MPN/100mL",920000,920000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+788,Cell,FLAGGED_OUTLIER,Obando,214,Obando,OBA-2,2016,3,"Ammonia, mg/L",13.314,13.314,Outside IQR fence; value flagged but retained,outlier_summary.csv
+789,Cell,FLAGGED_OUTLIER,Obando,222,Obando,OBA-2,2016,5,"Biochemical Oxygen Demand, mg/L",96,96,Outside IQR fence; value flagged but retained,outlier_summary.csv
+790,Cell,FLAGGED_OUTLIER,Obando,222,Obando,OBA-2,2016,5,"Total Coliform, MPN/100mL",1600000,1600000,Outside IQR fence; value flagged but retained,outlier_summary.csv
+791,Cell,FLAGGED_OUTLIER,Obando,224,Obando,OBA-3,2016,5,"Nitrates as Nitrogen, mg/L",0.484,0.484,Outside IQR fence; value flagged but retained,outlier_summary.csv
+792,Cell,FLAGGED_OUTLIER,Obando,226,Obando,OBA-2,2016,6,"Nitrates as Nitrogen, mg/L",0.72,0.72,Outside IQR fence; value flagged but retained,outlier_summary.csv
+793,Cell,FLAGGED_OUTLIER,Obando,227,Obando,OBA-1,2016,6,"Nitrates as Nitrogen, mg/L",0.876,0.876,Outside IQR fence; value flagged but retained,outlier_summary.csv
+794,Cell,FLAGGED_OUTLIER,Obando,228,Obando,OBA-3,2016,6,"Nitrates as Nitrogen, mg/L",1.348,1.348,Outside IQR fence; value flagged but retained,outlier_summary.csv
+795,Cell,FLAGGED_OUTLIER,Obando,234,Obando,OBA-2,2016,8,"Biochemical Oxygen Demand, mg/L",57,57,Outside IQR fence; value flagged but retained,outlier_summary.csv
+796,Cell,FLAGGED_OUTLIER,Obando,240,Obando,OBA-3,2016,9,"Biochemical Oxygen Demand, mg/L",62,62,Outside IQR fence; value flagged but retained,outlier_summary.csv
+797,Cell,FLAGGED_OUTLIER,Obando,256,Obando,OBA-2,2017,1,"Biochemical Oxygen Demand, mg/L",132,132,Outside IQR fence; value flagged but retained,outlier_summary.csv
+798,Cell,FLAGGED_OUTLIER,Obando,257,Obando,OBA-1,2017,1,"Biochemical Oxygen Demand, mg/L",88,88,Outside IQR fence; value flagged but retained,outlier_summary.csv
+799,Cell,FLAGGED_OUTLIER,Obando,258,Obando,OBA-3,2017,1,"Biochemical Oxygen Demand, mg/L",97,97,Outside IQR fence; value flagged but retained,outlier_summary.csv
+800,Cell,FLAGGED_OUTLIER,Obando,261,Obando,OBA-1,2017,2,"Biochemical Oxygen Demand, mg/L",131,131,Outside IQR fence; value flagged but retained,outlier_summary.csv
+801,Cell,FLAGGED_OUTLIER,Obando,264,Obando,OBA-2,2017,3,Color TCU,60,60,Outside IQR fence; value flagged but retained,outlier_summary.csv
+802,Cell,FLAGGED_OUTLIER,Obando,268,Obando,OBA-2,2017,4,Color TCU,60,60,Outside IQR fence; value flagged but retained,outlier_summary.csv
+803,Cell,FLAGGED_OUTLIER,Obando,269,Obando,OBA-1,2017,4,"Total Suspended Solids, mg/L",97,97,Outside IQR fence; value flagged but retained,outlier_summary.csv
+804,Cell,FLAGGED_OUTLIER,Obando,270,Obando,OBA-3,2017,4,"Total Suspended Solids, mg/L",95,95,Outside IQR fence; value flagged but retained,outlier_summary.csv
+805,Cell,FLAGGED_OUTLIER,Obando,272,Obando,OBA-2,2017,5,Color TCU,80,80,Outside IQR fence; value flagged but retained,outlier_summary.csv
+806,Cell,FLAGGED_OUTLIER,Obando,273,Obando,OBA-1,2017,5,"Chlorides Cl, mg/L",79037,79037,Outside IQR fence; value flagged but retained,outlier_summary.csv
+807,Cell,FLAGGED_OUTLIER,Obando,276,Obando,OBA-2,2017,6,Color TCU,80,80,Outside IQR fence; value flagged but retained,outlier_summary.csv
+808,Cell,FLAGGED_OUTLIER,Obando,278,Obando,OBA-3,2017,6,"Total Suspended Solids, mg/L",115,115,Outside IQR fence; value flagged but retained,outlier_summary.csv
+809,Cell,FLAGGED_OUTLIER,Obando,280,Obando,OBA-2,2017,7,Color TCU,100,100,Outside IQR fence; value flagged but retained,outlier_summary.csv
+810,Cell,FLAGGED_OUTLIER,Obando,281,Obando,OBA-1,2017,7,"Biochemical Oxygen Demand, mg/L",76,76,Outside IQR fence; value flagged but retained,outlier_summary.csv
+811,Cell,FLAGGED_OUTLIER,Obando,307,Obando,OBA-1,2018,1,"Biochemical Oxygen Demand, mg/L",95,95,Outside IQR fence; value flagged but retained,outlier_summary.csv
+812,Cell,FLAGGED_OUTLIER,Obando,310,Obando,OBA-2,2018,2,"Biochemical Oxygen Demand, mg/L",96,96,Outside IQR fence; value flagged but retained,outlier_summary.csv
+813,Cell,FLAGGED_OUTLIER,Obando,319,Obando,OBA-1,2018,4,"Chlorides Cl, mg/L",104662,104662,Outside IQR fence; value flagged but retained,outlier_summary.csv
+814,Cell,FLAGGED_OUTLIER,Obando,320,Obando,OBA-3,2018,4,"Chlorides Cl, mg/L",99500,99500,Outside IQR fence; value flagged but retained,outlier_summary.csv
+815,Cell,IMPUTED,Marilao,333,Marilao,MAR-3,2016,6,"Biochemical Oxygen Demand, mg/L",,33,Midpoint of 2016-05 (55) and 2016-07 (11) = 33,imputed_cells.csv
+816,Cell,IMPUTED,Marilao,412,Marilao,MAR-3,2017,7,Color TCU,,40,Midpoint of 2017-06 (40) and 2017-08 (40) = 40,imputed_cells.csv
+817,Cell,IMPUTED,Marilao,334,Marilao,MAR-4,2016,6,"Biochemical Oxygen Demand, mg/L",,26,Midpoint of 2016-05 (36) and 2016-07 (16) = 26,imputed_cells.csv
+818,Cell,IMPUTED,Marilao,413,Marilao,MAR-4,2017,7,Color TCU,,27.5,Midpoint of 2017-06 (30) and 2017-08 (25) = 27.5,imputed_cells.csv
+819,Cell,IMPUTED,Marilao,414,Marilao,MAR-1,2017,7,Color TCU,,40,Midpoint of 2017-06 (40) and 2017-08 (40) = 40,imputed_cells.csv
+820,Cell,IMPUTED,Marilao,336,Marilao,MAR-5,2016,6,"Biochemical Oxygen Demand, mg/L",,47.5,Midpoint of 2016-05 (79) and 2016-07 (16) = 47.5,imputed_cells.csv
+821,Cell,IMPUTED,Marilao,415,Marilao,MAR-5,2017,7,Color TCU,,45,Midpoint of 2017-06 (60) and 2017-08 (30) = 45,imputed_cells.csv
+822,Cell,IMPUTED,Marilao,349,Marilao,MAR-2,2016,8,"Dissolved Oxygen, mg/L",,0.6399999999999999,Midpoint of 2016-07 (0.58) and 2016-09 (0.7) = 0.6399999999999999,imputed_cells.csv
+823,Cell,IMPUTED,Marilao,349,Marilao,MAR-2,2016,8,"Total Suspended Solids, mg/L",,6,Midpoint of 2016-07 (7) and 2016-09 (5) = 6,imputed_cells.csv
+824,Cell,IMPUTED,Marilao,416,Marilao,MAR-2,2017,7,Color TCU,,55,Midpoint of 2017-06 (80) and 2017-08 (30) = 55,imputed_cells.csv
+825,Cell,IMPUTED,Meycauayan,230,Meycauayan,MEY-4,2015,1,pH,,7.8,Midpoint of 2014-12 (7.71) and 2015-02 (7.89) = 7.8,imputed_cells.csv
+826,Cell,IMPUTED,Meycauayan,230,Meycauayan,MEY-4,2015,1,"Biochemical Oxygen Demand, mg/L",,67.5,Midpoint of 2014-12 (28) and 2015-02 (107) = 67.5,imputed_cells.csv
+827,Cell,IMPUTED,Meycauayan,230,Meycauayan,MEY-4,2015,1,"Total Suspended Solids, mg/L",,21,Midpoint of 2014-12 (22) and 2015-02 (20) = 21,imputed_cells.csv
+828,Cell,IMPUTED,Meycauayan,230,Meycauayan,MEY-4,2015,1,"Nitrates as Nitrogen, mg/L",,0.1395,Midpoint of 2014-12 (0.159) and 2015-02 (0.12) = 0.1395,imputed_cells.csv
+829,Cell,IMPUTED,Meycauayan,242,Meycauayan,MEY-4,2015,3,"Nitrates as Nitrogen, mg/L",,0.1905,Midpoint of 2015-02 (0.12) and 2015-04 (0.261) = 0.1905,imputed_cells.csv
+830,Cell,IMPUTED,Meycauayan,232,Meycauayan,MEY-5,2015,1,pH,,7.9799999999999995,Midpoint of 2014-12 (7.92) and 2015-02 (8.04) = 7.9799999999999995,imputed_cells.csv
+831,Cell,IMPUTED,Meycauayan,232,Meycauayan,MEY-5,2015,1,"Biochemical Oxygen Demand, mg/L",,82.5,Midpoint of 2014-12 (80) and 2015-02 (85) = 82.5,imputed_cells.csv
+832,Cell,IMPUTED,Meycauayan,232,Meycauayan,MEY-5,2015,1,"Total Suspended Solids, mg/L",,24,Midpoint of 2014-12 (26) and 2015-02 (22) = 24,imputed_cells.csv
+833,Cell,IMPUTED,Meycauayan,232,Meycauayan,MEY-5,2015,1,"Nitrates as Nitrogen, mg/L",,0.2225,Midpoint of 2014-12 (0.309) and 2015-02 (0.136) = 0.2225,imputed_cells.csv
+834,Cell,IMPUTED,Meycauayan,216,Meycauayan,MEY-3,2014,10,"Nitrates as Nitrogen, mg/L",,0.3065,Midpoint of 2014-09 (0.213) and 2014-11 (0.4) = 0.3065,imputed_cells.csv
+835,Cell,IMPUTED,Meycauayan,216,Meycauayan,MEY-3,2014,10,"Phosphates as Phosphorous, mg/L",,2.945,Midpoint of 2014-09 (1.494) and 2014-11 (4.396) = 2.945,imputed_cells.csv
+836,Cell,IMPUTED,Meycauayan,348,Meycauayan,MEY-3,2016,8,"Total Suspended Solids, mg/L",,36,Midpoint of 2016-07 (39) and 2016-09 (33) = 36,imputed_cells.csv
+837,Column,COLUMN_DROPPED,,,,,,,"Ammonia, mg/L","Ammonia, mg/L",,Domain override; not a DAO 2016-08 primary parameter,05_threshold_decision.csv
+838,Column,COLUMN_DROPPED,,,,,,,"Total Coliform, MPN/100mL","Total Coliform, MPN/100mL",,Domain override; not a DAO 2016-08 primary parameter,05_threshold_decision.csv
+839,Column,COLUMN_DROPPED,,,,,,,Is_Outlier,Is_Outlier,,Internal flag/helper column; retained only in this log,Final Columns.txt
+840,Column,COLUMN_DROPPED,,,,,,,Outlier_Params,Outlier_Params,,Internal flag/helper column; retained only in this log,Final Columns.txt
+841,Column,COLUMN_DROPPED,,,,,,,Imputed_Params,Imputed_Params,,Internal flag/helper column; retained only in this log,Final Columns.txt
+842,Column,COLUMN_DROPPED,,,,,,,SymbolValue_Params,SymbolValue_Params,,Internal flag/helper column; retained only in this log,Final Columns.txt
+843,Column,COLUMN_DROPPED,,,,,,,DateLabelMismatch,DateLabelMismatch,,Internal flag/helper column; retained only in this log,Final Columns.txt
+844,Column,COLUMN_DROPPED,,,,,,,YearMonth,YearMonth,,Internal flag/helper column; retained only in this log,Final Columns.txt
