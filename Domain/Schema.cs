@@ -45,7 +45,7 @@ public static class Schema
 
     public static readonly string[] FinalColumnOrder = {
         "WaterBody", "StationID", "StationName", "Latitude", "Longitude",
-        "Year", "Month", "SampleDate", "SampleTime",
+        "Year", "Month", "Date", "Time",
         "DissolvedOxygen_mgL", "pH", "Temperature_C", "BOD_mgL", "TSS_mgL",
         "Color_TCU", "FecalColiform_MPN_per100mL", "FecalColiform_log10",
         "Nitrates_mgL", "Phosphates_mgL", "Chlorides_mgL",

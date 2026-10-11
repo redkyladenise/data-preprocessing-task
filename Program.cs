@@ -9,3 +9,4 @@ Assessor.Run();
 Cleaner.Run();
 Missingness.Run();
 Imputer.Run();
+Transformer.Run();
