@@ -1,23 +1,23 @@
 ﻿SourceSheet,StationID,YearMonth,Parameter,PrevYearMonth,PrevValue,NextYearMonth,NextValue,ImputedValue
-Marilao,MAR-MCBD,2016-06,"Biochemical Oxygen Demand, mg/L",2016-05,55,2016-07,11,33
-Marilao,MAR-MCBD,2017-07,Color TCU,2017-06,40,2017-08,40,40
-Marilao,MAR-PDBP,2016-06,"Biochemical Oxygen Demand, mg/L",2016-05,36,2016-07,16,26
-Marilao,MAR-PDBP,2017-07,Color TCU,2017-06,30,2017-08,25,27.5
-Marilao,MAR-EBBP,2017-07,Color TCU,2017-06,40,2017-08,40,40
-Marilao,MAR-TIBB,2016-06,"Biochemical Oxygen Demand, mg/L",2016-05,79,2016-07,16,47.5
-Marilao,MAR-TIBB,2017-07,Color TCU,2017-06,60,2017-08,30,45
-Marilao,MAR-IBBI,2016-08,"Dissolved Oxygen, mg/L",2016-07,0.58,2016-09,0.7,0.6399999999999999
-Marilao,MAR-IBBI,2016-08,"Total Suspended Solids, mg/L",2016-07,7,2016-09,5,6
-Marilao,MAR-IBBI,2017-07,Color TCU,2017-06,80,2017-08,30,55
-Meycauayan,MEY-PBBP,2015-01,pH,2014-12,7.71,2015-02,7.89,7.8
-Meycauayan,MEY-PBBP,2015-01,"Biochemical Oxygen Demand, mg/L",2014-12,28,2015-02,107,67.5
-Meycauayan,MEY-PBBP,2015-01,"Total Suspended Solids, mg/L",2014-12,22,2015-02,20,21
-Meycauayan,MEY-PBBP,2015-01,"Nitrates as Nitrogen, mg/L",2014-12,0.159,2015-02,0.12,0.1395
-Meycauayan,MEY-PBBP,2015-03,"Nitrates as Nitrogen, mg/L",2015-02,0.12,2015-04,0.261,0.1905
-Meycauayan,MEY-VRBB,2015-01,pH,2014-12,7.92,2015-02,8.04,7.9799999999999995
-Meycauayan,MEY-VRBB,2015-01,"Biochemical Oxygen Demand, mg/L",2014-12,80,2015-02,85,82.5
-Meycauayan,MEY-VRBB,2015-01,"Total Suspended Solids, mg/L",2014-12,26,2015-02,22,24
-Meycauayan,MEY-VRBB,2015-01,"Nitrates as Nitrogen, mg/L",2014-12,0.309,2015-02,0.136,0.2225
-Meycauayan,MEY-MBBZ,2014-10,"Nitrates as Nitrogen, mg/L",2014-09,0.213,2014-11,0.4,0.3065
-Meycauayan,MEY-MBBZ,2014-10,"Phosphates as Phosphorous, mg/L",2014-09,1.494,2014-11,4.396,2.945
-Meycauayan,MEY-MBBZ,2016-08,"Total Suspended Solids, mg/L",2016-07,39,2016-09,33,36
+Marilao,MAR-3,2016-06,"Biochemical Oxygen Demand, mg/L",2016-05,55,2016-07,11,33
+Marilao,MAR-3,2017-07,Color TCU,2017-06,40,2017-08,40,40
+Marilao,MAR-4,2016-06,"Biochemical Oxygen Demand, mg/L",2016-05,36,2016-07,16,26
+Marilao,MAR-4,2017-07,Color TCU,2017-06,30,2017-08,25,27.5
+Marilao,MAR-1,2017-07,Color TCU,2017-06,40,2017-08,40,40
+Marilao,MAR-5,2016-06,"Biochemical Oxygen Demand, mg/L",2016-05,79,2016-07,16,47.5
+Marilao,MAR-5,2017-07,Color TCU,2017-06,60,2017-08,30,45
+Marilao,MAR-2,2016-08,"Dissolved Oxygen, mg/L",2016-07,0.58,2016-09,0.7,0.6399999999999999
+Marilao,MAR-2,2016-08,"Total Suspended Solids, mg/L",2016-07,7,2016-09,5,6
+Marilao,MAR-2,2017-07,Color TCU,2017-06,80,2017-08,30,55
+Meycauayan,MEY-4,2015-01,pH,2014-12,7.71,2015-02,7.89,7.8
+Meycauayan,MEY-4,2015-01,"Biochemical Oxygen Demand, mg/L",2014-12,28,2015-02,107,67.5
+Meycauayan,MEY-4,2015-01,"Total Suspended Solids, mg/L",2014-12,22,2015-02,20,21
+Meycauayan,MEY-4,2015-01,"Nitrates as Nitrogen, mg/L",2014-12,0.159,2015-02,0.12,0.1395
+Meycauayan,MEY-4,2015-03,"Nitrates as Nitrogen, mg/L",2015-02,0.12,2015-04,0.261,0.1905
+Meycauayan,MEY-5,2015-01,pH,2014-12,7.92,2015-02,8.04,7.9799999999999995
+Meycauayan,MEY-5,2015-01,"Biochemical Oxygen Demand, mg/L",2014-12,80,2015-02,85,82.5
+Meycauayan,MEY-5,2015-01,"Total Suspended Solids, mg/L",2014-12,26,2015-02,22,24
+Meycauayan,MEY-5,2015-01,"Nitrates as Nitrogen, mg/L",2014-12,0.309,2015-02,0.136,0.2225
+Meycauayan,MEY-3,2014-10,"Nitrates as Nitrogen, mg/L",2014-09,0.213,2014-11,0.4,0.3065
+Meycauayan,MEY-3,2014-10,"Phosphates as Phosphorous, mg/L",2014-09,1.494,2014-11,4.396,2.945
+Meycauayan,MEY-3,2016-08,"Total Suspended Solids, mg/L",2016-07,39,2016-09,33,36

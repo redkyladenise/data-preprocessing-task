@@ -787,6 +787,7 @@ public static class Cleaner
         var rows = new List<IReadOnlyList<string>>();
         int symbolCells  = 0;
         int mismatchCount = 0;
+        var stationMap = BuildStationNumberMap(records);
 
         foreach (var rec in records)
         {
@@ -806,7 +807,9 @@ public static class Cleaner
             if (mismatch) mismatchCount++;
 
             var stationClean = Regex.Replace(rec.StationRaw, @"\s+", " ").Trim();
-            var stationId    = BuildStationId(rec.SourceSheet, stationClean);
+            var stationId    = stationMap.TryGetValue((rec.SourceSheet, stationClean), out var sid)
+                                ? sid
+                                : "";
 
             var paramValues  = new Dictionary<string, double?>();
             var symbolParams = new List<string>();
@@ -869,22 +872,36 @@ public static class Cleaner
         return new StageAStats(symbolCells, mismatchCount);
     }
 
-    private static string BuildStationId(string sheet, string cleanStation)
+    private static Dictionary<(string, string), string> BuildStationNumberMap(
+        List<RawRecord> records)
     {
-        string prefix = sheet switch
+        var map = new Dictionary<(string, string), string>();
+
+        foreach (var sheetGroup in records.GroupBy(r => r.SourceSheet))
         {
-            "Marilao"    => "MAR",
-            "Meycauayan" => "MEY",
-            "Obando"     => "OBA",
-            _            => sheet.Substring(0, Math.Min(3, sheet.Length)).ToUpperInvariant(),
-        };
+            var sheet = sheetGroup.Key;
 
-        var words = cleanStation
-            .Split(' ', StringSplitOptions.RemoveEmptyEntries)
-            .Where(w => w.Length > 2)
-            .Take(4)
-            .Select(w => char.ToUpperInvariant(w[0]));
+            var prefix = sheet switch
+            {
+                "Marilao"    => "MAR",
+                "Meycauayan" => "MEY",
+                "Obando"     => "OBA",
+                _ => sheet.Substring(0, Math.Min(3, sheet.Length)).ToUpperInvariant()
+            };
 
-        return prefix + "-" + new string(words.ToArray());
+            var distinctStations = sheetGroup
+                .Select(r => Regex.Replace(r.StationRaw, @"\s+", " ").Trim())
+                .Where(s => !string.IsNullOrWhiteSpace(s))
+                .Distinct()
+                .OrderBy(s => s, StringComparer.OrdinalIgnoreCase)
+                .ToList();
+
+            for (int i = 0; i < distinctStations.Count; i++)
+            {
+                map[(sheet, distinctStations[i])] = $"{prefix}-{i + 1}";
+            }
+        }
+
+        return map;
     }
 }
