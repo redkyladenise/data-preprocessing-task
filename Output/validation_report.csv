@@ -1,0 +1,24 @@
+﻿CheckID,Category,Check,Expected,Actual,Result
+1,Dataset,Raw rows = final rows + excluded rows,1147,1147,PASS
+2,Dataset,Final column order matches Schema.FinalColumnOrder,"WaterBody,StationID,StationName,Latitude,Longitude,Year,Month,Date,Time,DissolvedOxygen_mgL,pH,Temperature_C,BOD_mgL,TSS_mgL,Color_TCU,FecalColiform_MPN_per100mL,FecalColiform_log10,Nitrates_mgL,Phosphates_mgL,Chlorides_mgL,SourceSheet,SourceRow","WaterBody,StationID,StationName,Latitude,Longitude,Year,Month,Date,Time,DissolvedOxygen_mgL,pH,Temperature_C,BOD_mgL,TSS_mgL,Color_TCU,FecalColiform_MPN_per100mL,FecalColiform_log10,Nitrates_mgL,Phosphates_mgL,Chlorides_mgL,SourceSheet,SourceRow",PASS
+3,Dataset,No dropped/flag columns in final dataset,none,none,PASS
+4,Dataset,"No duplicate (WaterBody, StationID, Year, Month)",0,0,PASS
+5,Dataset,Years are 2012-2018,0 violations,0,PASS
+6,Dataset,Months are 1-12,0 violations,0,PASS
+7,Dataset,pH between 0 and 14,0 violations,0,PASS
+8,Dataset,No negative values anywhere,0 violations,0,PASS
+9,Dataset,Every row has at least one measurement,0 empty rows,0,PASS
+10,Dataset,Marilao has 5 stations,5,5,PASS
+11,Dataset,Meycauayan has 5 stations,5,5,PASS
+12,Dataset,Obando has 3 stations,3,3,PASS
+13,Dataset,FecalColiform_log10 matches log10(Fecal MPN),0 mismatches,0,PASS
+14,Dataset,No scientific notation in final dataset,0,0,PASS
+15,Dataset,All imputed values within plausible ranges,0 violations,0,PASS
+16,Log,All Action values are from the allowed list,0 violations,0,PASS
+17,Log,"Core fields (LogID, Level, Action) are never blank",0 violations,0,PASS
+18,Log,SourceSheet is filled on Cell and Row entries,0 violations,0,PASS
+19,Log,ROW_EXCLUDED entries = excluded_records.csv rows,206,206,PASS
+20,Log,IMPUTED entries = imputed_cells.csv rows,22,22,PASS
+21,Log,COLUMN_DROPPED count = 8 (2 params + 6 flags),8,8,PASS
+22,Log,LogID is unique,844,844,PASS
+23,Log,All imputed values are midpoints of their neighbors,0 violations,0,PASS
