@@ -53,6 +53,9 @@ public static class Validator
         CheckLogReconciliation(log, final, excluded, imputed);
         CheckLogIdUnique(log);
         CheckImputationNeighbors(log, imputed);
+        CheckNoDuplicateLogEntries(log);
+        CheckImputedLogMatchesFinal(log, final);
+        CheckCellChangeCompleteness(final, raw, log);
 
         WriteReport();
         PrintSummary();
@@ -297,8 +300,8 @@ public static class Validator
                  imputed.Count.ToString(), logImputed.ToString(), logImputed == imputed.Count);
 
         int logDropped = log.Count(e => e["Action"] == "COLUMN_DROPPED");
-        AddCheck("Log", "COLUMN_DROPPED count = 8 (2 params + 6 flags)",
-                 "8", logDropped.ToString(), logDropped == 8);
+        AddCheck("Log", "COLUMN_DROPPED count = 2 data parameters",
+                 "2", logDropped.ToString(), logDropped == 2);
     }
 
     private static void CheckLogIdUnique(List<Dictionary<string, string>> log)
@@ -339,6 +342,137 @@ public static class Validator
 
         AddCheck("Log", "All imputed values are midpoints of their neighbors",
                  "0 violations", bad.ToString(), bad == 0);
+    }
+
+    private static void CheckNoDuplicateLogEntries(List<Dictionary<string, string>> log)
+    {
+        var dupes = log
+            .Where(e => !string.IsNullOrWhiteSpace(e["SourceRow"]) &&
+                        !string.IsNullOrWhiteSpace(e["Parameter"]))
+            .GroupBy(e => $"{e["SourceSheet"]}|{e["SourceRow"]}|{e["Parameter"]}|{e["Action"]}")
+            .Where(g => g.Count() > 1)
+            .ToList();
+
+        AddCheck("Log", "No duplicate (Sheet, Row, Parameter, Action) tuples",
+                 "0 duplicates", dupes.Count.ToString(), dupes.Count == 0);
+
+        if (dupes.Count > 0)
+        {
+            Console.WriteLine("    Sample duplicates:");
+            foreach (var g in dupes.Take(5))
+                Console.WriteLine($"      {g.Key} (x{g.Count()})");
+        }
+    }
+
+    private static void CheckImputedLogMatchesFinal(
+        List<Dictionary<string, string>> log,
+        List<Dictionary<string, string>> final)
+    {
+        var finalIndex = new Dictionary<string, Dictionary<string, string>>();
+        foreach (var r in final)
+            finalIndex[$"{r["WaterBody"]}|{r["StationID"]}|{r["Year"]}|{r["Month"]}"] = r;
+
+        int mismatches = 0;
+
+        foreach (var e in log.Where(x => x["Action"] == "IMPUTED"))
+        {
+            var k = $"{e["WaterBody"]}|{e["StationID"]}|{e["Year"]}|{e["Month"]}";
+            if (!finalIndex.TryGetValue(k, out var fr)) { mismatches++; continue; }
+
+            var std = e["Parameter"];
+            if (!Schema.ParameterToSafeName.TryGetValue(std, out var safe)) { mismatches++; continue; }
+            if (!fr.TryGetValue(safe, out var finalVal)) { mismatches++; continue; }
+
+            if (!double.TryParse(e["NewValue"], NumberStyles.Float, CultureInfo.InvariantCulture, out var logNum) ||
+                !double.TryParse(finalVal, NumberStyles.Float, CultureInfo.InvariantCulture, out var finalNum) ||
+                Math.Abs(logNum - finalNum) > 0.0001)
+            {
+                mismatches++;
+            }
+        }
+
+        AddCheck("Log", "IMPUTED NewValue matches final dataset value",
+                 "0 mismatches", mismatches.ToString(), mismatches == 0);
+    }
+
+    private static void CheckCellChangeCompleteness(
+        List<Dictionary<string, string>> final,
+        List<Dictionary<string, string>> raw,
+        List<Dictionary<string, string>> log)
+    {
+        var rawIndex = new Dictionary<string, Dictionary<string, string>>();
+        foreach (var r in raw)
+            rawIndex[$"{r["SourceSheet"]}|{r["SourceRow"]}"] = r;
+
+        var valueChanging = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+        { "LIMIT_STANDARDIZED", "PLACEHOLDER_TO_NULL", "TYPO_FIXED", "IMPUTED" };
+
+        var logged = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        foreach (var e in log)
+        {
+            if (valueChanging.Contains(e["Action"]))
+                logged.Add($"{e["SourceSheet"]}|{e["SourceRow"]}|{e["Parameter"]}");
+        }
+
+        var safeToStd = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+        foreach (var kv in Schema.ParameterToSafeName)
+            safeToStd[kv.Value] = kv.Key;
+
+        int unlogged = 0;
+        var samples = new List<string>();
+
+        foreach (var f in final)
+        {
+            var key = $"{f["SourceSheet"]}|{f["SourceRow"]}";
+            if (!rawIndex.TryGetValue(key, out var rawRow)) continue;
+
+            foreach (var safe in Schema.SafeParameterNames)
+            {
+                if (!f.ContainsKey(safe)) continue;
+                if (!safeToStd.TryGetValue(safe, out var std)) continue;
+                if (Schema.DroppedParameters.Contains(std)) continue;
+
+                var finalVal = f[safe];
+                var rawVal   = rawRow.TryGetValue(std, out var rv) ? rv : "";
+
+                if (!ValuesDiffer(rawVal, finalVal)) continue;
+
+                var logKey = $"{f["SourceSheet"]}|{f["SourceRow"]}|{std}";
+                if (!logged.Contains(logKey))
+                {
+                    unlogged++;
+                    if (samples.Count < 5)
+                        samples.Add($"{f["SourceSheet"]} row {f["SourceRow"]} {std}: raw='{rawVal}' final='{finalVal}'");
+                }
+            }
+        }
+
+        AddCheck("Log", "Every cell-level change has a log entry",
+                 "0 unlogged", unlogged.ToString(), unlogged == 0);
+
+        if (unlogged > 0)
+        {
+            Console.WriteLine("    Sample unlogged changes:");
+            foreach (var s in samples)
+                Console.WriteLine($"      {s}");
+        }
+    }
+
+    private static bool ValuesDiffer(string rawVal, string finalVal)
+    {
+        bool rawEmpty   = string.IsNullOrWhiteSpace(rawVal) || Parsers.IsPlaceholder(rawVal);
+        bool finalEmpty = string.IsNullOrWhiteSpace(finalVal);
+
+        if (rawEmpty && finalEmpty) return false;
+        if (rawEmpty != finalEmpty) return true;
+
+        var (rawOk, rawNum, _)     = Parsers.TryParseNumber(rawVal);
+        var (finalOk, finalNum, _) = Parsers.TryParseNumber(finalVal);
+
+        if (rawOk && finalOk)
+            return Math.Round(rawNum, 4) != Math.Round(finalNum, 4);
+
+        return rawVal != finalVal;
     }
 
     // helpers

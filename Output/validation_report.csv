@@ -19,6 +19,9 @@
 18,Log,SourceSheet is filled on Cell and Row entries,0 violations,0,PASS
 19,Log,ROW_EXCLUDED entries = excluded_records.csv rows,206,206,PASS
 20,Log,IMPUTED entries = imputed_cells.csv rows,22,22,PASS
-21,Log,COLUMN_DROPPED count = 8 (2 params + 6 flags),8,8,PASS
-22,Log,LogID is unique,844,844,PASS
+21,Log,COLUMN_DROPPED count = 2 data parameters,2,2,PASS
+22,Log,LogID is unique,809,809,PASS
 23,Log,All imputed values are midpoints of their neighbors,0 violations,0,PASS
+24,Log,"No duplicate (Sheet, Row, Parameter, Action) tuples",0 duplicates,0,PASS
+25,Log,IMPUTED NewValue matches final dataset value,0 mismatches,0,PASS
+26,Log,Every cell-level change has a log entry,0 unlogged,0,PASS

@@ -50,7 +50,7 @@ public static class LogBuilder
         Console.WriteLine($"  Wrote {SummaryPath}");
     }
 
-    // standardixation
+    // standardization
     private static void AddStandardization(
         List<Dictionary<string, string>> log, ref int id,
         List<Dictionary<string, string>> raw,
@@ -59,6 +59,17 @@ public static class LogBuilder
         var index = new Dictionary<string, Dictionary<string, string>>();
         foreach (var r in stageA)
             index[Key(r["SourceSheet"], r["SourceRow"])] = r;
+
+        var dateCorrectedKeys = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        if (File.Exists(CorrectionsPath))
+        {
+            var corrections = LoadCsv(CorrectionsPath);
+            foreach (var c in corrections)
+            {
+                if (c["Field"].Equals("DateText", StringComparison.OrdinalIgnoreCase))
+                    dateCorrectedKeys.Add(Key(c["Sheet"], c["SourceRow"]));
+            }
+        }
 
         int count = 0;
 
@@ -101,29 +112,31 @@ public static class LogBuilder
                 count++;
             }
 
-            // date
-            var rawDate   = rawRec.TryGetValue("DateText", out var rd) ? rd : "";
-            var cleanDate = clean.TryGetValue("SampleDate", out var cd) ? cd : "";
-            if (!string.IsNullOrWhiteSpace(rawDate) &&
-                !string.IsNullOrWhiteSpace(cleanDate) &&
-                rawDate != cleanDate)
+            if (!dateCorrectedKeys.Contains(key))
             {
-                log.Add(Row(id++, "Cell", "DATE_PARSED", clean, "Date",
-                            rawDate, cleanDate,
-                            "Date parsed and standardized", "clean_stage_a.csv"));
-                count++;
+                var rawDate   = rawRec.TryGetValue("DateText", out var rd) ? rd : "";
+                var cleanDate = clean.TryGetValue("SampleDate", out var cd) ? cd : "";
+                if (!string.IsNullOrWhiteSpace(rawDate) &&
+                    !string.IsNullOrWhiteSpace(cleanDate) &&
+                    rawDate != cleanDate)
+                {
+                    log.Add(Row(id++, "Cell", "DATE_PARSED", clean, "Date",
+                                rawDate, cleanDate,
+                                "Date parsed and standardized", "clean_stage_a.csv"));
+                    count++;
+                }
             }
 
-            // time
             var rawTime   = rawRec.TryGetValue("TimeText", out var rt) ? rt : "";
             var cleanTime = clean.TryGetValue("SampleTime", out var ct) ? ct : "";
             if (!string.IsNullOrWhiteSpace(rawTime) &&
                 !string.IsNullOrWhiteSpace(cleanTime) &&
-                rawTime != cleanTime)
+                rawTime != cleanTime &&
+                Regex.IsMatch(rawTime, @"[A-Za-z]"))
             {
                 log.Add(Row(id++, "Cell", "TIME_PARSED", clean, "Time",
                             rawTime, cleanTime,
-                            "Time parsed and standardized", "clean_stage_a.csv"));
+                            "Text time parsed and standardized", "clean_stage_a.csv"));
                 count++;
             }
         }
@@ -285,8 +298,18 @@ public static class LogBuilder
                 int.TryParse(ym.Substring(5, 2), out month);
             }
 
+            var param  = e["Parameter"];
+            var rawImp = e["ImputedValue"];
+            string newValue = rawImp;
+            if (Schema.ImputedDecimalPlaces.TryGetValue(param, out var dp) &&
+                double.TryParse(rawImp, NumberStyles.Float, CultureInfo.InvariantCulture, out var iv))
+            {
+                newValue = FormatRounded(iv, dp);
+            }
+
             var reason = $"Midpoint of {e["PrevYearMonth"]} ({e["PrevValue"]}) " +
-                         $"and {e["NextYearMonth"]} ({e["NextValue"]}) = {e["ImputedValue"]}";
+                         $"and {e["NextYearMonth"]} ({e["NextValue"]}) = {rawImp} " +
+                         $"(rounded to {newValue})";
 
             log.Add(new Dictionary<string, string>
             {
@@ -299,9 +322,9 @@ public static class LogBuilder
                 ["StationID"]    = e["StationID"],
                 ["Year"]         = year > 0 ? year.ToString() : "",
                 ["Month"]        = month > 0 ? month.ToString() : "",
-                ["Parameter"]    = e["Parameter"],
+                ["Parameter"]    = param,
                 ["OldValue"]     = "",
-                ["NewValue"]     = e["ImputedValue"],
+                ["NewValue"]     = newValue,
                 ["Reason"]       = reason,
                 ["EvidenceFile"] = "imputed_cells.csv",
             });
@@ -311,7 +334,7 @@ public static class LogBuilder
         Console.WriteLine($"  Imputed: {count}");
     }
 
-    // dropped cols
+    // dropped cols 
     private static void AddDroppedColumns(
         List<Dictionary<string, string>> log, ref int id)
     {
@@ -339,38 +362,22 @@ public static class LogBuilder
             count++;
         }
 
-        string[] flagColumns =
-        {
-            "Is_Outlier", "Outlier_Params", "Imputed_Params",
-            "SymbolValue_Params", "DateLabelMismatch", "YearMonth"
-        };
-        foreach (var c in flagColumns)
-        {
-            log.Add(new Dictionary<string, string>
-            {
-                ["LogID"]        = id++.ToString(),
-                ["Level"]        = "Column",
-                ["Action"]       = "COLUMN_DROPPED",
-                ["SourceSheet"]  = "",
-                ["SourceRow"]    = "",
-                ["WaterBody"]    = "",
-                ["StationID"]    = "",
-                ["Year"]         = "",
-                ["Month"]        = "",
-                ["Parameter"]    = c,
-                ["OldValue"]     = c,
-                ["NewValue"]     = "",
-                ["Reason"]       = "Internal flag/helper column; retained only in this log",
-                ["EvidenceFile"] = "Final Columns.txt",
-            });
-            count++;
-        }
-
         Console.WriteLine($"  Dropped columns: {count}");
     }
 
     // helpers
     private static string Key(params string[] parts) => string.Join('\u0001', parts);
+
+    private static string FormatRounded(double value, int decimals)
+    {
+        if (decimals == 0)
+            return Math.Round(value, 0, MidpointRounding.AwayFromZero)
+                       .ToString("0", CultureInfo.InvariantCulture);
+
+        var rounded = Math.Round(value, decimals, MidpointRounding.AwayFromZero);
+        var format  = "0." + new string('#', decimals);
+        return rounded.ToString(format, CultureInfo.InvariantCulture);
+    }
 
     private static Dictionary<string, string> Row(
         int id, string level, string action,
