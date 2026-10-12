@@ -61,6 +61,7 @@ public static class Extractor
         var lastRow = ws.LastRowUsed()?.RowNumber() ?? 0;
 
         var paramColumnMap = BuildParameterColumnMap(ws);
+        var mergeDateValues  = BuildMergeDateValues(ws); 
 
         string currentLabel    = "";
         int    currentLabelRow = 0;
@@ -104,7 +105,9 @@ public static class Extractor
                     StationRaw        = bText,
                     Latitude          = ExcelText.Read(ws.Cell(r, 3)),
                     Longitude         = ExcelText.Read(ws.Cell(r, 4)),
-                    DateText          = ExcelText.Read(ws.Cell(r, 5)),
+                    DateText          = mergeDateValues.TryGetValue(r, out var mergedDate)
+                                        ? mergedDate
+                                        : ExcelText.Read(ws.Cell(r, 5)),
                     TimeText          = ExcelText.Read(ws.Cell(r, 6)),
                 };
 
@@ -137,6 +140,28 @@ public static class Extractor
             if (std != null && !map.ContainsKey(std))
                 map[std] = c;
         }
+        return map;
+    }
+
+    private static Dictionary<int, string> BuildMergeDateValues(IXLWorksheet ws)
+    {
+        var map = new Dictionary<int, string>();
+
+        foreach (var range in ws.MergedRanges)
+        {
+            if (range.FirstColumn().ColumnNumber() > 5) continue;
+            if (range.LastColumn().ColumnNumber() < 5)  continue;
+
+            var topLeftValue = ExcelText.Read(range.FirstCell());
+            if (!Parsers.IsNoSamplingText(topLeftValue)) continue;
+
+            int firstRow = range.FirstRow().RowNumber();
+            int lastRow  = range.LastRow().RowNumber();
+
+            for (int r = firstRow; r <= lastRow; r++)
+                map[r] = topLeftValue;
+        }
+
         return map;
     }
 
