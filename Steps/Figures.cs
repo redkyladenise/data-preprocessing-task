@@ -80,7 +80,7 @@ public static class Figures
         }
 
         var plt = new ScottPlot.Plot();
-        plt.Title("Missing % per parameter: raw vs. final");
+        plt.Title("Missing % per Parameter: Raw vs. Final");
         plt.XLabel("Parameter");
         plt.YLabel("Missing %");
 
@@ -363,7 +363,7 @@ public static class Figures
         };
 
         var plt = new ScottPlot.Plot();
-        plt.Title("Outliers per parameter and water body");
+        plt.Title("Outliers per Parameter and Water Body");
         plt.XLabel("Parameter");
         plt.YLabel("Number of flagged outlier cells");
 
@@ -462,7 +462,8 @@ public static class Figures
         var list = new List<Dictionary<string, string>>();
         if (!File.Exists(path)) return list;
 
-        using var reader = new StreamReader(path);
+        var content = File.ReadAllText(path).TrimStart('\uFEFF');
+        using var reader = new StringReader(content);
         using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
         csv.Read();
         csv.ReadHeader();

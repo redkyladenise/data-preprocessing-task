@@ -40,7 +40,10 @@ public static class Assessor
     private static List<Dictionary<string, string>> LoadRecords(string path)
     {
         var records = new List<Dictionary<string, string>>();
-        using var reader = new StreamReader(path);
+
+        var content = File.ReadAllText(path).TrimStart('\uFEFF');
+        using var reader = new StringReader(content);
+
         using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
 
         csv.Read();

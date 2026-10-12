@@ -408,7 +408,9 @@ public static class LogBuilder
         var list = new List<Dictionary<string, string>>();
         if (!File.Exists(path)) return list;
 
-        using var reader = new StreamReader(path);
+        var content = File.ReadAllText(path).TrimStart('\uFEFF');
+
+        using var reader = new StringReader(content);
         using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
         csv.Read();
         csv.ReadHeader();

@@ -10,7 +10,7 @@ public static class Cleaner
 {
     // -- A
     public const string InputPath             = Extractor.OutputPath;
-    public const string ManualCorrectionsPath = "Data/interim/manual_corrections.csv";
+    public const string ManualCorrectionsPath = "Data/inputs/manual_corrections.csv";
     public const string StageAPath            = "Data/interim/clean_stage_a.csv";
 
     // -- B
@@ -48,7 +48,13 @@ public static class Cleaner
         var records = LoadRawRecords(InputPath);
         Console.WriteLine($"  Loaded {records.Count} raw records.");
 
-        EnsureManualCorrectionsFile();
+        if (!File.Exists(ManualCorrectionsPath))
+        {
+            Console.WriteLine($"Manual corrections file not found: {ManualCorrectionsPath}");
+            Console.WriteLine("This file is a required input. Restore it from Git or supply it manually.");
+            return;
+        }
+
         var corrections = LoadManualCorrections(ManualCorrectionsPath);
         Console.WriteLine($"  Manual corrections loaded: {corrections.Count}");
 
@@ -133,7 +139,8 @@ public static class Cleaner
     private static List<Dictionary<string, string>> LoadStageA(string path)
     {
         var list = new List<Dictionary<string, string>>();
-        using var reader = new StreamReader(path);
+        var content = File.ReadAllText(path).TrimStart('\uFEFF');
+        using var reader = new StringReader(content);        
         using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
         csv.Read();
         csv.ReadHeader();
@@ -154,7 +161,8 @@ public static class Cleaner
     private static Dictionary<string, RawRecordMin> BuildRawIndex(string path)
     {
         var dict = new Dictionary<string, RawRecordMin>();
-        using var reader = new StreamReader(path);
+        var content = File.ReadAllText(path).TrimStart('\uFEFF');
+        using var reader = new StringReader(content);
         using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
         csv.Read();
         csv.ReadHeader();
@@ -657,7 +665,8 @@ public static class Cleaner
     private static List<RawRecord> LoadRawRecords(string path)
     {
         var list = new List<RawRecord>();
-        using var reader = new StreamReader(path);
+        var content = File.ReadAllText(path).TrimStart('\uFEFF');
+        using var reader = new StringReader(content);
         using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
 
         csv.Read();
@@ -686,44 +695,30 @@ public static class Cleaner
         return list;
     }
 
-    private static void EnsureManualCorrectionsFile()
-    {
-        if (File.Exists(ManualCorrectionsPath)) return;
-
-        Console.WriteLine($"  Creating template: {ManualCorrectionsPath}");
-
-        var headers = new[] { "Sheet", "SourceRow", "Field", "OldValue", "NewValue", "Reason" };
-        var rows = new List<IReadOnlyList<string>>
-        {
-            new[] { "Marilao", "417", "YearMonthLabel", "CY 2016 AUGUST",    "CY 2017 AUGUST",    "Mislabeled year - station dates are Aug 2017" },
-            new[] { "Marilao", "423", "YearMonthLabel", "CY 2016 SEPTEMBER", "CY 2017 SEPTEMBER", "Mislabeled year - station dates are Sep 2017" },
-            new[] { "Marilao", "466", "YearMonthLabel", "CY 2017 MAY",       "CY 2018 MAY",       "Mislabeled year - station dates are May 2018" },
-        };
-        TableWriter.WriteTable(ManualCorrectionsPath, headers, rows);
-    }
-
     private static List<Dictionary<string, string>> LoadManualCorrections(string path)
     {
+        var content = File.ReadAllText(path).TrimStart('\uFEFF');
+
         var list = new List<Dictionary<string, string>>();
-        using var reader = new StreamReader(path);
+        using var reader = new StringReader(content);
         using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
         csv.Read();
         csv.ReadHeader();
+
         while (csv.Read())
         {
             list.Add(new Dictionary<string, string>
             {
-                ["Sheet"]     = csv.GetField("Sheet") ?? "",
+                ["Sheet"]     = csv.GetField("Sheet")     ?? "",
                 ["SourceRow"] = csv.GetField("SourceRow") ?? "",
-                ["Field"]     = csv.GetField("Field") ?? "",
-                ["OldValue"]  = csv.GetField("OldValue") ?? "",
-                ["NewValue"]  = csv.GetField("NewValue") ?? "",
-                ["Reason"]    = csv.GetField("Reason") ?? "",
+                ["Field"]     = csv.GetField("Field")     ?? "",
+                ["OldValue"]  = csv.GetField("OldValue")  ?? "",
+                ["NewValue"]  = csv.GetField("NewValue")  ?? "",
+                ["Reason"]    = csv.GetField("Reason")    ?? "",
             });
         }
         return list;
     }
-
     private static int ApplyCorrections(
         List<RawRecord> records,
         List<Dictionary<string, string>> corrections)
