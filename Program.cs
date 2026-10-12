@@ -12,3 +12,4 @@ Imputer.Run();
 Transformer.Run();
 LogBuilder.Run();
 Validator.Run();
+Figures.Run();
