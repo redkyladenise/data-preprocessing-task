@@ -12,34 +12,28 @@ public static class LogBuilder
     public const string SummaryPath = "Output/tables/cleaning/cleaning_log_summary.csv";
 
     private const string RawPath         = Extractor.OutputPath;
-    private const string StageAPath      = Cleaner.StageAPath;
-    private const string StageDPath      = Cleaner.StageDPath;
-    private const string StageEPath      = Imputer.StageEPath;
+    private const string CleanedPath     = Cleaner.FinalCleanedPath;
+    private const string ImputedPath     = Imputer.OutputPath;
     private const string CorrectionsPath = Cleaner.ManualCorrectionsPath;
-    private const string ExcludedPath    = Cleaner.ExcludedPath;
-    private const string ImputedPath     = Imputer.ImputedLogPath;
 
     public static void Run()
     {
         Console.WriteLine("*******************************************************");
         Console.WriteLine("====== 08: LogBuilder (Consolidated Cleaning Log) =====");
 
-        var raw    = LoadCsv(RawPath);
-        var stageA = LoadCsv(StageAPath);
-        var stageD = LoadCsv(StageDPath);
-        var stageE = LoadCsv(StageEPath);
+        var raw     = LoadCsv(RawPath);
+        var cleaned = LoadCsv(CleanedPath);
+        var imputed = LoadCsv(ImputedPath);
 
-        Console.WriteLine($"  Loaded raw={raw.Count} stageA={stageA.Count} stageD={stageD.Count}");
+        Console.WriteLine($"  Loaded raw={raw.Count} cleaned={cleaned.Count} imputed={imputed.Count}");
 
         var log = new List<Dictionary<string, string>>();
         int id = 1;
 
-        AddStandardization(log, ref id, raw, stageA);
+        AddStandardization(log, ref id, raw, cleaned);
         AddManualCorrections(log, ref id);
-        AddExcludedRows(log, ref id);
-        AddOutliers(log, ref id, stageD);
-        AddImputed(log, ref id, stageE);
-        AddDroppedColumns(log, ref id);
+        AddOutliers(log, ref id, cleaned);
+        AddImputed(log, ref id, imputed);
 
         Console.WriteLine($"  Total log entries: {log.Count}");
 
@@ -50,14 +44,14 @@ public static class LogBuilder
         Console.WriteLine($"  Wrote {SummaryPath}");
     }
 
-    // standardization
+    // standardization (raw vs cleaned)
     private static void AddStandardization(
         List<Dictionary<string, string>> log, ref int id,
         List<Dictionary<string, string>> raw,
-        List<Dictionary<string, string>> stageA)
+        List<Dictionary<string, string>> cleaned)
     {
         var index = new Dictionary<string, Dictionary<string, string>>();
-        foreach (var r in stageA)
+        foreach (var r in cleaned)
             index[Key(r["SourceSheet"], r["SourceRow"])] = r;
 
         var dateCorrectedKeys = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
@@ -107,8 +101,7 @@ public static class LogBuilder
 
                 if (action == null) continue;
 
-                log.Add(Row(id++, "Cell", action, clean, p, rawVal, cleanVal, reason,
-                            "clean_stage_a.csv"));
+                log.Add(Row(id++, "Cell", action, clean, p, rawVal, cleanVal, reason, "data_before_imputation.csv"));
                 count++;
             }
 
@@ -116,27 +109,18 @@ public static class LogBuilder
             {
                 var rawDate   = rawRec.TryGetValue("DateText", out var rd) ? rd : "";
                 var cleanDate = clean.TryGetValue("SampleDate", out var cd) ? cd : "";
-                if (!string.IsNullOrWhiteSpace(rawDate) &&
-                    !string.IsNullOrWhiteSpace(cleanDate) &&
-                    rawDate != cleanDate)
+                if (!string.IsNullOrWhiteSpace(rawDate) && !string.IsNullOrWhiteSpace(cleanDate) && rawDate != cleanDate)
                 {
-                    log.Add(Row(id++, "Cell", "DATE_PARSED", clean, "Date",
-                                rawDate, cleanDate,
-                                "Date parsed and standardized", "clean_stage_a.csv"));
+                    log.Add(Row(id++, "Cell", "DATE_PARSED", clean, "Date", rawDate, cleanDate, "Date parsed and standardized", "data_before_imputation.csv"));
                     count++;
                 }
             }
 
             var rawTime   = rawRec.TryGetValue("TimeText", out var rt) ? rt : "";
             var cleanTime = clean.TryGetValue("SampleTime", out var ct) ? ct : "";
-            if (!string.IsNullOrWhiteSpace(rawTime) &&
-                !string.IsNullOrWhiteSpace(cleanTime) &&
-                rawTime != cleanTime &&
-                Regex.IsMatch(rawTime, @"[A-Za-z]"))
+            if (!string.IsNullOrWhiteSpace(rawTime) && !string.IsNullOrWhiteSpace(cleanTime) && rawTime != cleanTime && Regex.IsMatch(rawTime, @"[A-Za-z]"))
             {
-                log.Add(Row(id++, "Cell", "TIME_PARSED", clean, "Time",
-                            rawTime, cleanTime,
-                            "Text time parsed and standardized", "clean_stage_a.csv"));
+                log.Add(Row(id++, "Cell", "TIME_PARSED", clean, "Time", rawTime, cleanTime, "Text time parsed and standardized", "data_before_imputation.csv"));
                 count++;
             }
         }
@@ -145,10 +129,9 @@ public static class LogBuilder
     }
 
     // manual corrections
-    private static void AddManualCorrections(
-        List<Dictionary<string, string>> log, ref int id)
+    private static void AddManualCorrections(List<Dictionary<string, string>> log, ref int id)
     {
-        if (!File.Exists(CorrectionsPath)) { Console.WriteLine("  Manual: 0 (file missing)"); return; }
+        if (!File.Exists(CorrectionsPath)) return;
 
         var corrections = LoadCsv(CorrectionsPath);
         int count = 0;
@@ -181,60 +164,17 @@ public static class LogBuilder
             });
             count++;
         }
-
         Console.WriteLine($"  Manual corrections: {count}");
-    }
-
-    // excluded rows
-    private static void AddExcludedRows(
-        List<Dictionary<string, string>> log, ref int id)
-    {
-        if (!File.Exists(ExcludedPath)) { Console.WriteLine("  Excluded: 0"); return; }
-
-        var excluded = LoadCsv(ExcludedPath);
-        int count = 0;
-
-        foreach (var e in excluded)
-        {
-            int year = 0, month = 0;
-            var ym = e.TryGetValue("YearMonth", out var ymv) ? ymv : "";
-            if (ym.Length == 7)
-            {
-                int.TryParse(ym.Substring(0, 4), out year);
-                int.TryParse(ym.Substring(5, 2), out month);
-            }
-
-            log.Add(new Dictionary<string, string>
-            {
-                ["LogID"]        = id++.ToString(),
-                ["Level"]        = "Row",
-                ["Action"]       = "ROW_EXCLUDED",
-                ["SourceSheet"]  = e["SourceSheet"],
-                ["SourceRow"]    = e["SourceRow"],
-                ["WaterBody"]    = e["SourceSheet"],
-                ["StationID"]    = e.TryGetValue("StationID", out var sid) ? sid : "",
-                ["Year"]         = year > 0 ? year.ToString() : "",
-                ["Month"]        = month > 0 ? month.ToString() : "",
-                ["Parameter"]    = "",
-                ["OldValue"]     = "",
-                ["NewValue"]     = "",
-                ["Reason"]       = e.TryGetValue("Reason", out var r) ? r : "",
-                ["EvidenceFile"] = "excluded_records.csv",
-            });
-            count++;
-        }
-
-        Console.WriteLine($"  Excluded rows: {count}");
     }
 
     // outliers
     private static void AddOutliers(
         List<Dictionary<string, string>> log, ref int id,
-        List<Dictionary<string, string>> stageD)
+        List<Dictionary<string, string>> cleaned)
     {
         int count = 0;
 
-        foreach (var r in stageD)
+        foreach (var r in cleaned)
         {
             var op = r.TryGetValue("Outlier_Params", out var v) ? v : "";
             if (string.IsNullOrWhiteSpace(op)) continue;
@@ -258,126 +198,57 @@ public static class LogBuilder
                     ["Parameter"]    = pTrim,
                     ["OldValue"]     = value,
                     ["NewValue"]     = value,
-                    ["Reason"]       = "Outside IQR fence; value flagged but retained",
+                    ["Reason"]       = "Outside IQR fence; flagged and replaced with Median",
                     ["EvidenceFile"] = "outlier_summary.csv",
                 });
                 count++;
             }
         }
-
         Console.WriteLine($"  Flagged outliers: {count}");
     }
 
     // imputed cells
     private static void AddImputed(
         List<Dictionary<string, string>> log, ref int id,
-        List<Dictionary<string, string>> stageE)
-    {
-        if (!File.Exists(ImputedPath)) { Console.WriteLine("  Imputed: 0"); return; }
-
-        var index = new Dictionary<string, Dictionary<string, string>>();
-        foreach (var r in stageE)
-        {
-            var k = Key(r["SourceSheet"], r["StationID"], r["YearMonth"]);
-            index[k] = r;
-        }
-
-        var imputed = LoadCsv(ImputedPath);
-        int count = 0;
-
-        foreach (var e in imputed)
-        {
-            var k = Key(e["SourceSheet"], e["StationID"], e["YearMonth"]);
-            index.TryGetValue(k, out var rec);
-
-            int year = 0, month = 0;
-            var ym = e["YearMonth"];
-            if (ym.Length == 7)
-            {
-                int.TryParse(ym.Substring(0, 4), out year);
-                int.TryParse(ym.Substring(5, 2), out month);
-            }
-
-            var param  = e["Parameter"];
-            var rawImp = e["ImputedValue"];
-            string newValue = rawImp;
-            if (Schema.ImputedDecimalPlaces.TryGetValue(param, out var dp) &&
-                double.TryParse(rawImp, NumberStyles.Float, CultureInfo.InvariantCulture, out var iv))
-            {
-                newValue = FormatRounded(iv, dp);
-            }
-
-            var reason = $"Midpoint of {e["PrevYearMonth"]} ({e["PrevValue"]}) " +
-                         $"and {e["NextYearMonth"]} ({e["NextValue"]}) = {rawImp} " +
-                         $"(rounded to {newValue})";
-
-            log.Add(new Dictionary<string, string>
-            {
-                ["LogID"]        = id++.ToString(),
-                ["Level"]        = "Cell",
-                ["Action"]       = "IMPUTED",
-                ["SourceSheet"]  = e["SourceSheet"],
-                ["SourceRow"]    = rec != null ? rec["SourceRow"] : "",
-                ["WaterBody"]    = e["SourceSheet"],
-                ["StationID"]    = e["StationID"],
-                ["Year"]         = year > 0 ? year.ToString() : "",
-                ["Month"]        = month > 0 ? month.ToString() : "",
-                ["Parameter"]    = param,
-                ["OldValue"]     = "",
-                ["NewValue"]     = newValue,
-                ["Reason"]       = reason,
-                ["EvidenceFile"] = "imputed_cells.csv",
-            });
-            count++;
-        }
-
-        Console.WriteLine($"  Imputed: {count}");
-    }
-
-    // dropped cols 
-    private static void AddDroppedColumns(
-        List<Dictionary<string, string>> log, ref int id)
+        List<Dictionary<string, string>> imputed)
     {
         int count = 0;
 
-        foreach (var p in Schema.DroppedParameters)
+        foreach (var r in imputed)
         {
-            log.Add(new Dictionary<string, string>
-            {
-                ["LogID"]        = id++.ToString(),
-                ["Level"]        = "Column",
-                ["Action"]       = "COLUMN_DROPPED",
-                ["SourceSheet"]  = "",
-                ["SourceRow"]    = "",
-                ["WaterBody"]    = "",
-                ["StationID"]    = "",
-                ["Year"]         = "",
-                ["Month"]        = "",
-                ["Parameter"]    = p,
-                ["OldValue"]     = p,
-                ["NewValue"]     = "",
-                ["Reason"]       = "Domain override; not a DAO 2016-08 primary parameter",
-                ["EvidenceFile"] = "05_threshold_decision.csv",
-            });
-            count++;
-        }
+            var ip = r.TryGetValue("Imputed_Params", out var v) ? v : "";
+            if (string.IsNullOrWhiteSpace(ip)) continue;
 
-        Console.WriteLine($"  Dropped columns: {count}");
+            foreach (var p in ip.Split(';', StringSplitOptions.RemoveEmptyEntries))
+            {
+                var pTrim = p.Trim();
+                var newValue = r.TryGetValue(pTrim, out var val) ? val : "";
+
+                log.Add(new Dictionary<string, string>
+                {
+                    ["LogID"]        = id++.ToString(),
+                    ["Level"]        = "Cell",
+                    ["Action"]       = "IMPUTED",
+                    ["SourceSheet"]  = r["SourceSheet"],
+                    ["SourceRow"]    = r["SourceRow"],
+                    ["WaterBody"]    = r["SourceSheet"],
+                    ["StationID"]    = r["StationID"],
+                    ["Year"]         = r["Year"],
+                    ["Month"]        = r["Month"],
+                    ["Parameter"]    = pTrim,
+                    ["OldValue"]     = "",
+                    ["NewValue"]     = newValue,
+                    ["Reason"]       = "Statistical imputation applied (Mean/Median/Mode)",
+                    ["EvidenceFile"] = "data_after_imputation.csv",
+                });
+                count++;
+            }
+        }
+        Console.WriteLine($"  Imputed cells: {count}");
     }
 
     // helpers
     private static string Key(params string[] parts) => string.Join('\u0001', parts);
-
-    private static string FormatRounded(double value, int decimals)
-    {
-        if (decimals == 0)
-            return Math.Round(value, 0, MidpointRounding.AwayFromZero)
-                       .ToString("0", CultureInfo.InvariantCulture);
-
-        var rounded = Math.Round(value, decimals, MidpointRounding.AwayFromZero);
-        var format  = "0." + new string('#', decimals);
-        return rounded.ToString(format, CultureInfo.InvariantCulture);
-    }
 
     private static Dictionary<string, string> Row(
         int id, string level, string action,
