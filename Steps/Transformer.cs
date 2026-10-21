@@ -5,32 +5,32 @@ using DataPreprocessingTask.Helpers;
 
 namespace DataPreprocessingTask.Steps;
 
-
 public static class Transformer
 {
-    public const string InputPath  = Imputer.StageEPath;
+    public const string InputPath  = Imputer.OutputPath;
     public const string OutputPath = "Data/clean/mmors_water_quality_clean_2012_2018.csv";
 
     public static void Run()
     {
         Console.WriteLine("*******************************************************");
         Console.WriteLine("=========== 07: Transformer (Final Dataset) ===========");
+        
         if (!File.Exists(InputPath))
         {
-            Console.WriteLine($"Input not found: {InputPath}. Run Step 6 first.");
+            Console.WriteLine($"Input not found: {InputPath}. Run Step 5 first.");
             return;
         }
 
-        var records = LoadStageE(InputPath);
-        Console.WriteLine($"  Loaded {records.Count} stage-E records.");
+        var records = LoadData(InputPath);
+        Console.WriteLine($"  Loaded {records.Count} records.");
 
         var finalRows = records.Select(BuildFinalRow).ToList();
 
         finalRows = finalRows
             .OrderBy(r => r["WaterBody"], StringComparer.OrdinalIgnoreCase)
-            .ThenBy(r => r["StationID"], StringComparer.OrdinalIgnoreCase)
             .ThenBy(r => int.TryParse(r["Year"],  out var y) ? y : 0)
             .ThenBy(r => int.TryParse(r["Month"], out var m) ? m : 0)
+            .ThenBy(r => int.TryParse(r["SourceRow"], out var sr) ? sr : 0)
             .ToList();
 
         WriteFinal(finalRows);
@@ -40,7 +40,7 @@ public static class Transformer
         Console.WriteLine($"  Wrote {OutputPath}");
     }
 
-    private static List<Dictionary<string, string>> LoadStageE(string path)
+    private static List<Dictionary<string, string>> LoadData(string path)
     {
         var list = new List<Dictionary<string, string>>();
         var content = File.ReadAllText(path).TrimStart('\uFEFF');
@@ -63,24 +63,25 @@ public static class Transformer
     {
         var final = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
-        final["WaterBody"]  = rec.TryGetValue("SourceSheet", out var wb) ? wb : "";
-        final["StationID"]  = rec.TryGetValue("StationID",   out var sid) ? sid : "";
-        final["StationName"] = rec.TryGetValue("StationRaw", out var sn) ? sn : "";
+        final["WaterBody"]   = rec.TryGetValue("SourceSheet", out var wb) ? wb : "";
+        final["StationID"]   = rec.TryGetValue("StationID",   out var sid) ? sid : "";
+        final["StationName"] = rec.TryGetValue("StationRaw",  out var sn) ? sn : "";
 
         final["Latitude"]   = RoundLatLon(rec.TryGetValue("Latitude",  out var lat) ? lat : "");
         final["Longitude"]  = RoundLatLon(rec.TryGetValue("Longitude", out var lon) ? lon : "");
 
-        final["Year"]       = rec.TryGetValue("Year",   out var yr) ? yr : "";
-        final["Month"]      = rec.TryGetValue("Month",  out var mo) ? mo : "";
-        final["Date"] = rec.TryGetValue("SampleDate", out var sd) ? sd : "";
-        final["Time"] = TruncateToHHmm(rec.TryGetValue("SampleTime", out var st) ? st : "");
+        final["Year"]  = rec.TryGetValue("Year",  out var yr) ? yr : "";
+        final["Month"] = rec.TryGetValue("Month", out var mo) ? mo : "";
+        final["Date"]  = rec.TryGetValue("SampleDate", out var sd) ? sd : "";
+        final["Time"]  = TruncateToHHmm(rec.TryGetValue("SampleTime", out var st) ? st : "");
+        
+        // temporary
+        final["SourceRow"] = rec.TryGetValue("SourceRow", out var srow) ? srow : "";
 
         var imputedSet = ParseImputedParams(rec);
 
         foreach (var stdName in Schema.StandardParameterNames)
         {
-            if (Schema.DroppedParameters.Contains(stdName)) continue;
-
             var safeName = Schema.ParameterToSafeName[stdName];
             var rawValue = rec.TryGetValue(stdName, out var v) ? v : "";
 
@@ -101,23 +102,6 @@ public static class Transformer
                 final[safeName] = rawValue;
             }
         }
-
-        var fcSafe = Schema.ParameterToSafeName[Schema.ParamFecalColiform];
-        var fcFinal = final.TryGetValue(fcSafe, out var fcv) ? fcv : "";
-        if (!string.IsNullOrWhiteSpace(fcFinal) &&
-            double.TryParse(fcFinal, NumberStyles.Float, CultureInfo.InvariantCulture, out var fcNum) &&
-            fcNum > 0)
-        {
-            var logVal = Math.Log10(fcNum);
-            final["FecalColiform_log10"] = FormatRounded(logVal, Schema.Log10DecimalPlaces);
-        }
-        else
-        {
-            final["FecalColiform_log10"] = "";
-        }
-
-        final["SourceSheet"] = rec.TryGetValue("SourceSheet", out var ss) ? ss : "";
-        final["SourceRow"]   = rec.TryGetValue("SourceRow",   out var sr) ? sr : "";
 
         return final;
     }
