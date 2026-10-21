@@ -7,160 +7,188 @@ namespace DataPreprocessingTask.Steps;
 
 public static class Imputer
 {
-    public const string InputPath       = Cleaner.StageDPath;
-    public const string StageEPath      = "Data/interim/clean_stage_e.csv";
-    public const string ImputedLogPath  = "Output/tables/imputation/imputed_cells.csv";
-    public const string ImpactPath      = "Output/tables/imputation/imputation_impact.csv";
-
-    private static readonly HashSet<string> SkippedParameters = new(StringComparer.OrdinalIgnoreCase)
-    {
-        "Ammonia, mg/L",
-        "Total Coliform, MPN/100mL",
-    };
+    public const string InputPath  = "Data/interim/data_before_imputation.csv";
+    public const string OutputPath = "Data/interim/data_after_imputation.csv";
+    public const string ImpactPath = "Output/tables/imputation/imputation_impact.csv";
 
     public static void Run()
     {
         Console.WriteLine("*******************************************************");
-        Console.WriteLine("===== 06: Imputer (Fill Isolated Missing Values) ======");
-
+        Console.WriteLine("========= 05: Imputer (Statistical Imputation) ========");
 
         if (!File.Exists(InputPath))
         {
-            Console.WriteLine($"Input not found: {InputPath}. Run Step 4D first.");
+            Console.WriteLine($"ERROR: Input not found: {InputPath}");
             return;
         }
 
-        var records = LoadStageD(InputPath);
-        Console.WriteLine($"  Loaded {records.Count} stage-D records.");
+        var records = LoadCsv(InputPath);
+        Console.WriteLine($"  Loaded {records.Count} records.");
 
-        var byStation = records
-            .GroupBy(r => $"{r["SourceSheet"]}\u0001{r["StationID"]}")
-            .ToDictionary(g => g.Key, g => g.OrderBy(r => r["YearMonth"]).ToList());
+        // data before iputation
+        var beforeStats = CalculateImpactStats(records);
 
-        var imputedCells = new List<IDictionary<string, string>>();
-        var beforeStats = new Dictionary<string, List<double>>(StringComparer.OrdinalIgnoreCase);
-        var afterStats  = new Dictionary<string, List<double>>(StringComparer.OrdinalIgnoreCase);
+        int imputedCount = 0;
+        int outliersReplaced = 0;
+        int timesImputed = 0;
 
-        foreach (var p in Schema.StandardParameterNames)
+        foreach (var sheetGroup in records.GroupBy(r => r["SourceSheet"]))
         {
-            if (SkippedParameters.Contains(p)) continue;
-            beforeStats[p] = new List<double>();
-            afterStats[p]  = new List<double>();
-        }
+            var list = sheetGroup.ToList();
 
-        foreach (var rec in records)
-        {
+            // stats per params (outlier excluded)
+            var paramStats = new Dictionary<string, (double mean, double median, double mode)>();
             foreach (var p in Schema.StandardParameterNames)
             {
-                if (SkippedParameters.Contains(p)) continue;
-                var v = rec.TryGetValue(p, out var raw) ? raw : "";
-                if (double.TryParse(v, NumberStyles.Float, CultureInfo.InvariantCulture, out var d))
-                    beforeStats[p].Add(d);
+                var validValues = list.Where(r => !string.IsNullOrWhiteSpace(r[p]) && 
+                                                  !r["Outlier_Params"].Contains(p))
+                                      .Select(r => double.Parse(r[p], CultureInfo.InvariantCulture))
+                                      .ToList();
+
+                if (validValues.Count == 0) continue;
+
+                double mean = validValues.Average();
+                validValues.Sort();
+                double median = GetMedian(validValues);
+                double mode = GetMode(validValues);
+
+                paramStats[p] = (mean, median, mode);
             }
-        }
 
-        int totalImputed = 0;
-
-        foreach (var stationGroup in byStation.Values)
-        {
-            var byYM = stationGroup.ToDictionary(r => r["YearMonth"], r => r);
-
-            foreach (var row in stationGroup)
+            // mode for time
+            var stationTimeModes = new Dictionary<string, string>();
+            foreach (var stationGroup in list.GroupBy(r => r["StationID"]))
             {
-                var ym = row["YearMonth"];
-                if (string.IsNullOrWhiteSpace(ym)) continue;
+                var times = stationGroup.Where(r => !string.IsNullOrWhiteSpace(r["SampleTime"]))
+                                        .Select(r => r["SampleTime"]).ToList();
+                if (times.Count > 0)
+                {
+                    stationTimeModes[stationGroup.Key] = times.GroupBy(t => t)
+                                                              .OrderByDescending(g => g.Count())
+                                                              .First().Key;
+                }
+            }
 
-                string? prevYM = ShiftYearMonth(ym, -1);
-                string? nextYM = ShiftYearMonth(ym, +1);
-
+            // imputation (median for outliers)
+            foreach (var row in list)
+            {
                 var imputedParamsForRow = new List<string>();
+                var currentImputed = row["Imputed_Params"];
+                if (!string.IsNullOrWhiteSpace(currentImputed))
+                    imputedParamsForRow.AddRange(currentImputed.Split(';', StringSplitOptions.RemoveEmptyEntries));
+
+                var outlierParams = row["Outlier_Params"].Split(';', StringSplitOptions.RemoveEmptyEntries);
+                foreach (var op in outlierParams)
+                {
+                    var p = op.Trim();
+                    if (paramStats.TryGetValue(p, out var stats))
+                    {
+                        int decimals = Schema.ImputedDecimalPlaces.TryGetValue(p, out var d) ? d : 2;
+                        row[p] = Math.Round(stats.median, decimals).ToString("R", CultureInfo.InvariantCulture);
+                        
+                        imputedParamsForRow.Add(p);
+                        outliersReplaced++;
+                    }
+                }
 
                 foreach (var p in Schema.StandardParameterNames)
                 {
-                    if (SkippedParameters.Contains(p)) continue;
-
-                    // missing?
-                    var cur = row.TryGetValue(p, out var cv) ? cv : "";
-                    if (!string.IsNullOrWhiteSpace(cur)) continue;
-
-                    // neighbords has values (same station)?
-                    if (prevYM == null || nextYM == null) continue;
-                    if (!byYM.TryGetValue(prevYM, out var prevRow)) continue;
-                    if (!byYM.TryGetValue(nextYM, out var nextRow)) continue;
-
-                    if (!TryGetValidNeighbor(prevRow, p, out var prevVal)) continue;
-                    if (!TryGetValidNeighbor(nextRow, p, out var nextVal)) continue;
-
-                    double imputed;
-                    if (p == Schema.ParamFecalColiform)
+                    if (string.IsNullOrWhiteSpace(row[p]) && paramStats.TryGetValue(p, out var stats))
                     {
-                        if (prevVal <= 0 || nextVal <= 0) continue;
-                        imputed = Math.Pow(10, (Math.Log10(prevVal) + Math.Log10(nextVal)) / 2.0);
+                        double fillValue;
+                        if (p == "Dissolved Oxygen, mg/L" || p == "pH") 
+                            fillValue = stats.mean;
+                        else if (p == "Color TCU") 
+                            fillValue = stats.mode;
+                        else 
+                            fillValue = stats.median;
+
+                        int decimals = Schema.ImputedDecimalPlaces.TryGetValue(p, out var d) ? d : 2;
+                        row[p] = Math.Round(fillValue, decimals).ToString("R", CultureInfo.InvariantCulture);
+                        
+                        imputedParamsForRow.Add(p);
+                        imputedCount++;
                     }
-                    else
-                    {
-                        imputed = (prevVal + nextVal) / 2.0;
-                    }
-
-                    // apply imputation
-                    row[p] = imputed.ToString("R", CultureInfo.InvariantCulture);
-                    imputedParamsForRow.Add(p);
-                    totalImputed++;
-
-                    imputedCells.Add(new Dictionary<string, string>
-                    {
-                        ["SourceSheet"]  = row["SourceSheet"],
-                        ["StationID"]    = row["StationID"],
-                        ["YearMonth"]    = ym,
-                        ["Parameter"]    = p,
-                        ["PrevYearMonth"]= prevYM,
-                        ["PrevValue"]    = prevVal.ToString("R", CultureInfo.InvariantCulture),
-                        ["NextYearMonth"]= nextYM,
-                        ["NextValue"]    = nextVal.ToString("R", CultureInfo.InvariantCulture),
-                        ["ImputedValue"] = imputed.ToString("R", CultureInfo.InvariantCulture),
-                    });
                 }
 
-                var existing = row.TryGetValue("Imputed_Params", out var ip) ? ip : "";
-                var merged = new List<string>();
-                if (!string.IsNullOrWhiteSpace(existing))
-                    merged.AddRange(existing.Split(';', StringSplitOptions.RemoveEmptyEntries).Select(s => s.Trim()));
-                merged.AddRange(imputedParamsForRow);
+                if (string.IsNullOrWhiteSpace(row["SampleTime"]) && stationTimeModes.TryGetValue(row["StationID"], out var modeTime))
+                {
+                    row["SampleTime"] = modeTime;
+                    timesImputed++;
+                }
 
-                row["Imputed_Params"] = string.Join("; ", merged.Distinct());
+                row["Imputed_Params"] = string.Join("; ", imputedParamsForRow.Distinct());
             }
         }
 
-        Console.WriteLine($"  Total cells imputed   : {totalImputed}");
+        Console.WriteLine($"  Missing parameters filled : {imputedCount}");
+        Console.WriteLine($"  Outliers replaced         : {outliersReplaced}");
+        Console.WriteLine($"  Missing times filled      : {timesImputed}");
 
-        foreach (var rec in records)
-        {
-            foreach (var p in Schema.StandardParameterNames)
-            {
-                if (SkippedParameters.Contains(p)) continue;
-                var v = rec.TryGetValue(p, out var raw) ? raw : "";
-                if (double.TryParse(v, NumberStyles.Float, CultureInfo.InvariantCulture, out var d))
-                    afterStats[p].Add(d);
-            }
-        }
+        WriteDataset(records);
+        WriteImpactReport(beforeStats, CalculateImpactStats(records));
 
-        var imputedCounts = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase);
-        foreach (var cell in imputedCells)
-        {
-            var p = cell["Parameter"];
-            imputedCounts[p] = imputedCounts.TryGetValue(p, out var c) ? c + 1 : 1;
-        }
-
-        WriteStageE(records);
-        TableWriter.WriteRows(ImputedLogPath, imputedCells);
-        WriteImpact(beforeStats, afterStats, imputedCounts);
-
-        Console.WriteLine($"  Wrote {StageEPath}");
-        Console.WriteLine($"  Wrote {ImputedLogPath}");
+        Console.WriteLine($"  Wrote {OutputPath}");
         Console.WriteLine($"  Wrote {ImpactPath}");
     }
 
-    private static List<Dictionary<string, string>> LoadStageD(string path)
+    // -- helpers
+    private static double GetMedian(List<double> sorted)
+    {
+        int n = sorted.Count;
+        return (n % 2 == 1) ? sorted[n / 2] : (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0;
+    }
+
+    private static double GetMode(List<double> values)
+    {
+        return values.GroupBy(v => v)
+                     .OrderByDescending(g => g.Count())
+                     .First().Key;
+    }
+
+    private static Dictionary<string, (double mean, double median)> CalculateImpactStats(List<Dictionary<string, string>> records)
+    {
+        var stats = new Dictionary<string, (double, double)>();
+        foreach (var p in Schema.StandardParameterNames)
+        {
+            var vals = records.Where(r => !string.IsNullOrWhiteSpace(r[p]))
+                              .Select(r => double.Parse(r[p], CultureInfo.InvariantCulture))
+                              .ToList();
+            if (vals.Count > 0)
+            {
+                double mean = vals.Average();
+                vals.Sort();
+                double median = GetMedian(vals);
+                stats[p] = (mean, median);
+            }
+            else
+            {
+                stats[p] = (0, 0);
+            }
+        }
+        return stats;
+    }
+
+    private static void WriteImpactReport(
+        Dictionary<string, (double mean, double median)> before,
+        Dictionary<string, (double mean, double median)> after)
+    {
+        var rows = new List<IDictionary<string, string>>();
+        foreach (var p in Schema.StandardParameterNames)
+        {
+            rows.Add(new Dictionary<string, string>
+            {
+                ["Parameter"] = p,
+                ["MeanBefore"] = before[p].mean.ToString("F4", CultureInfo.InvariantCulture),
+                ["MeanAfter"]  = after[p].mean.ToString("F4", CultureInfo.InvariantCulture),
+                ["MedianBefore"] = before[p].median.ToString("F4", CultureInfo.InvariantCulture),
+                ["MedianAfter"]  = after[p].median.ToString("F4", CultureInfo.InvariantCulture)
+            });
+        }
+        TableWriter.WriteRows(ImpactPath, rows);
+    }
+
+    private static List<Dictionary<string, string>> LoadCsv(string path)
     {
         var list = new List<Dictionary<string, string>>();
         var content = File.ReadAllText(path).TrimStart('\uFEFF');
@@ -172,63 +200,21 @@ public static class Imputer
         while (csv.Read())
         {
             var row = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-            foreach (var h in headers)
-                row[h] = csv.GetField(h) ?? "";
+            foreach (var h in headers) row[h] = csv.GetField(h) ?? "";
             list.Add(row);
         }
         return list;
     }
 
-    private static bool TryGetValidNeighbor(
-        Dictionary<string, string> neighbor,
-        string parameter,
-        out double value)
-    {
-        value = 0;
-
-        var raw = neighbor.TryGetValue(parameter, out var v) ? v : "";
-        if (!double.TryParse(raw, NumberStyles.Float, CultureInfo.InvariantCulture, out value))
-            return false;
-
-        if (neighbor.TryGetValue("SymbolValue_Params", out var sp) &&
-            !string.IsNullOrWhiteSpace(sp) &&
-            sp.Contains(parameter))
-            return false;
-
-        if (neighbor.TryGetValue("Outlier_Params", out var op) &&
-            !string.IsNullOrWhiteSpace(op) &&
-            op.Contains(parameter))
-            return false;
-
-        return true;
-    }
-    private static string? ShiftYearMonth(string ym, int deltaMonths)
-    {
-        if (string.IsNullOrWhiteSpace(ym) || ym.Length != 7) return null;
-        if (!int.TryParse(ym.Substring(0, 4), out var y)) return null;
-        if (!int.TryParse(ym.Substring(5, 2), out var m)) return null;
-
-        m += deltaMonths;
-        while (m < 1)  { m += 12; y--; }
-        while (m > 12) { m -= 12; y++; }
-
-        if (y < 2012 || y > 2018) return null;
-
-        return $"{y:D4}-{m:D2}";
-    }
-
-    private static void WriteStageE(List<Dictionary<string, string>> rows)
+    private static void WriteDataset(List<Dictionary<string, string>> rows)
     {
         var headers = new List<string>
         {
-            "SourceSheet", "SourceRow",
-            "Year", "Month", "YearMonth",
-            "StationRaw", "StationID",
-            "Latitude", "Longitude",
-            "SampleDate", "SampleTime", "DateLabelMismatch",
+            "SourceSheet", "SourceRow", "Year", "Month", "YearMonth",
+            "StationRaw", "StationID", "Latitude", "Longitude",
+            "SampleDate", "SampleTime", "DateLabelMismatch"
         };
         headers.AddRange(Schema.StandardParameterNames);
-        headers.Add("FecalColiform_log10");
         headers.Add("SymbolValue_Params");
         headers.Add("Is_Outlier");
         headers.Add("Outlier_Params");
@@ -243,59 +229,6 @@ public static class Imputer
             table.Add(line);
         }
 
-        TableWriter.WriteTable(StageEPath, headers, table);
-    }
-
-    private static void WriteImpact(
-        Dictionary<string, List<double>> before,
-        Dictionary<string, List<double>> after,
-        Dictionary<string, int> imputedCounts)
-    {
-        var rows = new List<IDictionary<string, string>>();
-
-        foreach (var p in Schema.StandardParameterNames)
-        {
-            if (!before.TryGetValue(p, out var b) || !after.TryGetValue(p, out var a))
-                continue;
-
-            int imputed = imputedCounts.TryGetValue(p, out var c) ? c : 0;
-
-            double bMean   = b.Count > 0 ? b.Average() : 0;
-            double aMean   = a.Count > 0 ? a.Average() : 0;
-            double bMedian = Median(b);
-            double aMedian = Median(a);
-
-            Console.WriteLine(
-                $"  {p,-40} | " +
-                $"imputed: {imputed,3} | " +
-                $"n: {b.Count,4} -> {a.Count,4} | " +
-                $"mean: {bMean,10:F4} -> {aMean,10:F4} | " +
-                $"median: {bMedian,10:F4} -> {aMedian,10:F4}");
-
-            rows.Add(new Dictionary<string, string>
-            {
-                ["Parameter"]     = p,
-                ["Imputed"]       = imputed.ToString(CultureInfo.InvariantCulture),
-                ["CountBefore"]   = b.Count.ToString(CultureInfo.InvariantCulture),
-                ["CountAfter"]    = a.Count.ToString(CultureInfo.InvariantCulture),
-                ["MeanBefore"]    = bMean.ToString("F4", CultureInfo.InvariantCulture),
-                ["MeanAfter"]     = aMean.ToString("F4", CultureInfo.InvariantCulture),
-                ["MedianBefore"]  = bMedian.ToString("F4", CultureInfo.InvariantCulture),
-                ["MedianAfter"]   = aMedian.ToString("F4", CultureInfo.InvariantCulture),
-            });
-        }
-
-        TableWriter.WriteRows(ImpactPath, rows);
-    }
-    
-
-    private static double Median(List<double> values)
-    {
-        if (values.Count == 0) return 0;
-        var sorted = values.OrderBy(v => v).ToList();
-        int n = sorted.Count;
-        return (n % 2 == 1)
-            ? sorted[n / 2]
-            : (sorted[n / 2 - 1] + sorted[n / 2]) / 2.0;
+        TableWriter.WriteTable(OutputPath, headers, table);
     }
 }

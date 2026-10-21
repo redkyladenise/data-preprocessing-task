@@ -10,7 +10,7 @@ public static class Cleaner
 {
     public const string InputPath             = Extractor.OutputPath;
     public const string ManualCorrectionsPath = "Data/inputs/manual_corrections.csv";
-    public const string FinalCleanedPath      = "Data/interim/clean_stage.csv";
+    public const string FinalCleanedPath      = "Data/interim/data_before_imputation.csv";
     public const string ImpossibilityReportPath  = "Output/tables/cleaning/impossible_values.csv";
     public const string OutlierSummaryPath     = "Output/tables/cleaning/outlier_summary.csv";
 
