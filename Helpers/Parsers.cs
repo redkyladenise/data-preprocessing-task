@@ -157,7 +157,6 @@ public static class Parsers
             return (true, dt.TimeOfDay);
         }
 
-        // Fallback: plain TimeSpan parse (e.g. "14:30:00").
         if (TimeSpan.TryParse(s, CultureInfo.InvariantCulture, out var ts))
         {
             return (true, ts);

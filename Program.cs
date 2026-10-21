@@ -1,7 +1,5 @@
 ﻿using DataPreprocessingTask.Steps;
 
-// Console.WriteLine("MMORS Data Preprocessing Pipeline");
-// Console.WriteLine();
 Console.WriteLine("================================================================");
 Console.WriteLine("  MMORS WATER QUALITY PREPROCESSING PIPELINE");
 Console.WriteLine("  Dataset: 2012-2018 | Marilao, Meycauayan, Obando");

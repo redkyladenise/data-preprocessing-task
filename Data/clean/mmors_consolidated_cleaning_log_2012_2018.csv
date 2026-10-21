@@ -237,15 +237,15 @@
 236,Cell,LIMIT_STANDARDIZED,Obando,322,Obando,OBA-2,2018,5,"Nitrates as Nitrogen, mg/L",<0.048,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
 237,Cell,LIMIT_STANDARDIZED,Obando,323,Obando,OBA-1,2018,5,"Nitrates as Nitrogen, mg/L",<0.048,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
 238,Cell,LIMIT_STANDARDIZED,Obando,324,Obando,OBA-3,2018,5,"Nitrates as Nitrogen, mg/L",<0.048,0.048,Measurement-limit symbol removed; value set to 0.048,clean_stage_a.csv
-239,Cell,MANUAL_CORRECTION,Marilao,417,Marilao,,2017,8,YearMonthLabel,CY 2016 AUGUST,CY 2017 AUGUST,Mislabeled year - station dates are Aug 2017,manual_corrections.csv
-240,Cell,MANUAL_CORRECTION,Marilao,423,Marilao,,2017,9,YearMonthLabel,CY 2016 SEPTEMBER,CY 2017 SEPTEMBER,Mislabeled year - station dates are Sep 2017,manual_corrections.csv
-241,Cell,MANUAL_CORRECTION,Marilao,466,Marilao,,2018,5,YearMonthLabel,CY 2017 MAY,CY 2018 MAY,Mislabeled year - station dates are May 2018,manual_corrections.csv
-242,Cell,MANUAL_CORRECTION,Marilao,459,Marilao,,,,DateText,,2018-03-16,Decision 2 - correct sample date,manual_corrections.csv
-243,Cell,MANUAL_CORRECTION,Meycauayan,212,Meycauayan,,,,DateText,,2014-10-17,Decision 1 - correct sample date,manual_corrections.csv
-244,Cell,MANUAL_CORRECTION,Meycauayan,213,Meycauayan,,,,DateText,,2014-10-17,Decision 1 - correct sample date,manual_corrections.csv
-245,Cell,MANUAL_CORRECTION,Meycauayan,214,Meycauayan,,,,DateText,,2014-10-17,Decision 1 - correct sample date,manual_corrections.csv
-246,Cell,MANUAL_CORRECTION,Meycauayan,215,Meycauayan,,,,DateText,,2014-10-17,Decision 1 - correct sample date,manual_corrections.csv
-247,Cell,MANUAL_CORRECTION,Meycauayan,216,Meycauayan,,,,DateText,,2014-10-17,Decision 1 - correct sample date,manual_corrections.csv
+239,Cell,MANUAL_CORRECTION,Marilao,417,Marilao,,2017,8,YearMonthLabel,CY 2016 AUGUST,CY 2017 AUGUST,Mislabeled year,manual_corrections.csv
+240,Cell,MANUAL_CORRECTION,Marilao,423,Marilao,,2017,9,YearMonthLabel,CY 2016 SEPTEMBER,CY 2017 SEPTEMBER,Mislabeled year,manual_corrections.csv
+241,Cell,MANUAL_CORRECTION,Marilao,466,Marilao,,2018,5,YearMonthLabel,CY 2017 MAY,CY 2018 MAY,Mislabeled year,manual_corrections.csv
+242,Cell,MANUAL_CORRECTION,Marilao,459,Marilao,,,,DateText,,2018-03-16,Corrected sample date,manual_corrections.csv
+243,Cell,MANUAL_CORRECTION,Meycauayan,212,Meycauayan,,,,DateText,,2014-10-17,Corrected sample date,manual_corrections.csv
+244,Cell,MANUAL_CORRECTION,Meycauayan,213,Meycauayan,,,,DateText,,2014-10-17,Corrected sample date,manual_corrections.csv
+245,Cell,MANUAL_CORRECTION,Meycauayan,214,Meycauayan,,,,DateText,,2014-10-17,Corrected sample date,manual_corrections.csv
+246,Cell,MANUAL_CORRECTION,Meycauayan,215,Meycauayan,,,,DateText,,2014-10-17,Corrected sample date,manual_corrections.csv
+247,Cell,MANUAL_CORRECTION,Meycauayan,216,Meycauayan,,,,DateText,,2014-10-17,Corrected sample date,manual_corrections.csv
 248,Row,ROW_EXCLUDED,Marilao,369,Marilao,MAR-3,2016,12,,,,NO_RESULTS,excluded_records.csv
 249,Row,ROW_EXCLUDED,Marilao,370,Marilao,MAR-4,2016,12,,,,NO_RESULTS,excluded_records.csv
 250,Row,ROW_EXCLUDED,Marilao,371,Marilao,MAR-1,2016,12,,,,NO_RESULTS,excluded_records.csv
