@@ -111,7 +111,7 @@ public static class Inspector
             }
         }
 
-        TableWriter.WriteRows("Output/tables/inspection/02_sheet table1_3_contents.csv", rows);
+        TableWriter.WriteRows("Output/tables/inspection/02_sheet_table1_3_contents.csv", rows);
     }
 
     private static void DumpHeaderRows(XLWorkbook wb)
