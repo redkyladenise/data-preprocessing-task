@@ -5,7 +5,7 @@ Marilao,Temperature °C,75,YES,23.124999999999996,36.525000000000006,0,raw
 Marilao,"Biochemical Oxygen Demand, mg/L",365,YES,-27.5,80.5,26,raw
 Marilao,"Total Suspended Solids, mg/L",309,YES,-13,51,17,raw
 Marilao,Color TCU,70,YES,10,90,8,raw
-Marilao,"Fecal Coliform, MPN/100mL",95,YES,4.825184080826382,7.8767195672209205,4,log10
+Marilao,"Fecal Coliform, MPN/100mL",95,YES,-5737500,12082500,13,raw
 Marilao,"Total Coliform, MPN/100mL",215,YES,-7800000,19400000,23,raw
 Marilao,"Ammonia, mg/L",220,YES,-18.405625,55.393375000000006,5,raw
 Marilao,"Nitrates as Nitrogen, mg/L",310,YES,-0.6060000000000001,1.36,15,raw
@@ -17,7 +17,7 @@ Meycauayan,Temperature °C,75,YES,24.1875,36.1275,0,raw
 Meycauayan,"Biochemical Oxygen Demand, mg/L",368,YES,-45.5,168.5,7,raw
 Meycauayan,"Total Suspended Solids, mg/L",307,YES,-3.75,58.25,28,raw
 Meycauayan,Color TCU,75,YES,-37.5,182.5,7,raw
-Meycauayan,"Fecal Coliform, MPN/100mL",95,YES,4.769942329461798,8.664626574572402,3,log10
+Meycauayan,"Fecal Coliform, MPN/100mL",95,YES,-19750000,37450000,7,raw
 Meycauayan,"Total Coliform, MPN/100mL",213,YES,-19125000,38275000,17,raw
 Meycauayan,"Ammonia, mg/L",221,YES,-9.0945,31.325499999999998,4,raw
 Meycauayan,"Nitrates as Nitrogen, mg/L",306,YES,-0.19524999999999998,0.69475,12,raw
@@ -29,7 +29,7 @@ Obando,Temperature °C,48,YES,24.806249999999988,37.05625000000002,0,raw
 Obando,"Biochemical Oxygen Demand, mg/L",201,YES,-16.5,51.5,15,raw
 Obando,"Total Suspended Solids, mg/L",165,YES,-34.125,90.875,7,raw
 Obando,Color TCU,48,YES,8.75,58.75,5,raw
-Obando,"Fecal Coliform, MPN/100mL",60,YES,2.477462695101963,7.685352398655571,0,log10
+Obando,"Fecal Coliform, MPN/100mL",60,YES,-742500,1309500,6,raw
 Obando,"Total Coliform, MPN/100mL",105,YES,-438750,823250,18,raw
 Obando,"Ammonia, mg/L",111,YES,-2.9162500000000007,9.145750000000001,6,raw
 Obando,"Nitrates as Nitrogen, mg/L",165,YES,-0.1365,0.4275,8,raw

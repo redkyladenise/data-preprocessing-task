@@ -26,12 +26,9 @@ public static class Figures
         DrawExistingVsFinalData(raw, final);
         DrawDistributionHistograms(final);
 
-        Console.WriteLine("====== Figures complete ======");
+        Console.WriteLine("10 Complete. Wrote Output/figures");
     }
 
-    // =================================================================
-    // FIGURE 1: Missing % (Raw vs. Final)
-    // =================================================================
     private static void DrawMissingBeforeAfter(
         List<Dictionary<string, string>> raw,
         List<Dictionary<string, string>> final)
@@ -102,15 +99,12 @@ public static class Figures
         plt.Axes.Bottom.TickLabelStyle.FontSize = 10;
         plt.ShowLegend(ScottPlot.Alignment.UpperRight);
 
-        plt.Axes.SetLimitsY(0, 110);
+        plt.Axes.SetLimitsY(0, 100);
         plt.Axes.SetLimitsX(-0.8, stdOrder.Length);
         plt.SavePng($"{OutputDir}/01_missing_before_after.png", 1500, 850);
         Console.WriteLine("  Wrote 01_missing_before_after.png");
     }
 
-    // =================================================================
-    // FIGURE 2: Existing vs. Final Data Volume (Stacked Bar)
-    // =================================================================
     private static void DrawExistingVsFinalData(
         List<Dictionary<string, string>> raw,
         List<Dictionary<string, string>> final)
@@ -126,13 +120,11 @@ public static class Figures
             var std  = stdOrder[i];
             var safe = Schema.ParameterToSafeName[std];
 
-            // Count non-empty, non-placeholder in raw
             int orig = raw.Count(r => !Parsers.IsPlaceholder(r.TryGetValue(std, out var v) ? v : ""));
-            // Count non-empty in final (should be the full 1147)
             int fin  = final.Count(r => !string.IsNullOrWhiteSpace(r.TryGetValue(safe, out var v) ? v : ""));
 
             origCounts[i] = orig;
-            impCounts[i]  = fin - orig; // The difference is what we imputed
+            impCounts[i]  = fin - orig;
         }
 
         var plt = new ScottPlot.Plot();
@@ -154,7 +146,7 @@ public static class Figures
         {
             Position = i,
             Value = val,
-            ValueBase = origCounts[i], // Starts where original ends
+            ValueBase = origCounts[i],
             FillColor = ScottPlot.Colors.Orange,
         }).ToArray();
         
@@ -168,13 +160,12 @@ public static class Figures
         plt.ShowLegend(ScottPlot.Alignment.UpperRight);
 
         plt.Axes.SetLimitsX(-0.8, stdOrder.Length);
+        plt.Axes.SetLimitsY(0, 1000);
         plt.SavePng($"{OutputDir}/02_existing_vs_final_data.png", 1500, 850);
         Console.WriteLine("  Wrote 02_existing_vs_final_data.png");
     }
 
-    // =================================================================
-    // FIGURE 3: Parameter Distribution Grid (12 separate histograms)
-    // =================================================================
+    // 12 histograms
     private static void DrawDistributionHistograms(List<Dictionary<string, string>> final)
     {
         var stdOrder = Schema.StandardParameterNames;
@@ -198,12 +189,10 @@ public static class Figures
             plt.XLabel("Value");
             plt.YLabel("Frequency");
 
-            // Manual binning to avoid version-specific Histogram API issues
             int binCount = 20;
             double min = values.Min();
             double max = values.Max();
             
-            // Handle edge case where all values are identical
             if (Math.Abs(max - min) < 1e-9) max = min + 1; 
 
             double binWidth = (max - min) / binCount;
@@ -226,11 +215,14 @@ public static class Figures
                     Position = center,
                     Value = counts[b],
                     FillColor = ScottPlot.Colors.SteelBlue,
-                    Size = binWidth * 0.9 // gap between bars
+                    Size = binWidth * 0.9 
                 };
             }
 
             plt.Add.Bars(bars);
+
+            double maxCount = counts.Length > 0 ? counts.Max() : 1;
+            plt.Axes.SetLimitsY(0, maxCount * 1.15);
 
             string fileNum = (i + 1).ToString("D2");
             string safeFileName = safe.Replace("_", "").Replace("-", "");

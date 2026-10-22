@@ -48,13 +48,13 @@ public static class Cleaner
         WriteFinalDataset(stageD);
 
         Console.WriteLine();
-        Console.WriteLine($"  Wrote {FinalCleanedPath}");
+        Console.WriteLine($"=== 04 Complete. Wrote {FinalCleanedPath}");
     }
 
     private static List<Dictionary<string, string>> RunPhaseA(List<RawRecord> records)
     {
         Console.WriteLine();
-        Console.WriteLine("========= 4A: Standardization and Corrections =========");
+        Console.WriteLine("=== 4A: Standardization and Corrections");
         var rows = new List<Dictionary<string, string>>();
         int symbolCells  = 0;
         int mismatchCount = 0;
@@ -136,7 +136,7 @@ public static class Cleaner
     private static List<Dictionary<string, string>> RunPhaseB(List<Dictionary<string, string>> stageA)
     {
         Console.WriteLine();
-        Console.WriteLine("========= 4B: Placeholders and Missing Dates ==========");
+        Console.WriteLine("=== 4B: Placeholders and Missing Dates");
 
         int synthesizedDates = 0;
 
@@ -165,7 +165,7 @@ public static class Cleaner
     private static List<Dictionary<string, string>> RunPhaseC(List<Dictionary<string, string>> stageB)
     {
         Console.WriteLine();
-        Console.WriteLine("=========== 4C: Checking Impossible Values ============");
+        Console.WriteLine("=== 4C: Checking Impossible Values");
 
         var violations = new List<Dictionary<string, string>>();
         int rowsWithViolations = 0;
@@ -235,7 +235,7 @@ public static class Cleaner
     private static List<Dictionary<string, string>> RunPhaseD(List<Dictionary<string, string>> stageC)
     {
         Console.WriteLine();
-        Console.WriteLine("============= 4D: Outlier Flagging (IQR) ==============");
+        Console.WriteLine("=== 4D: Outlier Flagging (IQR)");
 
         var fences = ComputeFences(stageC);
         int rowsWithOutlier = 0;

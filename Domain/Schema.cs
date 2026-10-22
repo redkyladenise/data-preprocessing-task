@@ -67,7 +67,7 @@ public static class Schema
 
     public static readonly Dictionary<string, int> ImputedDecimalPlaces = new(StringComparer.OrdinalIgnoreCase)
     {
-        ["Dissolved Oxygen, mg/L"]           = 2,
+        ["Dissolved Oxygen, mg/L"]           = 1,
         ["pH"]                               = 2,
         ["Temperature °C"]                   = 1,
         ["Biochemical Oxygen Demand, mg/L"]  = 0,
@@ -81,7 +81,7 @@ public static class Schema
         ["Chlorides Cl, mg/L"]               = 0
     };
 
-    public const int LatLonDecimalPlaces = 6;
+    public const int LatLonDecimalPlaces = 5;
 
     public const string ColStationRaw = "Name of Water Body";
     public const string ColLatitude   = "Latitude, North (degree)";

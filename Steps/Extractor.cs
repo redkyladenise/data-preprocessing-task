@@ -48,8 +48,8 @@ public static class Extractor
         TableWriter.WriteRows(SkippedPath, skippedRows);
 
         Console.WriteLine();
-        Console.WriteLine($"==== Wrote {OutputPath} ====");
-        Console.WriteLine($"==== Wrote {SkippedPath} ====");
+        Console.WriteLine($"=== 02 Complete. Wrote {OutputPath}");
+        Console.WriteLine($"                       {SkippedPath}");
     }
 
     private static List<RawRecord> ExtractSheet(

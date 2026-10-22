@@ -73,10 +73,6 @@ public static class Imputer
             foreach (var row in list)
             {
                 var imputedParamsForRow = new List<string>();
-                var currentImputed = row["Imputed_Params"];
-                if (!string.IsNullOrWhiteSpace(currentImputed))
-                    imputedParamsForRow.AddRange(currentImputed.Split(';', StringSplitOptions.RemoveEmptyEntries));
-
                 var outlierParams = row["Outlier_Params"].Split(';', StringSplitOptions.RemoveEmptyEntries);
                 foreach (var op in outlierParams)
                 {
@@ -96,9 +92,7 @@ public static class Imputer
                     if (string.IsNullOrWhiteSpace(row[p]) && paramStats.TryGetValue(p, out var stats))
                     {
                         double fillValue;
-                        if (p == "Dissolved Oxygen, mg/L" || p == "pH") 
-                            fillValue = stats.mean;
-                        else if (p == "Color TCU") 
+                        if (p == "Color TCU") 
                             fillValue = stats.mode;
                         else 
                             fillValue = stats.median;
@@ -128,8 +122,8 @@ public static class Imputer
         WriteDataset(records);
         WriteImpactReport(beforeStats, CalculateImpactStats(records));
 
-        Console.WriteLine($"  Wrote {OutputPath}");
-        Console.WriteLine($"  Wrote {ImpactPath}");
+        Console.WriteLine($"=== 05 Complete. Wrote {OutputPath}");
+        Console.WriteLine($"                       {ImpactPath}");
     }
 
     // -- helpers

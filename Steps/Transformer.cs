@@ -13,7 +13,7 @@ public static class Transformer
     public static void Run()
     {
         Console.WriteLine("*******************************************************");
-        Console.WriteLine("=========== 07: Transformer (Final Dataset) ===========");
+        Console.WriteLine("=========== 06: Transformer (Final Dataset) ===========");
         
         if (!File.Exists(InputPath))
         {
@@ -30,14 +30,14 @@ public static class Transformer
             .OrderBy(r => r["WaterBody"], StringComparer.OrdinalIgnoreCase)
             .ThenBy(r => int.TryParse(r["Year"],  out var y) ? y : 0)
             .ThenBy(r => int.TryParse(r["Month"], out var m) ? m : 0)
-            .ThenBy(r => int.TryParse(r["SourceRow"], out var sr) ? sr : 0)
+            .ThenBy(r => r["StationID"], StringComparer.OrdinalIgnoreCase)
             .ToList();
 
         WriteFinal(finalRows);
 
         Console.WriteLine($"  Rows    : {finalRows.Count}");
         Console.WriteLine($"  Columns : {Schema.FinalColumnOrder.Length}");
-        Console.WriteLine($"  Wrote {OutputPath}");
+        Console.WriteLine($"=== 06 Complete. Wrote {OutputPath}");
     }
 
     private static List<Dictionary<string, string>> LoadData(string path)
@@ -75,11 +75,6 @@ public static class Transformer
         final["Date"]  = rec.TryGetValue("SampleDate", out var sd) ? sd : "";
         final["Time"]  = TruncateToHHmm(rec.TryGetValue("SampleTime", out var st) ? st : "");
         
-        // temporary
-        final["SourceRow"] = rec.TryGetValue("SourceRow", out var srow) ? srow : "";
-
-        var imputedSet = ParseImputedParams(rec);
-
         foreach (var stdName in Schema.StandardParameterNames)
         {
             var safeName = Schema.ParameterToSafeName[stdName];
@@ -91,8 +86,7 @@ public static class Transformer
                 continue;
             }
 
-            if (imputedSet.Contains(stdName) &&
-                Schema.ImputedDecimalPlaces.TryGetValue(stdName, out var dp) &&
+            if (Schema.ImputedDecimalPlaces.TryGetValue(stdName, out var dp) &&
                 double.TryParse(rawValue, NumberStyles.Float, CultureInfo.InvariantCulture, out var d))
             {
                 final[safeName] = FormatRounded(d, dp);
@@ -106,24 +100,14 @@ public static class Transformer
         return final;
     }
 
-    private static HashSet<string> ParseImputedParams(Dictionary<string, string> rec)
-    {
-        var set = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-        if (!rec.TryGetValue("Imputed_Params", out var ip)) return set;
-        if (string.IsNullOrWhiteSpace(ip)) return set;
-
-        foreach (var p in ip.Split(';', StringSplitOptions.RemoveEmptyEntries))
-            set.Add(p.Trim());
-        return set;
-    }
-
     private static string RoundLatLon(string raw)
     {
         if (string.IsNullOrWhiteSpace(raw)) return "";
         if (!double.TryParse(raw, NumberStyles.Float, CultureInfo.InvariantCulture, out var d)) return raw;
-        return FormatRounded(d, Schema.LatLonDecimalPlaces);
+        
+        var rounded = Math.Round(d, Schema.LatLonDecimalPlaces, MidpointRounding.AwayFromZero);
+        return rounded.ToString("0." + new string('#', Schema.LatLonDecimalPlaces), CultureInfo.InvariantCulture);
     }
-
     private static string TruncateToHHmm(string raw)
     {
         if (string.IsNullOrWhiteSpace(raw)) return "";
@@ -137,10 +121,10 @@ public static class Transformer
                        .ToString("0", CultureInfo.InvariantCulture);
 
         var rounded = Math.Round(value, decimals, MidpointRounding.AwayFromZero);
-        var format  = "0." + new string('#', decimals);
+        var format  = "0." + new string('0', decimals); 
+        
         return rounded.ToString(format, CultureInfo.InvariantCulture);
     }
-
     private static void WriteFinal(List<Dictionary<string, string>> rows)
     {
         var headers = Schema.FinalColumnOrder.ToList();

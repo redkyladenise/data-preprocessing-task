@@ -32,7 +32,7 @@ public static class Inspector
         InspectStations(wb);
 
         Console.WriteLine();
-        Console.WriteLine("==== 01 Inspection complete. See Output/tables/inspection/. ====");
+        Console.WriteLine("01 complete. Wrote Output/tables/inspection/");
     }
 
     private static void InspectSheets(XLWorkbook wb)

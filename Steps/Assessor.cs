@@ -34,7 +34,7 @@ public static class Assessor
         AssessMissingDateTimeWithValues(records);
 
         Console.WriteLine();
-        Console.WriteLine($"03 Wrote assessment files to {OutputDir}/");
+        Console.WriteLine($"=== 03 Complete. Wrote {OutputDir}/");
     }
 
     private static List<Dictionary<string, string>> LoadRecords(string path)

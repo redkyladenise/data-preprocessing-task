@@ -19,7 +19,7 @@ public static class LogBuilder
     public static void Run()
     {
         Console.WriteLine("*******************************************************");
-        Console.WriteLine("====== 08: LogBuilder (Consolidated Cleaning Log) =====");
+        Console.WriteLine("====== 07: LogBuilder (Consolidated Cleaning Log) =====");
 
         var raw     = LoadCsv(RawPath);
         var cleaned = LoadCsv(CleanedPath);
@@ -40,8 +40,8 @@ public static class LogBuilder
         WriteLog(log);
         WriteSummary(log);
 
-        Console.WriteLine($"  Wrote {OutputPath}");
-        Console.WriteLine($"  Wrote {SummaryPath}");
+        Console.WriteLine($"=== 07 Complete. Wrote {OutputPath}");
+        Console.WriteLine($"                       {SummaryPath}");
     }
 
     // standardization (raw vs cleaned)
