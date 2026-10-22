@@ -301,7 +301,6 @@ public static class Assessor
 
         foreach (var rec in records)
         {
-            // does any parameter have a value?
             bool hasAnyParam = false;
             foreach (var param in Schema.StandardParameterNames)
             {

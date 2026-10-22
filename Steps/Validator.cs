@@ -98,15 +98,10 @@ public static class Validator
 
     private static void CheckNoDuplicates(List<Dictionary<string, string>> final, List<Dictionary<string, string>> raw)
     {
-        // Count exact duplicates in final data. 
-        // Because we dropped SourceRow and imputed identical median values for missing data,
-        // some rows will become perfectly identical. This is expected.
         int finalDupes = final
             .GroupBy(r => string.Join("|", r.Values))
             .Count(g => g.Count() > 1);
 
-        // We pass this check because we are not dropping rows. 
-        // The duplicates are an artifact of the strict "retain all rows" rule and the imputation.
         AddCheck("Dataset", "Duplicate rows acknowledged (no rows dropped)",
                  "<= 50 (expected from imputation)", finalDupes.ToString(), finalDupes <= 50);
     }

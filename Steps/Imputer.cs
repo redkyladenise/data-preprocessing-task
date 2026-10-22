@@ -178,8 +178,8 @@ public static class Imputer
                 ["MeanAfter"]    = after[p].mean.ToString("F4", CultureInfo.InvariantCulture),
                 ["MedianBefore"] = before[p].median.ToString("F4", CultureInfo.InvariantCulture),
                 ["MedianAfter"]  = after[p].median.ToString("F4", CultureInfo.InvariantCulture),
-                ["ModeBefore"]   = before[p].mode.ToString("F4", CultureInfo.InvariantCulture), // NEW
-                ["ModeAfter"]    = after[p].mode.ToString("F4", CultureInfo.InvariantCulture)   // NEW
+                ["ModeBefore"]   = before[p].mode.ToString("F4", CultureInfo.InvariantCulture),
+                ["ModeAfter"]    = after[p].mode.ToString("F4", CultureInfo.InvariantCulture)
             });
         }
         TableWriter.WriteRows(ImpactPath, rows);
