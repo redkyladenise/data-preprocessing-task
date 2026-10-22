@@ -9,6 +9,7 @@ public static class Transformer
 {
     public const string InputPath  = Imputer.OutputPath;
     public const string OutputPath = "Data/clean/mmors_water_quality_clean_2012_2018.csv";
+    public const string ExcelPath  = "Data/clean/mmors_water_quality_clean_2012_2018.xlsx";
 
     public static void Run()
     {
@@ -38,6 +39,7 @@ public static class Transformer
         Console.WriteLine($"  Rows    : {finalRows.Count}");
         Console.WriteLine($"  Columns : {Schema.FinalColumnOrder.Length}");
         Console.WriteLine($"=== 06 Complete. Wrote {OutputPath}");
+        Console.WriteLine($"                       {ExcelPath}");
     }
 
     private static List<Dictionary<string, string>> LoadData(string path)
@@ -129,6 +131,7 @@ public static class Transformer
     {
         var headers = Schema.FinalColumnOrder.ToList();
 
+        // CSV
         var table = new List<IReadOnlyList<string>>();
         foreach (var r in rows)
         {
@@ -137,7 +140,63 @@ public static class Transformer
                 line.Add(r.TryGetValue(h, out var v) ? (v ?? "") : "");
             table.Add(line);
         }
-
         TableWriter.WriteTable(OutputPath, headers, table);
+
+        // EXCEL
+        using var wb = new ClosedXML.Excel.XLWorkbook();
+        var ws = wb.Worksheets.Add("Cleaned Data");
+
+        for (int c = 0; c < headers.Count; c++)
+        {
+            ws.Cell(1, c + 1).Value = headers[c];
+            ws.Cell(1, c + 1).Style.Font.Bold = true;
+            ws.Cell(1, c + 1).Style.Fill.BackgroundColor = ClosedXML.Excel.XLColor.LightGray;
+        }
+
+        for (int r = 0; r < rows.Count; r++)
+        {
+            for (int c = 0; c < headers.Count; c++)
+            {
+                string header = headers[c];
+                string val = rows[r].TryGetValue(header, out var v) ? v : "";
+                var cell = ws.Cell(r + 2, c + 1);
+
+                if (string.IsNullOrWhiteSpace(val))
+                {
+                    cell.Value = "";
+                }
+                else if (header == "Date" && DateTime.TryParse(val, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out var dt))
+                {
+                    cell.Value = dt;
+                    cell.Style.DateFormat.Format = "yyyy-MM-dd";
+                }
+                else if (header == "Year" || header == "Month")
+                {
+                    cell.Value = int.TryParse(val, out var i) ? i : 0;
+                }
+                else if (double.TryParse(val, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out var d))
+                {
+                    cell.Value = d;
+                    
+                    string stdName = Schema.ParameterToSafeName.FirstOrDefault(x => x.Value == header).Key;
+                    if (stdName != null && Schema.ImputedDecimalPlaces.TryGetValue(stdName, out var dp))
+                    {
+                        cell.Style.NumberFormat.Format = dp == 0 ? "0" : "0." + new string('0', dp);
+                    }
+                    else if (header == "Latitude" || header == "Longitude")
+                    {
+                        cell.Style.NumberFormat.Format = "0.#####";
+                    }
+                }
+                else
+                {
+                    cell.Value = val;
+                }
+            }
+        }
+
+        ws.Columns().AdjustToContents();
+        
+        wb.SaveAs(ExcelPath);
     }
 }

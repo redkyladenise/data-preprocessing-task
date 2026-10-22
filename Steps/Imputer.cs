@@ -140,9 +140,9 @@ public static class Imputer
                      .First().Key;
     }
 
-    private static Dictionary<string, (double mean, double median)> CalculateImpactStats(List<Dictionary<string, string>> records)
+    private static Dictionary<string, (double mean, double median, double mode)> CalculateImpactStats(List<Dictionary<string, string>> records)
     {
-        var stats = new Dictionary<string, (double, double)>();
+        var stats = new Dictionary<string, (double, double, double)>();
         foreach (var p in Schema.StandardParameterNames)
         {
             var vals = records.Where(r => !string.IsNullOrWhiteSpace(r[p]))
@@ -153,30 +153,33 @@ public static class Imputer
                 double mean = vals.Average();
                 vals.Sort();
                 double median = GetMedian(vals);
-                stats[p] = (mean, median);
+                double mode = GetMode(vals); 
+                stats[p] = (mean, median, mode);
             }
             else
             {
-                stats[p] = (0, 0);
+                stats[p] = (0, 0, 0);
             }
         }
         return stats;
     }
 
     private static void WriteImpactReport(
-        Dictionary<string, (double mean, double median)> before,
-        Dictionary<string, (double mean, double median)> after)
+        Dictionary<string, (double mean, double median, double mode)> before,
+        Dictionary<string, (double mean, double median, double mode)> after)
     {
         var rows = new List<IDictionary<string, string>>();
         foreach (var p in Schema.StandardParameterNames)
         {
             rows.Add(new Dictionary<string, string>
             {
-                ["Parameter"] = p,
-                ["MeanBefore"] = before[p].mean.ToString("F4", CultureInfo.InvariantCulture),
-                ["MeanAfter"]  = after[p].mean.ToString("F4", CultureInfo.InvariantCulture),
+                ["Parameter"]    = p,
+                ["MeanBefore"]   = before[p].mean.ToString("F4", CultureInfo.InvariantCulture),
+                ["MeanAfter"]    = after[p].mean.ToString("F4", CultureInfo.InvariantCulture),
                 ["MedianBefore"] = before[p].median.ToString("F4", CultureInfo.InvariantCulture),
-                ["MedianAfter"]  = after[p].median.ToString("F4", CultureInfo.InvariantCulture)
+                ["MedianAfter"]  = after[p].median.ToString("F4", CultureInfo.InvariantCulture),
+                ["ModeBefore"]   = before[p].mode.ToString("F4", CultureInfo.InvariantCulture), // NEW
+                ["ModeAfter"]    = after[p].mode.ToString("F4", CultureInfo.InvariantCulture)   // NEW
             });
         }
         TableWriter.WriteRows(ImpactPath, rows);

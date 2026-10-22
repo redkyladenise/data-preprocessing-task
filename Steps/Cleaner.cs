@@ -25,7 +25,6 @@ public static class Cleaner
             return;
         }
 
-        // 1. Load Raw Data
         var records = LoadRawRecords(InputPath);
         Console.WriteLine($"  Loaded {records.Count} raw records.");
 
@@ -38,17 +37,17 @@ public static class Cleaner
         var corrections = LoadManualCorrections(ManualCorrectionsPath);
         ApplyCorrections(records, corrections);
 
-        // 2. Run Phases in Memory
         var stageA = RunPhaseA(records);
         var stageB = RunPhaseB(stageA);
         var stageC = RunPhaseC(stageB);
         var stageD = RunPhaseD(stageC);
 
-        // 3. Write the single final cleaned dataset
         WriteFinalDataset(stageD);
 
         Console.WriteLine();
-        Console.WriteLine($"=== 04 Complete. Wrote {FinalCleanedPath}");
+        Console.WriteLine($"=== 04 Complete. Wrote {ImpossibilityReportPath}");
+        Console.WriteLine($"                       {OutlierSummaryPath}");
+        Console.WriteLine($"                       {FinalCleanedPath}");
     }
 
     private static List<Dictionary<string, string>> RunPhaseA(List<RawRecord> records)
